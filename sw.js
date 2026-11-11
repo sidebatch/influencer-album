@@ -1,4 +1,4 @@
-const CACHE = 'influencer-album-v20';
+const CACHE = 'influencer-album-v21';
 const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png',
   './img/face-anchor.webp',
   './img/studio-1.webp', './img/studio-2.webp', './img/studio-3.webp', './img/studio-4.webp',
@@ -15,7 +15,8 @@ const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', 
   './img/mini-1.webp', './img/mini-2.webp', './img/mini-3.webp', './img/mini-4.webp',
   './img/mini-5.webp', './img/mini-6.webp', './img/mini-7.webp', './img/mini-8.webp',
   './img/mini-9.webp', './img/mini-10.webp', './img/mini-11.webp', './img/mini-12.webp',
-  './img/mini-13.webp', './img/mini-14.webp', './img/mini-15.webp', './img/mini-16.webp'];
+  './img/mini-13.webp', './img/mini-14.webp', './img/mini-15.webp', './img/mini-16.webp',
+  './img/mini-17.webp', './img/mini-18.webp', './img/mini-19.webp', './img/mini-20.webp'];
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(CORE)).then(() => self.skipWaiting()));
 });
