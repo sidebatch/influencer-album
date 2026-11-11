@@ -1,4 +1,4 @@
-const CACHE = 'influencer-album-v16';
+const CACHE = 'influencer-album-v17';
 const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png',
   './img/face-anchor.webp',
   './img/studio-1.webp', './img/studio-2.webp', './img/studio-3.webp', './img/studio-4.webp',
@@ -11,7 +11,8 @@ const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', 
   './img/out-1.webp', './img/out-3.webp',
   './img/lie-1.webp', './img/lie-2.webp', './img/lie-3.webp', './img/lie-4.webp',
   './img/bold-1.webp', './img/bold-2.webp', './img/bold-3.webp', './img/bold-4.webp',
-  './img/bold-5.webp', './img/bold-6.webp', './img/bold-7.webp', './img/bold-8.webp'];
+  './img/bold-5.webp', './img/bold-6.webp', './img/bold-7.webp', './img/bold-8.webp',
+  './img/mini-1.webp', './img/mini-2.webp', './img/mini-3.webp', './img/mini-4.webp'];
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(CORE)).then(() => self.skipWaiting()));
 });
