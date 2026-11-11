@@ -1,6 +1,6 @@
-# 인플루언서 앨범 (Influencer Album)
+# Mia's Album
 
-가상 인스타 인플루언서 캐릭터(25살 · 160cm)의 사진 앨범 페이지.
+가상 인스타 인플루언서 **Mia**(25살 · 160cm)의 사진 앨범 페이지.
 
 **Live: https://sidebatch.github.io/influencer-album/**
 
