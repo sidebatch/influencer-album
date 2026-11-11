@@ -1,4 +1,4 @@
-const CACHE = 'influencer-album-v35';
+const CACHE = 'influencer-album-v36';
 const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png',
   './img/face-anchor.webp',
   './img/studio-1.webp', './img/studio-2.webp', './img/studio-3.webp', './img/studio-4.webp',
@@ -27,7 +27,7 @@ const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', 
   './img/mini-21.webp', './img/mini-22.webp', './img/mini-23.webp', './img/mini-24.webp',
   './img/lck-1.webp', './img/lck-2.webp', './img/lck-3.webp', './img/lck-4.webp',
   './img/lck-5.webp', './img/lck-6.webp', './img/lck-7.webp', './img/lck-8.webp',
-  './img/lck-9.webp', './img/lck-10.webp', './img/lck-11.webp', './img/yui-1.webp', './img/yui-2.webp', './img/yui-3.webp', './img/yui-4.webp'];
+  './img/lck-9.webp', './img/lck-10.webp', './img/lck-11.webp', './img/yui-1.webp', './img/yui-2.webp', './img/yui-3.webp', './img/yui-4.webp', './img/yui-5.webp', './img/yui-6.webp', './img/yui-7.webp', './img/yui-8.webp'];
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(CORE)).then(() => self.skipWaiting()));
 });
