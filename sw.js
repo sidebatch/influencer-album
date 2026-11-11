@@ -26,7 +26,8 @@ const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', 
   './img/mini-17.webp', './img/mini-18.webp', './img/mini-19.webp', './img/mini-20.webp',
   './img/mini-21.webp', './img/mini-22.webp', './img/mini-23.webp', './img/mini-24.webp',
   './img/lck-1.webp', './img/lck-2.webp', './img/lck-3.webp', './img/lck-4.webp',
-  './img/lck-5.webp', './img/lck-6.webp', './img/lck-7.webp'];
+  './img/lck-5.webp', './img/lck-6.webp', './img/lck-7.webp', './img/lck-8.webp',
+  './img/lck-9.webp', './img/lck-10.webp', './img/lck-11.webp'];
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(CORE)).then(() => self.skipWaiting()));
 });
