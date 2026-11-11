@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>인플루언서 앨범</title>
+<meta name="description" content="가상 인스타 인플루언서 캐릭터 사진 앨범">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#f7f1e6">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,'Segoe UI','Malgun Gothic',sans-serif; background:#f7f1e6; color:#2b2320; }
+  header { padding:28px 16px 8px; text-align:center; }
+  header h1 { font-size:26px; letter-spacing:.02em; }
+  header p { margin-top:6px; font-size:13px; color:#8a7a6d; }
+  nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 12px 4px; position:sticky; top:0; background:#f7f1e6; z-index:5; }
+  nav a { text-decoration:none; color:#5b4a3f; background:#fff; border:1px solid #e3d5c3; padding:6px 13px; border-radius:999px; font-size:13px; }
+  section { max-width:1200px; margin:0 auto; padding:18px 14px 6px; }
+  section h2 { font-size:17px; margin-bottom:10px; color:#4a3a30; }
+  .grid { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
+  @media (min-width:760px){ .grid { grid-template-columns:repeat(4,1fr); } }
+  .card { background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 1px 5px rgba(80,60,40,.10); cursor:pointer; }
+  .card img { width:100%; aspect-ratio:3/2; object-fit:cover; display:block; }
+  .card .cap { padding:8px 10px; font-size:12.5px; color:#6b584c; }
+  .anchor-card { max-width:520px; margin:0 auto; }
+  footer { text-align:center; padding:26px 10px 34px; font-size:12px; color:#a08d7c; }
+  #lightbox { position:fixed; inset:0; background:rgba(15,10,8,.93); display:none; align-items:center; justify-content:center; z-index:50; flex-direction:column; }
+  #lightbox.open { display:flex; }
+  #lightbox img { max-width:96vw; max-height:86vh; border-radius:8px; }
+  #lightbox .lcap { color:#e9ded2; font-size:14px; margin-top:12px; }
+  #lightbox .close { position:absolute; top:14px; right:18px; color:#fff; font-size:30px; background:none; border:none; cursor:pointer; }
+  #lightbox .nav { position:absolute; top:50%; transform:translateY(-50%); color:#fff; font-size:34px; background:none; border:none; cursor:pointer; padding:10px; }
+  #lightbox .prev { left:6px; } #lightbox .next { right:6px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>인플루언서 앨범</h1>
+  <p>25살 · 160cm · 확정 얼굴 기준의 컷 모음 (총 16컷)</p>
+</header>
+<nav>
+  <a href="#anchor">기준 얼굴</a>
+  <a href="#studio">스튜디오 전신</a>
+  <a href="#zoom">줌인</a>
+  <a href="#front">정면</a>
+  <a href="#life">일상</a>
+</nav>
+
+<section id="anchor">
+  <h2>기준 얼굴</h2>
+  <div class="card anchor-card" data-cap="기준 얼굴 — 청순하면서 성숙한 아이돌상">
+    <img src="img/face-anchor.webp" alt="기준 얼굴">
+    <div class="cap">기준 얼굴 — 청순하면서 성숙한 아이돌상</div>
+  </div>
+</section>
+
+<section id="studio">
+  <h2>스튜디오 전신</h2>
+  <div class="grid">
+    <div class="card" data-cap="스튜디오 1 — 크림 바디콘"><img src="img/studio-1.webp" alt="스튜디오 1"><div class="cap">크림 바디콘</div></div>
+    <div class="card" data-cap="스튜디오 2 — 검정 페플럼"><img src="img/studio-2.webp" alt="스튜디오 2"><div class="cap">검정 페플럼</div></div>
+    <div class="card" data-cap="스튜디오 3 — 레드 페플럼"><img src="img/studio-3.webp" alt="스튜디오 3"><div class="cap">레드 페플럼</div></div>
+    <div class="card" data-cap="스튜디오 4 — 화이트 오프숄더"><img src="img/studio-4.webp" alt="스튜디오 4"><div class="cap">화이트 오프숄더</div></div>
+  </div>
+</section>
+
+<section id="zoom">
+  <h2>줌인 (무릎까지)</h2>
+  <div class="grid">
+    <div class="card" data-cap="줌인 1 — 크림"><img src="img/zoom-1.webp" alt="줌인 1"><div class="cap">크림</div></div>
+    <div class="card" data-cap="줌인 2 — 검정 페플럼"><img src="img/zoom-2.webp" alt="줌인 2"><div class="cap">검정 페플럼</div></div>
+    <div class="card" data-cap="줌인 3 — 레드 페플럼"><img src="img/zoom-3.webp" alt="줌인 3"><div class="cap">레드 페플럼</div></div>
+    <div class="card" data-cap="줌인 4 — 화이트 오프숄더"><img src="img/zoom-4.webp" alt="줌인 4"><div class="cap">화이트 오프숄더</div></div>
+  </div>
+</section>
+
+<section id="front">
+  <h2>정면</h2>
+  <div class="grid">
+    <div class="card" data-cap="정면 1 — 크림"><img src="img/front-1.webp" alt="정면 1"><div class="cap">크림</div></div>
+    <div class="card" data-cap="정면 2 — 검정 페플럼"><img src="img/front-2.webp" alt="정면 2"><div class="cap">검정 페플럼</div></div>
+    <div class="card" data-cap="정면 3 — 레드 페플럼"><img src="img/front-3.webp" alt="정면 3"><div class="cap">레드 페플럼</div></div>
+    <div class="card" data-cap="정면 4 — 화이트 오프숄더"><img src="img/front-4.webp" alt="정면 4"><div class="cap">화이트 오프숄더</div></div>
+  </div>
+</section>
+
+<section id="life">
+  <h2>일상</h2>
+  <div class="grid">
+    <div class="card" data-cap="일상 1 — 도서관"><img src="img/life-1.webp" alt="일상 1"><div class="cap">도서관</div></div>
+    <div class="card" data-cap="일상 2 — 카페 창가"><img src="img/life-2.webp" alt="일상 2"><div class="cap">카페 창가</div></div>
+    <div class="card" data-cap="일상 3 — 서점"><img src="img/life-3.webp" alt="일상 3"><div class="cap">서점</div></div>
+    <div class="card" data-cap="일상 4 — 카페 테라스"><img src="img/life-4.webp" alt="일상 4"><div class="cap">카페 테라스</div></div>
+  </div>
+</section>
+
+<footer>사진을 누르면 크게 볼 수 있어요</footer>
+
+<div id="lightbox">
+  <button class="close" aria-label="닫기">&times;</button>
+  <button class="nav prev" aria-label="이전">&#8249;</button>
+  <img id="limg" src="" alt="">
+  <div class="lcap" id="lcap"></div>
+  <button class="nav next" aria-label="다음">&#8250;</button>
+</div>
+
+<script>
+  const cards = Array.from(document.querySelectorAll('.card'));
+  const lb = document.getElementById('lightbox');
+  const limg = document.getElementById('limg');
+  const lcap = document.getElementById('lcap');
+  let cur = 0;
+  function show(i){
+    cur = (i + cards.length) % cards.length;
+    const img = cards[cur].querySelector('img');
+    limg.src = img.src;
+    lcap.textContent = cards[cur].dataset.cap || img.alt;
+    lb.classList.add('open');
+  }
+  cards.forEach((c,i)=> c.addEventListener('click', ()=> show(i)));
+  document.querySelector('#lightbox .close').addEventListener('click', ()=> lb.classList.remove('open'));
+  document.querySelector('#lightbox .prev').addEventListener('click', (e)=>{ e.stopPropagation(); show(cur-1); });
+  document.querySelector('#lightbox .next').addEventListener('click', (e)=>{ e.stopPropagation(); show(cur+1); });
+  lb.addEventListener('click', (e)=>{ if(e.target===lb) lb.classList.remove('open'); });
+  document.addEventListener('keydown', (e)=>{
+    if(!lb.classList.contains('open')) return;
+    if(e.key==='Escape') lb.classList.remove('open');
+    if(e.key==='ArrowLeft') show(cur-1);
+    if(e.key==='ArrowRight') show(cur+1);
+  });
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
+</script>
+</body>
+</html>
