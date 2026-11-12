@@ -8,7 +8,7 @@
 - **앱**: 가상 인스타 인플루언서 **Mia**, **Ciel**, **Sena**, **Sua**의 사진 앨범 페이지 (정적 사이트 + PWA). 페이지 상단 [Mia | Ciel | Sena | Sua] 버튼으로 캐릭터를 선택하고, 마지막 선택은 기기에 기억된다.
 - **리포**: https://github.com/sidebatch/influencer-album (public, main 브랜치)
 - **라이브**: https://sidebatch.github.io/influencer-album/ (GitHub Pages)
-- **현재 상태 (2026-11-12)**: 총 235컷 (Mia 177 + Ciel 4 + Sena 50 + Sua 4) · 버전 93
+- **현재 상태 (2026-11-12)**: 총 235컷 (Mia 177 + Ciel 4 + Sena 50 + Sua 4) · 버전 94
 - 서버/빌드 도구 없음. `index.html` + `img/` + `sw.js` + `manifest.webmanifest`만으로 동작한다.
 
 ## 파일 구조
@@ -61,7 +61,7 @@
 | Sena 일상 | sena-life | sena-life- | 8 (종료) |
 | Sena 스튜디오 2차 | sena-studio2 | sena-studio2- | 9 |
 
-**Sua 섹션** (파일 접두사 `sua-`, 기준 얼굴 표시 파일 `sua-anchor-main.webp`는 카운트 제외 — 미아처럼 앉은 전신 메인샷 형식. 생성용 타이트 얼굴 크롭은 리포 밖 `newchar2-face-crop-v3.webp`):
+**Sua 섹션** (파일 접두사 `sua-`, 기준 얼굴 표시 파일 `sua-anchor-main2.webp`는 카운트 제외 — 미아처럼 앉은 전신 메인샷 형식. 생성용 타이트 얼굴 크롭은 리포 밖 `newchar2-face-crop-v3.webp`):
 
 | 섹션 | id | 접두사 | 컷 수 |
 |---|---|---|---|
