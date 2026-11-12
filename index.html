@@ -42,7 +42,7 @@
 <body>
 <header>
   <h1 id="album-title">Mia's Album</h1>
-  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 138컷) · 버전 52</p>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 138컷) · 버전 53</p>
   <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
     <button type="button" class="char-btn active" id="btn-mia">Mia</button>
     <button type="button" class="char-btn" id="btn-ciel">Ciel</button>
@@ -77,6 +77,7 @@
   <a href="#sena-studio">스튜디오 전신</a>
   <a href="#sena-zoom">줌인</a>
   <a href="#sena-front">정면</a>
+  <a href="#sena-life">일상</a>
 </nav>
 
 <div id="album-mia">
@@ -387,6 +388,15 @@
   </div>
 </section>
 
+<section id="sena-life">
+  <h2>일상</h2>
+  <div class="grid">
+    <div class="card" data-cap="Sena 일상 1 — 도서관, 책 펴고 미소"><img src="img/sena-life-1.webp" alt="Sena 일상 1"><div class="cap">도서관</div></div>
+    <div class="card" data-cap="Sena 일상 2 — 서점, 책 읽는 중"><img src="img/sena-life-2.webp" alt="Sena 일상 2"><div class="cap">서점</div></div>
+    <div class="card" data-cap="Sena 일상 3 — 카페 테라스, 아이스커피 웃음"><img src="img/sena-life-3.webp" alt="Sena 일상 3"><div class="cap">카페 테라스</div></div>
+  </div>
+</section>
+
 </div>
 
 <footer>사진을 누르면 크게 볼 수 있어요</footer>
@@ -452,15 +462,15 @@
     btnSena.classList.toggle('active', name === 'sena');
     if (name === 'ciel'){
       albumTitle.textContent = "Ciel's Album";
-      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 52';
+      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 53';
       document.title = "Ciel's Album";
     } else if (name === 'sena'){
       albumTitle.textContent = "Sena's Album";
-      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 12컷) · 버전 52';
+      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 15컷) · 버전 53';
       document.title = "Sena's Album";
     } else {
       albumTitle.textContent = "Mia's Album";
-      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 138컷) · 버전 52';
+      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 138컷) · 버전 53';
       document.title = "Mia's Album";
     }
     cards = allCards.filter(c => c.offsetParent !== null);
