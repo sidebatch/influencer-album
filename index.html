@@ -11,6 +11,7 @@
 <link rel="apple-touch-icon" href="icon-192.png">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { overflow-x:hidden; overflow-x:clip; }
   body { font-family:-apple-system,'Segoe UI','Malgun Gothic',sans-serif; background:#f7f1e6; color:#2b2320; }
   header { padding:28px 16px 8px; text-align:center; }
   header h1 { font-size:26px; letter-spacing:.02em; }
@@ -34,15 +35,15 @@
   #lightbox .nav { position:absolute; top:50%; transform:translateY(-50%); color:#fff; font-size:34px; background:none; border:none; cursor:pointer; padding:10px; }
   #lightbox .prev { left:6px; } #lightbox .next { right:6px; }
   [hidden] { display:none !important; }
-  .char-switch { display:flex; gap:8px; justify-content:center; margin-top:14px; }
-  .char-btn { font:inherit; font-size:15px; font-weight:600; padding:8px 30px; border-radius:999px; border:1px solid #d9c6ae; background:#fff; color:#5b4a3f; cursor:pointer; }
+  .char-switch { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:14px; padding:0 10px; }
+  .char-btn { font:inherit; font-size:15px; font-weight:600; padding:8px 20px; border-radius:999px; border:1px solid #d9c6ae; background:#fff; color:#5b4a3f; cursor:pointer; white-space:nowrap; }
   .char-btn.active { background:#2b2320; color:#fff; border-color:#2b2320; }
 </style>
 </head>
 <body>
 <header>
   <h1 id="album-title">Mia's Album</h1>
-  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 97</p>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 98</p>
   <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
     <button type="button" class="char-btn active" id="btn-mia">Mia</button>
     <button type="button" class="char-btn" id="btn-sua">Sua</button>
@@ -617,23 +618,23 @@
     btnLena.classList.toggle('active', name === 'lena');
     if (name === 'ciel'){
       albumTitle.textContent = "Ciel's Album";
-      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 97';
+      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 98';
       document.title = "Ciel's Album";
     } else if (name === 'sena'){
       albumTitle.textContent = "Sena's Album";
-      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 50컷) · 버전 97';
+      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 50컷) · 버전 98';
       document.title = "Sena's Album";
     } else if (name === 'sua'){
       albumTitle.textContent = "Sua's Album";
-      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 8컷) · 버전 97';
+      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 8컷) · 버전 98';
       document.title = "Sua's Album";
     } else if (name === 'lena'){
       albumTitle.textContent = "Lena's Album";
-      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 0컷) · 버전 97';
+      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 0컷) · 버전 98';
       document.title = "Lena's Album";
     } else {
       albumTitle.textContent = "Mia's Album";
-      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 97';
+      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 98';
       document.title = "Mia's Album";
     }
     cards = allCards.filter(c => c.offsetParent !== null);
