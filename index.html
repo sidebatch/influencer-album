@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Mia's Album</title>
-<meta name="description" content="가상 인스타 인플루언서 Mia, Ciel, Sena의 사진 앨범">
+<meta name="description" content="가상 인스타 인플루언서 Mia, Ciel, Sena, Sua의 사진 앨범">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#f7f1e6">
 <link rel="icon" href="icon-192.png">
@@ -42,11 +42,12 @@
 <body>
 <header>
   <h1 id="album-title">Mia's Album</h1>
-  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 89</p>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 90</p>
   <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
     <button type="button" class="char-btn active" id="btn-mia">Mia</button>
     <button type="button" class="char-btn" id="btn-ciel">Ciel</button>
     <button type="button" class="char-btn" id="btn-sena">Sena</button>
+    <button type="button" class="char-btn" id="btn-sua">Sua</button>
   </div>
 </header>
 <nav id="nav-mia">
@@ -79,6 +80,10 @@
   <a href="#sena-front">정면</a>
   <a href="#sena-studio2">스튜디오 2차</a>
   <a href="#sena-life">일상</a>
+</nav>
+<nav id="nav-sua" hidden>
+  <a href="#sua-anchor">기준 얼굴</a>
+  <a href="#sua-master">마스터</a>
 </nav>
 
 <div id="album-mia">
@@ -492,6 +497,28 @@
 
 </div>
 
+<div id="album-sua" hidden>
+
+<section id="sua-anchor">
+  <h2>기준 얼굴</h2>
+  <div class="card anchor-card" data-cap="Sua 기준 얼굴 — 차분한 귀염상">
+    <img src="img/sua-face-anchor.webp" alt="Sua 기준 얼굴">
+    <div class="cap">기준 얼굴 — 차분한 귀염상</div>
+  </div>
+</section>
+
+<section id="sua-master">
+  <h2>마스터</h2>
+  <div class="grid">
+    <div class="card" data-cap="Sua 마스터 1 — 검정 바디콘, 정면 한 손 허리"><img src="img/sua-1.webp" alt="Sua 마스터 1"><div class="cap">검정 바디콘 · 정면</div></div>
+    <div class="card" data-cap="Sua 마스터 2 — 레드 바디콘, 옆시선"><img src="img/sua-2.webp" alt="Sua 마스터 2"><div class="cap">레드 바디콘 · 옆시선</div></div>
+    <div class="card" data-cap="Sua 마스터 3 — 에메랄드 바디콘, 3/4 측면"><img src="img/sua-3.webp" alt="Sua 마스터 3"><div class="cap">에메랄드 바디콘 · 측면</div></div>
+    <div class="card" data-cap="Sua 마스터 4 — 네이비 바디콘, 워킹"><img src="img/sua-4.webp" alt="Sua 마스터 4"><div class="cap">네이비 바디콘 · 워킹</div></div>
+  </div>
+</section>
+
+</div>
+
 <footer>사진을 누르면 크게 볼 수 있어요</footer>
 
 <div id="lightbox">
@@ -543,6 +570,7 @@
   const btnMia = document.getElementById('btn-mia');
   const btnCiel = document.getElementById('btn-ciel');
   const btnSena = document.getElementById('btn-sena');
+  const btnSua = document.getElementById('btn-sua');
   function selectChar(name){
     document.getElementById('album-mia').hidden = name !== 'mia';
     document.getElementById('nav-mia').hidden = name !== 'mia';
@@ -550,20 +578,27 @@
     document.getElementById('nav-ciel').hidden = name !== 'ciel';
     document.getElementById('album-sena').hidden = name !== 'sena';
     document.getElementById('nav-sena').hidden = name !== 'sena';
+    document.getElementById('album-sua').hidden = name !== 'sua';
+    document.getElementById('nav-sua').hidden = name !== 'sua';
     btnMia.classList.toggle('active', name === 'mia');
     btnCiel.classList.toggle('active', name === 'ciel');
     btnSena.classList.toggle('active', name === 'sena');
+    btnSua.classList.toggle('active', name === 'sua');
     if (name === 'ciel'){
       albumTitle.textContent = "Ciel's Album";
-      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 89';
+      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 90';
       document.title = "Ciel's Album";
     } else if (name === 'sena'){
       albumTitle.textContent = "Sena's Album";
-      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 50컷) · 버전 89';
+      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 50컷) · 버전 90';
       document.title = "Sena's Album";
+    } else if (name === 'sua'){
+      albumTitle.textContent = "Sua's Album";
+      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 4컷) · 버전 90';
+      document.title = "Sua's Album";
     } else {
       albumTitle.textContent = "Mia's Album";
-      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 89';
+      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 90';
       document.title = "Mia's Album";
     }
     cards = allCards.filter(c => c.offsetParent !== null);
@@ -573,9 +608,11 @@
   btnMia.addEventListener('click', ()=> selectChar('mia'));
   btnCiel.addEventListener('click', ()=> selectChar('ciel'));
   btnSena.addEventListener('click', ()=> selectChar('sena'));
+  btnSua.addEventListener('click', ()=> selectChar('sua'));
   if (location.hash === '#ciel' || location.hash.startsWith('#ciel-')) selectChar('ciel');
   else if (location.hash === '#sena' || location.hash.startsWith('#sena-')) selectChar('sena');
-  else { try { const saved = localStorage.getItem('album-char'); if (saved === 'ciel' || saved === 'sena') selectChar(saved); } catch(e) {} }
+  else if (location.hash === '#sua' || location.hash.startsWith('#sua-')) selectChar('sua');
+  else { try { const saved = localStorage.getItem('album-char'); if (saved === 'ciel' || saved === 'sena' || saved === 'sua') selectChar(saved); } catch(e) {} }
   document.querySelector('#lightbox .close').addEventListener('click', closeLb);
   document.querySelector('#lightbox .prev').addEventListener('click', (e)=>{ e.stopPropagation(); show(cur-1); });
   document.querySelector('#lightbox .next').addEventListener('click', (e)=>{ e.stopPropagation(); show(cur+1); });
