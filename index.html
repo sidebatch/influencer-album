@@ -42,7 +42,7 @@
 <body>
 <header>
   <h1 id="album-title">Mia's Album</h1>
-  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 138컷) · 버전 50</p>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 138컷) · 버전 51</p>
   <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
     <button type="button" class="char-btn active" id="btn-mia">Mia</button>
     <button type="button" class="char-btn" id="btn-ciel">Ciel</button>
@@ -75,6 +75,7 @@
 <nav id="nav-sena" hidden>
   <a href="#sena-anchor">기준 얼굴</a>
   <a href="#sena-studio">스튜디오 전신</a>
+  <a href="#sena-zoom">줌인</a>
 </nav>
 
 <div id="album-mia">
@@ -365,6 +366,16 @@
   </div>
 </section>
 
+<section id="sena-zoom">
+  <h2>줌인 (무릎까지)</h2>
+  <div class="grid">
+    <div class="card" data-cap="Sena 줌인 1 — 크림 니트, 고개 기울여 미소"><img src="img/sena-zoom-1.webp" alt="Sena 줌인 1"><div class="cap">크림 니트 · 미소</div></div>
+    <div class="card" data-cap="Sena 줌인 2 — 검정 페플럼, 턱에 손 시크"><img src="img/sena-zoom-2.webp" alt="Sena 줌인 2"><div class="cap">검정 페플럼 · 시크</div></div>
+    <div class="card" data-cap="Sena 줌인 3 — 레드 페플럼, 윙크 손인사"><img src="img/sena-zoom-3.webp" alt="Sena 줌인 3"><div class="cap">레드 페플럼 · 윙크</div></div>
+    <div class="card" data-cap="Sena 줌인 4 — 와인 바디콘, 팔짱 올려다봄"><img src="img/sena-zoom-4.webp" alt="Sena 줌인 4"><div class="cap">와인 바디콘 · 몽환</div></div>
+  </div>
+</section>
+
 </div>
 
 <footer>사진을 누르면 크게 볼 수 있어요</footer>
@@ -430,15 +441,15 @@
     btnSena.classList.toggle('active', name === 'sena');
     if (name === 'ciel'){
       albumTitle.textContent = "Ciel's Album";
-      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 50';
+      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 51';
       document.title = "Ciel's Album";
     } else if (name === 'sena'){
       albumTitle.textContent = "Sena's Album";
-      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 4컷) · 버전 50';
+      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 8컷) · 버전 51';
       document.title = "Sena's Album";
     } else {
       albumTitle.textContent = "Mia's Album";
-      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 138컷) · 버전 50';
+      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 138컷) · 버전 51';
       document.title = "Mia's Album";
     }
     cards = allCards.filter(c => c.offsetParent !== null);
