@@ -42,7 +42,7 @@
 <body>
 <header>
   <h1 id="album-title">Mia's Album</h1>
-  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 138컷) · 버전 59</p>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 138컷) · 버전 60</p>
   <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
     <button type="button" class="char-btn active" id="btn-mia">Mia</button>
     <button type="button" class="char-btn" id="btn-ciel">Ciel</button>
@@ -483,15 +483,15 @@
     btnSena.classList.toggle('active', name === 'sena');
     if (name === 'ciel'){
       albumTitle.textContent = "Ciel's Album";
-      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 59';
+      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 60';
       document.title = "Ciel's Album";
     } else if (name === 'sena'){
       albumTitle.textContent = "Sena's Album";
-      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 29컷) · 버전 59';
+      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 29컷) · 버전 60';
       document.title = "Sena's Album";
     } else {
       albumTitle.textContent = "Mia's Album";
-      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 138컷) · 버전 59';
+      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 138컷) · 버전 60';
       document.title = "Mia's Album";
     }
     cards = allCards.filter(c => c.offsetParent !== null);
