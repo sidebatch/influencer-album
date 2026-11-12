@@ -5,10 +5,10 @@
 
 ## 개요
 
-- **앱**: 가상 인스타 인플루언서 **Mia**, **Ciel**, **Sena**, **Sua**, **Lena**의 사진 앨범 페이지 (정적 사이트 + PWA). 페이지 상단 [Mia | Ciel | Sena | Sua | Lena] 버튼으로 캐릭터를 선택하고, 마지막 선택은 기기에 기억된다.
+- **앱**: 가상 인스타 인플루언서 **Mia**, **Ciel**, **Sena**, **Sua**, **Lena**의 사진 앨범 페이지 (정적 사이트 + PWA). 페이지 상단 [Mia | Sua | Ciel | Sena | Lena] 버튼으로 캐릭터를 선택하고, 마지막 선택은 기기에 기억된다. (2026-11-12 사용자 지시로 Sua를 두 번째로 이동)
 - **리포**: https://github.com/sidebatch/influencer-album (public, main 브랜치)
 - **라이브**: https://sidebatch.github.io/influencer-album/ (GitHub Pages)
-- **현재 상태 (2026-11-12)**: 총 235컷 (Mia 177 + Ciel 4 + Sena 50 + Sua 4) + Lena 기준 얼굴만 (컷 0) · 버전 96
+- **현재 상태 (2026-11-12)**: 총 239컷 (Mia 177 + Ciel 4 + Sena 50 + Sua 8) + Lena 기준 얼굴만 (컷 0) · 버전 97
 - 서버/빌드 도구 없음. `index.html` + `img/` + `sw.js` + `manifest.webmanifest`만으로 동작한다.
 
 ## 파일 구조
@@ -72,6 +72,7 @@
 | 섹션 | id | 접두사 | 컷 수 |
 |---|---|---|---|
 | Sua 마스터 | sua-master | sua- | 4 |
+| 스튜디오 전신 | sua-studio | sua-studio- | 4 |
 
 새 섹션을 만들면 `index.html` 상단 nav에도 링크를 추가한다.
 
@@ -130,7 +131,7 @@ push 후 1~2분 기다리고 라이브에서 직접 확인한다. 확인 전에 
 
 - 2026-11-12 사용자가 올린 얼굴 사진 1장에서 출발. 긴 검은 웨이브 + 가운데 가르마, 부드러운 계란형, 청순한 인상. 원본은 `~/workspace/imagine_media/newchar3-reference-face.png` (498×664, 저해상도 — 본격 제작 때 주의).
 - 이름 **Lena는 잠정** (2026-11-12 등록 시 가칭, 사용자 확정 전). 사용자가 "나중에 할 거"라고 해서 기준 얼굴만 먼저 등록한 상태 — 마스터·스튜디오 제작은 나중에.
-- 상단 선택은 [Mia | Ciel | Sena | Sua | Lena].
+- 상단 선택은 [Mia | Sua | Ciel | Sena | Lena].
 
 ## Ciel 제작 노트 (새 컷 생성용)
 
