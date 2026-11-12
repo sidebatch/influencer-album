@@ -42,12 +42,13 @@
 <body>
 <header>
   <h1 id="album-title">Mia's Album</h1>
-  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 95</p>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 96</p>
   <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
     <button type="button" class="char-btn active" id="btn-mia">Mia</button>
     <button type="button" class="char-btn" id="btn-ciel">Ciel</button>
     <button type="button" class="char-btn" id="btn-sena">Sena</button>
     <button type="button" class="char-btn" id="btn-sua">Sua</button>
+    <button type="button" class="char-btn" id="btn-lena">Lena</button>
   </div>
 </header>
 <nav id="nav-mia">
@@ -84,6 +85,9 @@
 <nav id="nav-sua" hidden>
   <a href="#sua-anchor">기준 얼굴</a>
   <a href="#sua-master">마스터</a>
+</nav>
+<nav id="nav-lena" hidden>
+  <a href="#lena-anchor">기준 얼굴</a>
 </nav>
 
 <div id="album-mia">
@@ -519,6 +523,18 @@
 
 </div>
 
+<div id="album-lena" hidden>
+
+<section id="lena-anchor">
+  <h2>기준 얼굴</h2>
+  <div class="card anchor-card" data-cap="Lena 기준 얼굴 — 긴 웨이브 청순상">
+    <img src="img/lena-face-anchor.webp" alt="Lena 기준 얼굴">
+    <div class="cap">기준 얼굴 — 긴 웨이브 청순상</div>
+  </div>
+</section>
+
+</div>
+
 <footer>사진을 누르면 크게 볼 수 있어요</footer>
 
 <div id="lightbox">
@@ -571,6 +587,7 @@
   const btnCiel = document.getElementById('btn-ciel');
   const btnSena = document.getElementById('btn-sena');
   const btnSua = document.getElementById('btn-sua');
+  const btnLena = document.getElementById('btn-lena');
   function selectChar(name){
     document.getElementById('album-mia').hidden = name !== 'mia';
     document.getElementById('nav-mia').hidden = name !== 'mia';
@@ -580,25 +597,32 @@
     document.getElementById('nav-sena').hidden = name !== 'sena';
     document.getElementById('album-sua').hidden = name !== 'sua';
     document.getElementById('nav-sua').hidden = name !== 'sua';
+    document.getElementById('album-lena').hidden = name !== 'lena';
+    document.getElementById('nav-lena').hidden = name !== 'lena';
     btnMia.classList.toggle('active', name === 'mia');
     btnCiel.classList.toggle('active', name === 'ciel');
     btnSena.classList.toggle('active', name === 'sena');
     btnSua.classList.toggle('active', name === 'sua');
+    btnLena.classList.toggle('active', name === 'lena');
     if (name === 'ciel'){
       albumTitle.textContent = "Ciel's Album";
-      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 95';
+      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 96';
       document.title = "Ciel's Album";
     } else if (name === 'sena'){
       albumTitle.textContent = "Sena's Album";
-      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 50컷) · 버전 95';
+      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 50컷) · 버전 96';
       document.title = "Sena's Album";
     } else if (name === 'sua'){
       albumTitle.textContent = "Sua's Album";
-      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 4컷) · 버전 95';
+      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 4컷) · 버전 96';
       document.title = "Sua's Album";
+    } else if (name === 'lena'){
+      albumTitle.textContent = "Lena's Album";
+      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 0컷) · 버전 96';
+      document.title = "Lena's Album";
     } else {
       albumTitle.textContent = "Mia's Album";
-      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 95';
+      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 96';
       document.title = "Mia's Album";
     }
     cards = allCards.filter(c => c.offsetParent !== null);
@@ -609,10 +633,12 @@
   btnCiel.addEventListener('click', ()=> selectChar('ciel'));
   btnSena.addEventListener('click', ()=> selectChar('sena'));
   btnSua.addEventListener('click', ()=> selectChar('sua'));
+  btnLena.addEventListener('click', ()=> selectChar('lena'));
   if (location.hash === '#ciel' || location.hash.startsWith('#ciel-')) selectChar('ciel');
   else if (location.hash === '#sena' || location.hash.startsWith('#sena-')) selectChar('sena');
   else if (location.hash === '#sua' || location.hash.startsWith('#sua-')) selectChar('sua');
-  else { try { const saved = localStorage.getItem('album-char'); if (saved === 'ciel' || saved === 'sena' || saved === 'sua') selectChar(saved); } catch(e) {} }
+  else if (location.hash === '#lena' || location.hash.startsWith('#lena-')) selectChar('lena');
+  else { try { const saved = localStorage.getItem('album-char'); if (saved === 'ciel' || saved === 'sena' || saved === 'sua' || saved === 'lena') selectChar(saved); } catch(e) {} }
   document.querySelector('#lightbox .close').addEventListener('click', closeLb);
   document.querySelector('#lightbox .prev').addEventListener('click', (e)=>{ e.stopPropagation(); show(cur-1); });
   document.querySelector('#lightbox .next').addEventListener('click', (e)=>{ e.stopPropagation(); show(cur+1); });
