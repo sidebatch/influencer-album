@@ -8,7 +8,7 @@
 - **앱**: 가상 인스타 인플루언서 **Mia**, **Ciel**, **Sena**의 사진 앨범 페이지 (정적 사이트 + PWA). 페이지 상단 [Mia | Ciel | Sena] 버튼으로 캐릭터를 선택하고, 마지막 선택은 기기에 기억된다.
 - **리포**: https://github.com/sidebatch/influencer-album (public, main 브랜치)
 - **라이브**: https://sidebatch.github.io/influencer-album/ (GitHub Pages)
-- **현재 상태 (2026-11-12)**: 총 179컷 (Mia 146 + Ciel 4 + Sena 29) · 버전 62
+- **현재 상태 (2026-11-12)**: 총 183컷 (Mia 150 + Ciel 4 + Sena 29) · 버전 65
 - 서버/빌드 도구 없음. `index.html` + `img/` + `sw.js` + `manifest.webmanifest`만으로 동작한다.
 
 ## 파일 구조
