@@ -42,7 +42,7 @@
 <body>
 <header>
   <h1 id="album-title">Mia's Album</h1>
-  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 150컷) · 버전 65</p>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 154컷) · 버전 66</p>
   <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
     <button type="button" class="char-btn active" id="btn-mia">Mia</button>
     <button type="button" class="char-btn" id="btn-ciel">Ciel</button>
@@ -292,6 +292,10 @@
     <div class="card" data-cap="스튜디오 화보 18 — 코랄 페플럼 미니, 볼 콕 윙크 클로즈업"><img src="img/std-18.webp" alt="스튜디오 화보 18"><div class="cap">코랄 페플럼 · 볼콕 윙크</div></div>
     <div class="card" data-cap="스튜디오 화보 19 — 코랄 페플럼 미니, 걸어오며 큰 웃음 워킹샷"><img src="img/std-19.webp" alt="스튜디오 화보 19"><div class="cap">코랄 페플럼 · 워킹</div></div>
     <div class="card" data-cap="스튜디오 화보 20 — 코랄 페플럼 미니, 바닥 앉아 올려다보는 하이앵글"><img src="img/std-20.webp" alt="스튜디오 화보 20"><div class="cap">코랄 페플럼 · 하이앵글</div></div>
+    <div class="card" data-cap="스튜디오 화보 21 — 흰 크롭과 데님 미니, 바닥 앉아 손 흔들기 하이앵글"><img src="img/std-21.webp" alt="스튜디오 화보 21"><div class="cap">크롭 · 하이앵글 인사</div></div>
+    <div class="card" data-cap="스튜디오 화보 22 — 흰 크롭과 데님 미니, 서서 손하트 하이앵글"><img src="img/std-22.webp" alt="스튜디오 화보 22"><div class="cap">크롭 · 하이앵글 하트</div></div>
+    <div class="card" data-cap="스튜디오 화보 23 — 흰 크롭과 데님 미니, 의자 앉아 무릎 세우고 윙크 하이앵글"><img src="img/std-23.webp" alt="스튜디오 화보 23"><div class="cap">크롭 · 하이앵글 윙크</div></div>
+    <div class="card" data-cap="스튜디오 화보 24 — 흰 크롭과 데님 미니, 걸어오며 웃는 워킹샷"><img src="img/std-24.webp" alt="스튜디오 화보 24"><div class="cap">크롭 · 워킹</div></div>
   </div>
 </section>
 
@@ -495,15 +499,15 @@
     btnSena.classList.toggle('active', name === 'sena');
     if (name === 'ciel'){
       albumTitle.textContent = "Ciel's Album";
-      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 65';
+      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 66';
       document.title = "Ciel's Album";
     } else if (name === 'sena'){
       albumTitle.textContent = "Sena's Album";
-      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 29컷) · 버전 65';
+      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 29컷) · 버전 66';
       document.title = "Sena's Album";
     } else {
       albumTitle.textContent = "Mia's Album";
-      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 150컷) · 버전 65';
+      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 154컷) · 버전 66';
       document.title = "Mia's Album";
     }
     cards = allCards.filter(c => c.offsetParent !== null);
