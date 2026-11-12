@@ -27,12 +27,12 @@
   .card .cap { padding:8px 10px; font-size:12.5px; color:#6b584c; }
   .anchor-card { max-width:520px; margin:0 auto; }
   footer { text-align:center; padding:26px 10px 34px; font-size:12px; color:#a08d7c; }
-  #lightbox { position:fixed; inset:0; background:rgba(15,10,8,.93); display:none; align-items:center; justify-content:center; z-index:50; flex-direction:column; }
-  #lightbox.open { display:flex; }
-  #lightbox img { max-width:96vw; max-height:86vh; border-radius:8px; }
-  #lightbox .lcap { color:#e9ded2; font-size:14px; margin-top:12px; }
-  #lightbox .close { position:absolute; top:14px; right:18px; color:#fff; font-size:30px; background:none; border:none; cursor:pointer; }
-  #lightbox .nav { position:absolute; top:50%; transform:translateY(-50%); color:#fff; font-size:34px; background:none; border:none; cursor:pointer; padding:10px; }
+  #lightbox { position:fixed; inset:0; background:rgba(15,10,8,.96); display:none; z-index:50; }
+  #lightbox.open { display:block; }
+  #lightbox img { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; touch-action:none; }
+  #lightbox .lcap { position:absolute; left:0; right:0; bottom:20px; text-align:center; color:#e9ded2; font-size:14px; pointer-events:none; z-index:2; }
+  #lightbox .close { position:absolute; top:14px; right:18px; color:#fff; font-size:30px; background:none; border:none; cursor:pointer; z-index:2; }
+  #lightbox .nav { position:absolute; top:50%; transform:translateY(-50%); color:#fff; font-size:34px; background:none; border:none; cursor:pointer; padding:10px; z-index:2; }
   #lightbox .prev { left:6px; } #lightbox .next { right:6px; }
   [hidden] { display:none !important; }
   .char-switch { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:14px; padding:0 10px; }
@@ -43,7 +43,7 @@
 <body>
 <header>
   <h1 id="album-title">Mia's Album</h1>
-  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 98</p>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 99</p>
   <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
     <button type="button" class="char-btn active" id="btn-mia">Mia</button>
     <button type="button" class="char-btn" id="btn-sua">Sua</button>
@@ -564,28 +564,61 @@
   const limg = document.getElementById('limg');
   const lcap = document.getElementById('lcap');
   let cur = 0;
+  let zoom = 1, panX = 0, panY = 0;
+  function applyZoom(){ limg.style.transform = 'translate(' + panX + 'px,' + panY + 'px) scale(' + zoom + ')'; }
+  function resetZoom(){ zoom = 1; panX = 0; panY = 0; applyZoom(); }
   function show(i){
     const wasOpen = lb.classList.contains('open');
     if(!wasOpen) cards = allCards.filter(c => c.offsetParent !== null);
     cur = (i + cards.length) % cards.length;
     const img = cards[cur].querySelector('img');
     limg.src = img.src;
+    resetZoom();
     lcap.textContent = cards[cur].dataset.cap || img.alt;
     lb.classList.add('open');
-    if(!wasOpen) history.pushState({mia:'lightbox'}, '');
+    if(!wasOpen){ history.pushState({mia:'lightbox'}, ''); document.body.style.overflow = 'hidden'; }
   }
   let suppressPop = false;
   function closeLb(){
     if(!lb.classList.contains('open')) return;
     lb.classList.remove('open');
+    resetZoom();
+    document.body.style.overflow = '';
     suppressPop = true;
     history.back();
   }
+  const pointers = new Map();
+  let pinchDist = 0, pinchZoom = 1;
+  limg.addEventListener('pointerdown', (e)=>{
+    try { limg.setPointerCapture(e.pointerId); } catch(err) {}
+    pointers.set(e.pointerId, {x:e.clientX, y:e.clientY});
+    if(pointers.size === 2){
+      const p = Array.from(pointers.values());
+      pinchDist = Math.hypot(p[0].x - p[1].x, p[0].y - p[1].y);
+      pinchZoom = zoom;
+    }
+  });
+  limg.addEventListener('pointermove', (e)=>{
+    if(!pointers.has(e.pointerId)) return;
+    const prev = pointers.get(e.pointerId);
+    pointers.set(e.pointerId, {x:e.clientX, y:e.clientY});
+    if(pointers.size === 1 && zoom > 1){
+      panX += e.clientX - prev.x; panY += e.clientY - prev.y; applyZoom();
+    } else if(pointers.size === 2){
+      const p = Array.from(pointers.values());
+      const d = Math.hypot(p[0].x - p[1].x, p[0].y - p[1].y);
+      if(pinchDist > 0){ zoom = Math.min(4, Math.max(1, pinchZoom * d / pinchDist)); if(zoom === 1){ panX = 0; panY = 0; } applyZoom(); }
+    }
+  });
+  function endPointer(e){ pointers.delete(e.pointerId); }
+  limg.addEventListener('pointerup', endPointer);
+  limg.addEventListener('pointercancel', endPointer);
+  limg.addEventListener('dblclick', ()=>{ if(zoom > 1) resetZoom(); else { zoom = 2.2; applyZoom(); } });
   function guard(){ history.pushState({mia:'guard'}, ''); }
   guard();
   window.addEventListener('popstate', ()=>{
     if(suppressPop){ suppressPop = false; return; }
-    if(lb.classList.contains('open')){ lb.classList.remove('open'); }
+    if(lb.classList.contains('open')){ lb.classList.remove('open'); resetZoom(); document.body.style.overflow = ''; }
     else { window.scrollTo({top:0, behavior:'smooth'}); }
     guard();
   });
@@ -618,23 +651,23 @@
     btnLena.classList.toggle('active', name === 'lena');
     if (name === 'ciel'){
       albumTitle.textContent = "Ciel's Album";
-      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 98';
+      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 99';
       document.title = "Ciel's Album";
     } else if (name === 'sena'){
       albumTitle.textContent = "Sena's Album";
-      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 50컷) · 버전 98';
+      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 50컷) · 버전 99';
       document.title = "Sena's Album";
     } else if (name === 'sua'){
       albumTitle.textContent = "Sua's Album";
-      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 8컷) · 버전 98';
+      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 8컷) · 버전 99';
       document.title = "Sua's Album";
     } else if (name === 'lena'){
       albumTitle.textContent = "Lena's Album";
-      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 0컷) · 버전 98';
+      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 0컷) · 버전 99';
       document.title = "Lena's Album";
     } else {
       albumTitle.textContent = "Mia's Album";
-      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 98';
+      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 99';
       document.title = "Mia's Album";
     }
     cards = allCards.filter(c => c.offsetParent !== null);
