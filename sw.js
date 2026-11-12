@@ -1,4 +1,4 @@
-const CACHE = 'influencer-album-v75';
+const CACHE = 'influencer-album-v76';
 const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png',
   './img/face-anchor.webp',
   './img/studio-1.webp', './img/studio-2.webp', './img/studio-3.webp', './img/studio-4.webp',
