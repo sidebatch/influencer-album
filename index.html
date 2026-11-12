@@ -42,7 +42,7 @@
 <body>
 <header>
   <h1 id="album-title">Mia's Album</h1>
-  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 169컷) · 버전 80</p>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 169컷) · 버전 81</p>
   <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
     <button type="button" class="char-btn active" id="btn-mia">Mia</button>
     <button type="button" class="char-btn" id="btn-ciel">Ciel</button>
@@ -459,6 +459,10 @@
     <div class="card" data-cap="Sena 수영장 2 — 네이비 원피스 수영복, 풀 가장자리에 앉아 발 담그고 돌아봄"><img src="img/sena-pool-2.webp" alt="Sena 수영장 2"><div class="cap">네이비 원피스 · 발 담그고</div></div>
     <div class="card" data-cap="Sena 수영장 3 — 블랙 원피스 수영복, 인피니티풀 물속에서 턱 들고"><img src="img/sena-pool-3.webp" alt="Sena 수영장 3"><div class="cap">블랙 원피스 · 물속</div></div>
     <div class="card" data-cap="Sena 수영장 4 — 버건디 원피스 수영복, 음료 들고 풀 데크 워킹"><img src="img/sena-pool-4.webp" alt="Sena 수영장 4"><div class="cap">버건디 원피스 · 데크 워킹</div></div>
+    <div class="card" data-cap="Sena 수영장 5 — 에메랄드 원피스 수영복, 물속에서 어깨 너머 돌아봄"><img src="img/sena-pool-5.webp" alt="Sena 수영장 5"><div class="cap">에메랄드 원피스 · 돌아봄</div></div>
+    <div class="card" data-cap="Sena 수영장 6 — 하늘 원피스 수영복, 물에 떠서 올려다봄 하이앵글"><img src="img/sena-pool-6.webp" alt="Sena 수영장 6"><div class="cap">하늘 원피스 · 플로팅</div></div>
+    <div class="card" data-cap="Sena 수영장 7 — 레드 원피스 수영복, 사다리 잡고 물에서 나오는 중"><img src="img/sena-pool-7.webp" alt="Sena 수영장 7"><div class="cap">레드 원피스 · 사다리</div></div>
+    <div class="card" data-cap="Sena 수영장 8 — 옐로 원피스 수영복, 선베드에 누워 책 읽다가 올려다봄"><img src="img/sena-pool-8.webp" alt="Sena 수영장 8"><div class="cap">옐로 원피스 · 선베드 독서</div></div>
   </div>
 </section>
 
@@ -527,15 +531,15 @@
     btnSena.classList.toggle('active', name === 'sena');
     if (name === 'ciel'){
       albumTitle.textContent = "Ciel's Album";
-      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 80';
+      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 81';
       document.title = "Ciel's Album";
     } else if (name === 'sena'){
       albumTitle.textContent = "Sena's Album";
-      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 36컷) · 버전 80';
+      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 40컷) · 버전 81';
       document.title = "Sena's Album";
     } else {
       albumTitle.textContent = "Mia's Album";
-      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 169컷) · 버전 80';
+      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 169컷) · 버전 81';
       document.title = "Mia's Album";
     }
     cards = allCards.filter(c => c.offsetParent !== null);
