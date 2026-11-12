@@ -42,7 +42,7 @@
 <body>
 <header>
   <h1 id="album-title">Mia's Album</h1>
-  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 138컷) · 버전 45</p>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 138컷) · 버전 46</p>
   <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
     <button type="button" class="char-btn active" id="btn-mia">Mia</button>
     <button type="button" class="char-btn" id="btn-ciel">Ciel</button>
@@ -399,7 +399,7 @@
     btnMia.classList.toggle('active', !ciel);
     btnCiel.classList.toggle('active', ciel);
     albumTitle.textContent = ciel ? "Ciel's Album" : "Mia's Album";
-    albumSub.textContent = ciel ? '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 45' : '확정 얼굴 기준의 컷 모음 (총 138컷) · 버전 45';
+    albumSub.textContent = ciel ? '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 46' : '확정 얼굴 기준의 컷 모음 (총 138컷) · 버전 46';
     document.title = ciel ? "Ciel's Album" : "Mia's Album";
     cards = allCards.filter(c => c.offsetParent !== null);
     window.scrollTo({top:0});
