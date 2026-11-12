@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Mia's Album</title>
-<meta name="description" content="가상 인스타 인플루언서 Mia의 사진 앨범">
+<meta name="description" content="가상 인스타 인플루언서 Mia와 Ciel의 사진 앨범">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#f7f1e6">
 <link rel="icon" href="icon-192.png">
@@ -33,14 +33,22 @@
   #lightbox .close { position:absolute; top:14px; right:18px; color:#fff; font-size:30px; background:none; border:none; cursor:pointer; }
   #lightbox .nav { position:absolute; top:50%; transform:translateY(-50%); color:#fff; font-size:34px; background:none; border:none; cursor:pointer; padding:10px; }
   #lightbox .prev { left:6px; } #lightbox .next { right:6px; }
+  [hidden] { display:none !important; }
+  .char-switch { display:flex; gap:8px; justify-content:center; margin-top:14px; }
+  .char-btn { font:inherit; font-size:15px; font-weight:600; padding:8px 30px; border-radius:999px; border:1px solid #d9c6ae; background:#fff; color:#5b4a3f; cursor:pointer; }
+  .char-btn.active { background:#2b2320; color:#fff; border-color:#2b2320; }
 </style>
 </head>
 <body>
 <header>
-  <h1>Mia's Album</h1>
-  <p>확정 얼굴 기준의 컷 모음 (총 138컷) · 버전 43</p>
+  <h1 id="album-title">Mia's Album</h1>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 138컷) · 버전 44</p>
+  <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
+    <button type="button" class="char-btn active" id="btn-mia">Mia</button>
+    <button type="button" class="char-btn" id="btn-ciel">Ciel</button>
+  </div>
 </header>
-<nav>
+<nav id="nav-mia">
   <a href="#anchor">기준 얼굴</a>
   <a href="#studio">스튜디오 전신</a>
   <a href="#zoom">줌인</a>
@@ -59,6 +67,12 @@
   <a href="#swim">수영복 화보</a>
   <a href="#hw">홈웨어 화보</a>
 </nav>
+<nav id="nav-ciel" hidden>
+  <a href="#ciel-anchor">기준 얼굴</a>
+  <a href="#ciel-studio">스튜디오 전신</a>
+</nav>
+
+<div id="album-mia">
 
 <section id="anchor">
   <h2>기준 얼굴</h2>
@@ -302,6 +316,30 @@
   </div>
 </section>
 
+</div>
+
+<div id="album-ciel" hidden>
+
+<section id="ciel-anchor">
+  <h2>기준 얼굴</h2>
+  <div class="card anchor-card" data-cap="Ciel 기준 얼굴 — 시크하고 성숙한 단발상">
+    <img src="img/ciel-face-anchor.webp" alt="Ciel 기준 얼굴">
+    <div class="cap">기준 얼굴 — 시크하고 성숙한 단발상</div>
+  </div>
+</section>
+
+<section id="ciel-studio">
+  <h2>스튜디오 전신</h2>
+  <div class="grid">
+    <div class="card" data-cap="Ciel 스튜디오 1 — 검정 페플럼, 워킹 미소"><img src="img/ciel-1.webp" alt="Ciel 스튜디오 1"><div class="cap">검정 페플럼 · 워킹</div></div>
+    <div class="card" data-cap="Ciel 스튜디오 2 — 레드 페플럼, 높은 의자 도도"><img src="img/ciel-2.webp" alt="Ciel 스튜디오 2"><div class="cap">레드 페플럼 · 도도</div></div>
+    <div class="card" data-cap="Ciel 스튜디오 3 — 크림 바디콘, 걷다가 크게 웃음"><img src="img/ciel-3.webp" alt="Ciel 스튜디오 3"><div class="cap">크림 바디콘 · 웃음</div></div>
+    <div class="card" data-cap="Ciel 스튜디오 4 — 화이트 오프숄더, 뒤돌아보며 윙크"><img src="img/ciel-4.webp" alt="Ciel 스튜디오 4"><div class="cap">화이트 오프숄더 · 윙크</div></div>
+  </div>
+</section>
+
+</div>
+
 <footer>사진을 누르면 크게 볼 수 있어요</footer>
 
 <div id="lightbox">
@@ -313,13 +351,15 @@
 </div>
 
 <script>
-  const cards = Array.from(document.querySelectorAll('.card'));
+  const allCards = Array.from(document.querySelectorAll('.card'));
+  let cards = allCards.filter(c => c.offsetParent !== null);
   const lb = document.getElementById('lightbox');
   const limg = document.getElementById('limg');
   const lcap = document.getElementById('lcap');
   let cur = 0;
   function show(i){
     const wasOpen = lb.classList.contains('open');
+    if(!wasOpen) cards = allCards.filter(c => c.offsetParent !== null);
     cur = (i + cards.length) % cards.length;
     const img = cards[cur].querySelector('img');
     limg.src = img.src;
@@ -342,7 +382,33 @@
     else { window.scrollTo({top:0, behavior:'smooth'}); }
     guard();
   });
-  cards.forEach((c,i)=> c.addEventListener('click', ()=> show(i)));
+  allCards.forEach(c => c.addEventListener('click', ()=>{
+    cards = allCards.filter(x => x.offsetParent !== null);
+    show(cards.indexOf(c));
+  }));
+  const albumTitle = document.getElementById('album-title');
+  const albumSub = document.getElementById('album-sub');
+  const btnMia = document.getElementById('btn-mia');
+  const btnCiel = document.getElementById('btn-ciel');
+  function selectChar(name){
+    const ciel = name === 'ciel';
+    document.getElementById('album-mia').hidden = ciel;
+    document.getElementById('nav-mia').hidden = ciel;
+    document.getElementById('album-ciel').hidden = !ciel;
+    document.getElementById('nav-ciel').hidden = !ciel;
+    btnMia.classList.toggle('active', !ciel);
+    btnCiel.classList.toggle('active', ciel);
+    albumTitle.textContent = ciel ? "Ciel's Album" : "Mia's Album";
+    albumSub.textContent = ciel ? '단발 시크 기준의 컷 모음 (총 4컷) · 버전 44' : '확정 얼굴 기준의 컷 모음 (총 138컷) · 버전 44';
+    document.title = ciel ? "Ciel's Album" : "Mia's Album";
+    cards = allCards.filter(c => c.offsetParent !== null);
+    window.scrollTo({top:0});
+    try { localStorage.setItem('album-char', name); } catch(e) {}
+  }
+  btnMia.addEventListener('click', ()=> selectChar('mia'));
+  btnCiel.addEventListener('click', ()=> selectChar('ciel'));
+  if (location.hash === '#ciel' || location.hash.startsWith('#ciel-')) selectChar('ciel');
+  else { try { if (localStorage.getItem('album-char') === 'ciel') selectChar('ciel'); } catch(e) {} }
   document.querySelector('#lightbox .close').addEventListener('click', closeLb);
   document.querySelector('#lightbox .prev').addEventListener('click', (e)=>{ e.stopPropagation(); show(cur-1); });
   document.querySelector('#lightbox .next').addEventListener('click', (e)=>{ e.stopPropagation(); show(cur+1); });
