@@ -1,4 +1,4 @@
-const CACHE = 'influencer-album-v54';
+const CACHE = 'influencer-album-v55';
 const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png',
   './img/face-anchor.webp',
   './img/studio-1.webp', './img/studio-2.webp', './img/studio-3.webp', './img/studio-4.webp',
@@ -32,7 +32,7 @@ const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', 
   './img/sena-face-anchor.webp', './img/sena-1.webp', './img/sena-2.webp', './img/sena-3.webp', './img/sena-4.webp',
   './img/sena-zoom-1.webp', './img/sena-zoom-2.webp', './img/sena-zoom-3.webp', './img/sena-zoom-4.webp',
   './img/sena-front-1.webp', './img/sena-front-2.webp', './img/sena-front-3.webp', './img/sena-front-4.webp',
-  './img/sena-life-1.webp', './img/sena-life-2.webp', './img/sena-life-3.webp', './img/sena-life-4.webp', './img/sena-life-5.webp', './img/sena-life-6.webp', './img/sena-life-7.webp'];
+  './img/sena-life-1.webp', './img/sena-life-2.webp', './img/sena-life-3.webp', './img/sena-life-4.webp', './img/sena-life-5.webp', './img/sena-life-6.webp', './img/sena-life-7.webp', './img/sena-life-8.webp', './img/sena-life-9.webp', './img/sena-life-10.webp', './img/sena-life-11.webp'];
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(CORE)).then(() => self.skipWaiting()));
 });
