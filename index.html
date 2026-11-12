@@ -42,7 +42,7 @@
 <body>
 <header>
   <h1 id="album-title">Mia's Album</h1>
-  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 169컷) · 버전 79</p>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 169컷) · 버전 80</p>
   <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
     <button type="button" class="char-btn active" id="btn-mia">Mia</button>
     <button type="button" class="char-btn" id="btn-ciel">Ciel</button>
@@ -452,6 +452,16 @@
   </div>
 </section>
 
+<section id="sena-pool">
+  <h2>호텔 수영장</h2>
+  <div class="grid">
+    <div class="card" data-cap="Sena 수영장 1 — 화이트 원피스 수영복, 인피니티풀 앞 머리 만지며"><img src="img/sena-pool-1.webp" alt="Sena 수영장 1"><div class="cap">화이트 원피스 · 풀장 앞</div></div>
+    <div class="card" data-cap="Sena 수영장 2 — 네이비 원피스 수영복, 풀 가장자리에 앉아 발 담그고 돌아봄"><img src="img/sena-pool-2.webp" alt="Sena 수영장 2"><div class="cap">네이비 원피스 · 발 담그고</div></div>
+    <div class="card" data-cap="Sena 수영장 3 — 블랙 원피스 수영복, 인피니티풀 물속에서 턱 들고"><img src="img/sena-pool-3.webp" alt="Sena 수영장 3"><div class="cap">블랙 원피스 · 물속</div></div>
+    <div class="card" data-cap="Sena 수영장 4 — 버건디 원피스 수영복, 음료 들고 풀 데크 워킹"><img src="img/sena-pool-4.webp" alt="Sena 수영장 4"><div class="cap">버건디 원피스 · 데크 워킹</div></div>
+  </div>
+</section>
+
 </div>
 
 <footer>사진을 누르면 크게 볼 수 있어요</footer>
@@ -517,15 +527,15 @@
     btnSena.classList.toggle('active', name === 'sena');
     if (name === 'ciel'){
       albumTitle.textContent = "Ciel's Album";
-      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 79';
+      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 80';
       document.title = "Ciel's Album";
     } else if (name === 'sena'){
       albumTitle.textContent = "Sena's Album";
-      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 32컷) · 버전 79';
+      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 36컷) · 버전 80';
       document.title = "Sena's Album";
     } else {
       albumTitle.textContent = "Mia's Album";
-      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 169컷) · 버전 79';
+      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 169컷) · 버전 80';
       document.title = "Mia's Album";
     }
     cards = allCards.filter(c => c.offsetParent !== null);
