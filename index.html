@@ -42,7 +42,7 @@
 <body>
 <header>
   <h1 id="album-title">Mia's Album</h1>
-  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 91</p>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 92</p>
   <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
     <button type="button" class="char-btn active" id="btn-mia">Mia</button>
     <button type="button" class="char-btn" id="btn-ciel">Ciel</button>
@@ -502,7 +502,7 @@
 <section id="sua-anchor">
   <h2>기준 얼굴</h2>
   <div class="card anchor-card" data-cap="Sua 기준 얼굴 — 차분한 귀염상">
-    <img src="img/sua-face-anchor.webp" alt="Sua 기준 얼굴">
+    <img src="img/sua-face-anchor-w.webp" alt="Sua 기준 얼굴">
     <div class="cap">기준 얼굴 — 차분한 귀염상</div>
   </div>
 </section>
@@ -510,10 +510,10 @@
 <section id="sua-master">
   <h2>마스터</h2>
   <div class="grid">
-    <div class="card" data-cap="Sua 마스터 1 — 검정 바디콘, 정면 한 손 허리"><img src="img/sua-1.webp" alt="Sua 마스터 1"><div class="cap">검정 바디콘 · 정면</div></div>
-    <div class="card" data-cap="Sua 마스터 2 — 레드 바디콘, 옆시선"><img src="img/sua-2.webp" alt="Sua 마스터 2"><div class="cap">레드 바디콘 · 옆시선</div></div>
-    <div class="card" data-cap="Sua 마스터 3 — 에메랄드 바디콘, 3/4 측면"><img src="img/sua-3.webp" alt="Sua 마스터 3"><div class="cap">에메랄드 바디콘 · 측면</div></div>
-    <div class="card" data-cap="Sua 마스터 4 — 네이비 바디콘, 워킹"><img src="img/sua-4.webp" alt="Sua 마스터 4"><div class="cap">네이비 바디콘 · 워킹</div></div>
+    <div class="card" data-cap="Sua 마스터 1 — 검정 바디콘, 정면 한 손 허리"><img src="img/sua-w1.webp" alt="Sua 마스터 1"><div class="cap">검정 바디콘 · 정면</div></div>
+    <div class="card" data-cap="Sua 마스터 2 — 레드 바디콘, 옆시선"><img src="img/sua-w2.webp" alt="Sua 마스터 2"><div class="cap">레드 바디콘 · 옆시선</div></div>
+    <div class="card" data-cap="Sua 마스터 3 — 에메랄드 바디콘, 3/4 측면"><img src="img/sua-w3.webp" alt="Sua 마스터 3"><div class="cap">에메랄드 바디콘 · 측면</div></div>
+    <div class="card" data-cap="Sua 마스터 4 — 네이비 바디콘, 워킹"><img src="img/sua-w4.webp" alt="Sua 마스터 4"><div class="cap">네이비 바디콘 · 워킹</div></div>
   </div>
 </section>
 
@@ -586,19 +586,19 @@
     btnSua.classList.toggle('active', name === 'sua');
     if (name === 'ciel'){
       albumTitle.textContent = "Ciel's Album";
-      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 91';
+      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 92';
       document.title = "Ciel's Album";
     } else if (name === 'sena'){
       albumTitle.textContent = "Sena's Album";
-      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 50컷) · 버전 91';
+      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 50컷) · 버전 92';
       document.title = "Sena's Album";
     } else if (name === 'sua'){
       albumTitle.textContent = "Sua's Album";
-      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 4컷) · 버전 91';
+      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 4컷) · 버전 92';
       document.title = "Sua's Album";
     } else {
       albumTitle.textContent = "Mia's Album";
-      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 91';
+      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 92';
       document.title = "Mia's Album";
     }
     cards = allCards.filter(c => c.offsetParent !== null);
