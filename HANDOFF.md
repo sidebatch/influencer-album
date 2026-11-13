@@ -8,7 +8,7 @@
 - **앱**: 가상 인스타 인플루언서 **Mia**, **Ciel**, **Sena**, **Sua**, **Lena**의 사진 앨범 페이지 (정적 사이트 + PWA). 페이지 상단 [Mia | Sua | Ciel | Sena | Lena] 버튼으로 캐릭터를 선택하고, 마지막 선택은 기기에 기억된다. (2026-11-12 사용자 지시로 Sua를 두 번째로 이동)
 - **리포**: https://github.com/sidebatch/influencer-album (public, main 브랜치)
 - **라이브**: https://sidebatch.github.io/influencer-album/ (GitHub Pages)
-- **현재 상태 (2026-11-12)**: 총 247컷 (Mia 177 + Ciel 4 + Sena 50 + Sua 16) + Lena 기준 얼굴만 (컷 0) · 버전 101
+- **현재 상태 (2026-11-12)**: 총 247컷 (Mia 177 + Ciel 4 + Sena 50 + Sua 16) + Lena 기준 얼굴만 (컷 0) · 버전 102
 - 서버/빌드 도구 없음. `index.html` + `img/` + `sw.js` + `manifest.webmanifest`만으로 동작한다.
 
 ## 파일 구조
@@ -17,7 +17,7 @@
 |---|---|
 | `index.html` | 전체 페이지. 섹션별 카드 그리드, 라이트박스, 뒤로가기 가드, 버전 표기 |
 | `img/*.webp` | 컷 이미지. 섹션 접두사 + 번호 (예: `pool-9.webp`) |
-| `sw.js` | 서비스워커. `CACHE` 이름과 `CORE` 목록에 전체 이미지가 들어감 |
+| `sw.js` | 서비스워커. v102부터 `CORE`는 껍데기+앵커 10개만 선행 캐시하고, 이미지는 별도 고정 캐시(`album-images-v1`)에 보는 대로 쌓이는 캐시 우선 방식이다 |
 | `manifest.webmanifest` | PWA 설치 정보 (이름 "Mia's Album") |
 | `icon-192.png`, `icon-512.png` | 설치 아이콘 (정면 2번 컷 얼굴 크롭) |
 | `README.md` | 소개와 컷 수 요약 |
@@ -74,7 +74,7 @@
 | Sua 마스터 | sua-master | sua- | 4 |
 | 스튜디오 전신 | sua-studio | sua-studio- | 4 |
 | 스튜디오 2차 | sua-studio2 | sua-studio2- | 4 |
-| 줌인 | sua-zoom | sua-zoom- | 4 |
+| 줌인 | sua-zoom | sua-zoom2- | 4 |
 
 새 섹션을 만들면 `index.html` 상단 nav에도 링크를 추가한다.
 
@@ -94,7 +94,7 @@
    `<div class="card" data-cap="섹션명 N — 설명"><img src="img/파일명" alt="섹션명 N"><div class="cap">짧은 캡션</div></div>`
    새 섹션이면 `<section id="...">`를 만들고 nav 링크도 추가한다.
 3. 부제의 총 컷 수와 버전을 올린다 (버전 +1).
-4. `sw.js`: `CORE` 목록에 새 파일 경로를 추가하고, `CACHE` 이름을 `influencer-album-v<새 버전>`으로 맞춘다.
+4. `sw.js`: `CACHE` 이름을 `influencer-album-v<새 버전>`으로 맞춘다 (이미지는 v102부터 목록 등록 불필요 — 자동 캐시. 단, 이미지 캐시가 버전과 무관하게 유지되므로 **표시 이미지를 바꿀 때는 반드시 파일명부터 바꿀 것**).
 5. `README.md`의 컷 수와 섹션별 개수를 갱신한다.
 6. 커밋 후 push한다. 커밋 메시지는 `Add <설명> (v<버전>, <총컷수> cuts)` 형식을 써왔다.
 
