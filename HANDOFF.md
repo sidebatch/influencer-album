@@ -8,7 +8,7 @@
 - **앱**: 가상 인스타 인플루언서 **Mia**, **Ciel**, **Sena**, **Sua**, **Lena**의 사진 앨범 페이지 (정적 사이트 + PWA). 페이지 상단 [Mia | Sua | Ciel | Sena | Lena] 버튼으로 캐릭터를 선택하고, 마지막 선택은 기기에 기억된다. (2026-11-12 사용자 지시로 Sua를 두 번째로 이동)
 - **리포**: https://github.com/sidebatch/influencer-album (public, main 브랜치)
 - **라이브**: https://sidebatch.github.io/influencer-album/ (GitHub Pages)
-- **현재 상태 (2026-11-12)**: 총 255컷 (Mia 177 + Ciel 4 + Sena 50 + Sua 24) + Lena 기준 얼굴만 (컷 0) · 버전 112
+- **현재 상태 (2026-11-12)**: 총 255컷 (Mia 177 + Ciel 4 + Sena 50 + Sua 24) + Lena 기준 얼굴만 (컷 0) · 버전 113
 - 서버/빌드 도구 없음. `index.html` + `img/` + `sw.js` + `manifest.webmanifest`만으로 동작한다.
 
 ## 파일 구조
@@ -76,7 +76,7 @@
 | 스튜디오 2차 | sua-studio2 | sua-studio2- | 4 |
 | 줌인 | sua-zoom | sua-zoom2- | 4 |
 | 정면 | sua-front | sua-front2-/3-/5- 혼합 | 4 |
-| 일상 | sua-life | sua-life3-/4- 혼합 | 4 |
+| 일상 | sua-life | sua-life3-/5- 혼합 | 4 |
 
 새 섹션을 만들면 `index.html` 상단 nav에도 링크를 추가한다.
 
