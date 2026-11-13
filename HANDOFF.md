@@ -8,7 +8,7 @@
 - **앱**: 가상 인스타 인플루언서 **Mia**, **Ciel**, **Sena**, **Sua**, **Lena**의 사진 앨범 페이지 (정적 사이트 + PWA). 페이지 상단 [Mia | Sua | Ciel | Sena | Lena] 버튼으로 캐릭터를 선택하고, 마지막 선택은 기기에 기억된다. (2026-11-12 사용자 지시로 Sua를 두 번째로 이동)
 - **리포**: https://github.com/sidebatch/influencer-album (public, main 브랜치)
 - **라이브**: https://sidebatch.github.io/influencer-album/ (GitHub Pages)
-- **현재 상태 (2026-11-12)**: 총 291컷 (Mia 177 + Ciel 4 + Sena 50 + Sua 60) + Lena 기준 얼굴만 (컷 0) · 버전 131
+- **현재 상태 (2026-11-12)**: 총 295컷 (Mia 177 + Ciel 4 + Sena 50 + Sua 64) + Lena 기준 얼굴만 (컷 0) · 버전 132
 - 서버/빌드 도구 없음. `index.html` + `img/` + `sw.js` + `manifest.webmanifest`만으로 동작한다.
 
 ## 파일 구조
@@ -80,7 +80,8 @@
 | 일상 2차 | sua-life2 | sua-life8- | 4 |
 | 일상 3차 | sua-life3 | sua-life9- | 4 |
 | 일상 4차 | sua-life4 | sua-life10- | 4 |
-| 일상 5차 | sua-life5 | sua-life11- | 4 |
+| 일상 5차 | sua-life5 | sua-life11-·12- | 4 |
+| 호텔 수영장 | sua-pool | sua-pool- | 4 |
 | 스튜디오 3차 | sua-studio3 | sua-studio3- | 4 |
 | 스튜디오 화보 | sua-pic | sua-pic-/pic2- 혼합 | 4 |
 | 스튜디오 4차 | sua-studio4 | sua-studio7- | 4 |
