@@ -8,7 +8,7 @@
 - **앱**: 가상 인스타 인플루언서 **Mia**, **Ciel**, **Sena**, **Sua**, **Lena**의 사진 앨범 페이지 (정적 사이트 + PWA). 페이지 상단 [Mia | Sua | Ciel | Sena | Lena] 버튼으로 캐릭터를 선택하고, 마지막 선택은 기기에 기억된다. (2026-11-12 사용자 지시로 Sua를 두 번째로 이동)
 - **리포**: https://github.com/sidebatch/influencer-album (public, main 브랜치)
 - **라이브**: https://sidebatch.github.io/influencer-album/ (GitHub Pages)
-- **현재 상태 (2026-11-12)**: 총 343컷 (Mia 177 + Ciel 4 + Sena 50 + Sua 112) + Lena 기준 얼굴만 (컷 0) · 버전 158
+- **현재 상태 (2026-11-12)**: 총 347컷 (Mia 177 + Ciel 4 + Sena 50 + Sua 116) + Lena 기준 얼굴만 (컷 0) · 버전 159
 - 서버/빌드 도구 없음. `index.html` + `img/` + `sw.js` + `manifest.webmanifest`만으로 동작한다.
 
 ## 파일 구조
@@ -19,7 +19,7 @@
 | `img/*.webp` | 컷 이미지. 섹션 접두사 + 번호 (예: `pool-9.webp`) |
 | `sw.js` | 서비스워커. v102부터 `CORE`는 껍데기+앵커 10개만 선행 캐시하고, 이미지는 별도 고정 캐시(`album-images-v1`)에 보는 대로 쌓이는 캐시 우선 방식이다 |
 | `manifest.webmanifest` | PWA 설치 정보 (이름 "Mia's Album") |
-| `icon-192.png`, `icon-512.png` | 설치 아이콘 (정면 2번 컷 얼굴 크롭) | · 일상 6차 sua-life13-1~4
+| `icon-192.png`, `icon-512.png` | 설치 아이콘 (정면 2번 컷 얼굴 크롭) | · 일상 6차 sua-life13-1~4 · 스튜디오 7차 sua-studio10-1~4
 | `README.md` | 소개와 컷 수 요약 |
 
 ## 섹션과 파일 접두사
