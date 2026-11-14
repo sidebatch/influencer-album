@@ -43,7 +43,7 @@
 <body>
 <header>
   <h1 id="album-title">Mia's Album</h1>
-  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 212</p>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 213</p>
   <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
     <button type="button" class="char-btn active" id="btn-mia">Mia</button>
     <button type="button" class="char-btn" id="btn-sua">Sua</button>
@@ -552,8 +552,8 @@
     <div class="card" data-cap="Sua 헬스장 시네마틱 — 스카이 스포츠 브라 탑과 블랙 레깅스, 고양이 자세 스트레칭 저녁 영화 스틸"><img src="img/sua-gym8-4.webp" alt="Sua 헬스장 12"><div class="cap">헬스장 · 고양이 자세</div></div>
     <div class="card" data-cap="Sua 헬스장 시네마틱 마지막 모션 — 네이비 세트, 스모 데드리프트 마지막 렙, 무릎 굽히고 바벨 잡은 자세, 시선은 바벨에"><img src="img/sua-gym12-1.webp" alt="Sua 헬스장 13"><div class="cap">헬스장 · 데드리프트 마지막 렙</div></div>
     <div class="card" data-cap="Sua 헬스장 시네마틱 마지막 모션 — 버건디 탑과 블랙 레깅스, 데드 스쿼트 마지막 렙 상승, 시선은 바닥에"><img src="img/sua-gym9-2.webp" alt="Sua 헬스장 14"><div class="cap">헬스장 · 데드 스쿼트 마지막 렙</div></div>
-    <div class="card" data-cap="Sua 헬스장 — 블랙 스포츠 브라 탑과 그레이 레깅스, 레그프레스 마지막 렙, 실물 사진 기반"><img src="img/sua-gym15-3.webp" alt="Sua 헬스장 15"><div class="cap">헬스장 · 레그프레스 마지막 렙</div></div>
-    <div class="card" data-cap="Sua 헬스장 — 스카이 스포츠 브라 탑과 블랙 레깅스, 천국의 계단 오르는 중, 실물 사진 기반"><img src="img/sua-gym15-4.webp" alt="Sua 헬스장 16"><div class="cap">헬스장 · 천국의 계단</div></div>
+    <div class="card" data-cap="Sua 헬스장 — 블랙 스포츠 브라 탑과 그레이 레깅스, 레그프레스 마지막 렙 정면 하이앵글, 실물 사진 기반"><img src="img/sua-gym16-3.webp" alt="Sua 헬스장 15"><div class="cap">헬스장 · 레그프레스 마지막 렙</div></div>
+    <div class="card" data-cap="Sua 헬스장 — 스카이 스포츠 브라 탑과 블랙 레깅스, 천국의 계단 정면 하이앵글, 실물 사진 기반"><img src="img/sua-gym16-4.webp" alt="Sua 헬스장 16"><div class="cap">헬스장 · 천국의 계단</div></div>
   </div>
 </section>
 
@@ -841,23 +841,23 @@
     btnLena.classList.toggle('active', name === 'lena');
     if (name === 'ciel'){
       albumTitle.textContent = "Ciel's Album";
-      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 212';
+      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 213';
       document.title = "Ciel's Album";
     } else if (name === 'sena'){
       albumTitle.textContent = "Sena's Album";
-      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 50컷) · 버전 212';
+      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 50컷) · 버전 213';
       document.title = "Sena's Album";
     } else if (name === 'sua'){
       albumTitle.textContent = "Sua's Album";
-      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 197컷) · 버전 212';
+      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 197컷) · 버전 213';
       document.title = "Sua's Album";
     } else if (name === 'lena'){
       albumTitle.textContent = "Lena's Album";
-      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 0컷) · 버전 212';
+      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 0컷) · 버전 213';
       document.title = "Lena's Album";
     } else {
       albumTitle.textContent = "Mia's Album";
-      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 212';
+      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 213';
       document.title = "Mia's Album";
     }
     cards = allCards.filter(c => c.offsetParent !== null);
