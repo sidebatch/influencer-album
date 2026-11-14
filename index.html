@@ -43,7 +43,7 @@
 <body>
 <header>
   <h1 id="album-title">Mia's Album</h1>
-  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 217</p>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 218</p>
   <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
     <button type="button" class="char-btn active" id="btn-mia">Mia</button>
     <button type="button" class="char-btn" id="btn-sua">Sua</button>
@@ -562,7 +562,7 @@
 </section>
 
 <section id="sua-pool">
-  <h2>수영장·수영복 <span class="cnt">24</span></h2>
+  <h2>수영장·수영복 <span class="cnt">28</span></h2>
   <div class="grid">
     <div class="card" data-cap="Sua 호텔 수영장 1 — 블랙 원피스 딥 스쿱, 선베드 앉은 정면"><img src="img/sua-pool-1.webp" alt="Sua 호텔 수영장 1"><div class="cap">선베드 · 블랙 원피스</div></div>
     <div class="card" data-cap="Sua 호텔 수영장 2 — 에메랄드 원피스 홀터, 풀 가장자리 발 담금"><img src="img/sua-pool-2.webp" alt="Sua 호텔 수영장 2"><div class="cap">풀 가장자리 · 에메랄드</div></div>
@@ -589,6 +589,10 @@
     <div class="card" data-cap="Sua 수영복 화보 3 — 세이지 배경, 틸 롱슬리브 원피스"><img src="img/sua-spic-3.webp" alt="Sua 수영복 화보 3"><div class="cap">세이지 · 틸 롱슬리브</div></div>
     <div class="card" data-cap="Sua 수영복 화보 4 — 웜그레이 배경, 머스터드 스커트형 원피스"><img src="img/sua-spic-4.webp" alt="Sua 수영복 화보 4"><div class="cap">웜그레이 · 머스터드 스커트형</div></div>
   </div>
+    <div class="card" data-cap="Sua 수영장 — 네이비 스트라이프 원피스 수영복, 풀 계단을 올라오는 전신"><img src="img/sua-pool15-1.webp" alt="Sua 수영장 추가"><div class="cap">수영장 · 네이비 계단</div></div>
+    <div class="card" data-cap="Sua 수영장 — 스카이 원피스 수영복, 선베드에 기대 누워 책 옆에 둔 휴식"><img src="img/sua-pool15-2.webp" alt="Sua 수영장 추가"><div class="cap">수영장 · 선베드 스카이</div></div>
+    <div class="card" data-cap="Sua 수영장 — 블랙 지퍼 원피스 수영복, 풀사이드에 서서 선글라스를 머리에 올리는 중, 도도"><img src="img/sua-pool15-3.webp" alt="Sua 수영장 추가"><div class="cap">수영장 · 블랙 지퍼</div></div>
+    <div class="card" data-cap="Sua 수영장 — 에메랄드 원숄더 원피스 수영복, 석양 인피니티 풀 가장자리에서 뒤돌아보기"><img src="img/sua-pool15-4.webp" alt="Sua 수영장 추가"><div class="cap">수영장 · 인피니티 석양</div></div>
 </section>
 
 <section id="sua-high">
@@ -845,23 +849,23 @@
     btnLena.classList.toggle('active', name === 'lena');
     if (name === 'ciel'){
       albumTitle.textContent = "Ciel's Album";
-      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 217';
+      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 218';
       document.title = "Ciel's Album";
     } else if (name === 'sena'){
       albumTitle.textContent = "Sena's Album";
-      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 50컷) · 버전 217';
+      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 50컷) · 버전 218';
       document.title = "Sena's Album";
     } else if (name === 'sua'){
       albumTitle.textContent = "Sua's Album";
-      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 201컷) · 버전 217';
+      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 205컷) · 버전 218';
       document.title = "Sua's Album";
     } else if (name === 'lena'){
       albumTitle.textContent = "Lena's Album";
-      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 0컷) · 버전 217';
+      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 0컷) · 버전 218';
       document.title = "Lena's Album";
     } else {
       albumTitle.textContent = "Mia's Album";
-      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 217';
+      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 218';
       document.title = "Mia's Album";
     }
     cards = allCards.filter(c => c.offsetParent !== null);
