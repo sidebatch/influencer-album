@@ -8,7 +8,7 @@
 - **앱**: 가상 인스타 인플루언서 **Mia**, **Ciel**, **Sena**, **Sua**, **Lena**, **Yuna**의 사진 앨범 페이지 (정적 사이트 + PWA). 페이지 상단 [Mia | Sua | Ciel | Sena | Lena | Yuna] 버튼으로 캐릭터를 선택하고, 마지막 선택은 기기에 기억된다. (2026-11-12 사용자 지시로 Sua를 두 번째로 이동)
 - **리포**: https://github.com/sidebatch/influencer-album (public, main 브랜치)
 - **라이브**: https://sidebatch.github.io/influencer-album/ (GitHub Pages)
-- **현재 상태 (2026-11-14)**: 총 446컷 (Mia 177 + Ciel 4 + Sena 50 + Sua 204 + Yuna 11) + Lena 기준 얼굴만 (컷 0) · 버전 230
+- **현재 상태 (2026-11-14)**: 총 446컷 (Mia 177 + Ciel 4 + Sena 50 + Sua 204 + Yuna 11) + Lena 기준 얼굴만 (컷 0) · 버전 231
 - 서버/빌드 도구 없음. `index.html` + `img/` + `sw.js` + `manifest.webmanifest`만으로 동작한다.
 
 ## 파일 구조
@@ -106,6 +106,7 @@
 - **가로 스크롤 금지 (2026-11-12, 사용자 지시)**: 페이지 전체는 위아래로만 스크롤된다 (`html, body { overflow-x: clip; }`). 캐릭터 선택 버튼은 화면 폭을 넘으면 다음 줄로 넘어간다 (flex-wrap) — 버튼을 한 줄로 강제하지 말 것.
 - **뒤로가기**: 라이트박스가 열려 있으면 사진만 닫고, 목록에서는 맨 위로 올라가며, 계속 눌러도 앱이 종료되지 않는다 (history pushState 가드 + popstate 핸들러로 구현됨).
 - 사진을 누르면 라이트박스로 크게 보고, 좌우 이동과 키보드를 지원한다.
+- **보기 방식 토글 (2026-11-14, v231 시험 도입)**: 라이트박스 왼쪽 위 [보기: 전체 / 꽉 차게] 버튼. 꽉 차게는 object-fit: cover로 화면을 채운 채로 넘겨 볼 수 있고, 선택은 기기 localStorage `album-view`에 저장된다. 사용자가 별로라고 하면 이 커밋만 되돌리면 된다.
 
 ## 컷 추가 절차
 
