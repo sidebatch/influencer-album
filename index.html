@@ -45,7 +45,7 @@
 <body>
 <header>
   <h1 id="album-title">Mia's Album</h1>
-  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 181컷) · 버전 233</p>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 181컷) · 버전 234</p>
   <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
     <button type="button" class="char-btn active" id="btn-mia">Mia</button>
     <button type="button" class="char-btn" id="btn-sua">Sua</button>
@@ -113,6 +113,7 @@
   <a href="#yuna-anchor">기준 얼굴</a>
   <a href="#yuna-master">마스터</a>
   <a href="#yuna-style">스타일</a>
+  <a href="#yuna-studio2">스튜디오 2차</a>
 </nav>
 
 <div id="album-mia">
@@ -789,6 +790,16 @@
   </div>
 </section>
 
+<section id="yuna-studio2">
+  <h2>스튜디오 2차</h2>
+  <div class="grid">
+    <div class="card" data-cap="Yuna 스튜디오 2차 1 — 더스티 로즈 새틴 카울, 정면 눈웃음"><img src="img/yuna-studio2-w1.webp" alt="Yuna 스튜디오 2차 1"><div class="cap">로즈 새틴 카울 · 정면 눈웃음</div></div>
+    <div class="card" data-cap="Yuna 스튜디오 2차 2 — 로열 퍼플 벨벳 스쿱, 허리에 손 3/4"><img src="img/yuna-studio2-w2.webp" alt="Yuna 스튜디오 2차 2"><div class="cap">퍼플 벨벳 · 3/4</div></div>
+    <div class="card" data-cap="Yuna 스튜디오 2차 3 — 미드나잇 블루 새틴 슬립, 큐브에 앉은 정면"><img src="img/yuna-studio2-w3.webp" alt="Yuna 스튜디오 2차 3"><div class="cap">미드나잇 슬립 · 앉은 정면</div></div>
+    <div class="card" data-cap="Yuna 스튜디오 2차 4 — 민트 새틴 스퀘어넥, 워킹 정면"><img src="img/yuna-studio2-w4.webp" alt="Yuna 스튜디오 2차 4"><div class="cap">민트 새틴 · 워킹</div></div>
+  </div>
+</section>
+
 </div>
 
 <footer>사진을 누르면 크게 볼 수 있어요</footer>
@@ -906,27 +917,27 @@
     btnYuna.classList.toggle('active', name === 'yuna');
     if (name === 'ciel'){
       albumTitle.textContent = "Ciel's Album";
-      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 233';
+      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 234';
       document.title = "Ciel's Album";
     } else if (name === 'sena'){
       albumTitle.textContent = "Sena's Album";
-      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 50컷) · 버전 233';
+      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 50컷) · 버전 234';
       document.title = "Sena's Album";
     } else if (name === 'sua'){
       albumTitle.textContent = "Sua's Album";
-      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 204컷) · 버전 233';
+      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 204컷) · 버전 234';
       document.title = "Sua's Album";
     } else if (name === 'lena'){
       albumTitle.textContent = "Lena's Album";
-      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 0컷) · 버전 233';
+      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 0컷) · 버전 234';
       document.title = "Lena's Album";
     } else if (name === 'yuna'){
       albumTitle.textContent = "Yuna's Album";
-      albumSub.textContent = '긴 웨이브 청순 성숙상 기준의 컷 모음 (총 11컷) · 버전 233';
+      albumSub.textContent = '긴 웨이브 청순 성숙상 기준의 컷 모음 (총 15컷) · 버전 234';
       document.title = "Yuna's Album";
     } else {
       albumTitle.textContent = "Mia's Album";
-      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 181컷) · 버전 233';
+      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 181컷) · 버전 234';
       document.title = "Mia's Album";
     }
     cards = allCards.filter(c => c.offsetParent !== null);
