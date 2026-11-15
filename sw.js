@@ -1,5 +1,5 @@
-const CACHE = 'influencer-album-v266';
-const IMGCACHE = 'album-images-v2';
+const CACHE = 'influencer-album-v267';
+const IMGCACHE = 'album-images-v3';
 const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png',
   './img/face-anchor.webp', './img/sua-anchor-main2.webp', './img/ciel-anchor-main.webp', './img/sena-anchor-main.webp', './img/lena-face-anchor.webp', './img/yuna-anchor-main2.webp'];
 self.addEventListener('install', (e) => {
