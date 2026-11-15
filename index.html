@@ -34,6 +34,7 @@
   #lightbox .close { position:absolute; top:14px; right:18px; color:#fff; font-size:30px; background:none; border:none; cursor:pointer; z-index:2; text-shadow:0 1px 4px rgba(0,0,0,.8); }
   #lightbox.cover img { object-fit:cover; }
   #lightbox .viewmode { position:absolute; top:16px; left:16px; color:#fff; font-size:13px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.35); border-radius:999px; padding:6px 12px; cursor:pointer; z-index:2; text-shadow:0 1px 3px rgba(0,0,0,.7); }
+  #lightbox .download { position:absolute; top:16px; right:64px; color:#fff; font-size:13px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.35); border-radius:999px; padding:6px 12px; cursor:pointer; z-index:2; text-shadow:0 1px 3px rgba(0,0,0,.7); }
   #lightbox .nav { position:absolute; top:50%; transform:translateY(-50%); color:#fff; font-size:34px; background:none; border:none; cursor:pointer; padding:10px; z-index:2; text-shadow:0 1px 4px rgba(0,0,0,.8); }
   #lightbox .prev { left:6px; } #lightbox .next { right:6px; }
   [hidden] { display:none !important; }
@@ -51,7 +52,7 @@
 <body>
 <header>
   <h1 id="album-title">Mia's Album</h1>
-  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 286</p>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 287</p>
   <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
     <button type="button" class="char-btn active" id="btn-mia">Mia</button>
     <button type="button" class="char-btn" id="btn-sua">Sua</button>
@@ -902,10 +903,11 @@
 
 </div>
 
-<footer>사진을 누르면 크게 볼 수 있어요</footer>
+<footer>사진을 누르면 크게 볼 수 있고, 저장도 할 수 있어요</footer>
 
 <div id="lightbox">
   <button class="viewmode" id="viewmode" aria-label="보기 방식 바꾸기">보기: 전체</button>
+  <button class="download" id="download" aria-label="사진 저장">저장 ↓</button>
   <button class="close" aria-label="닫기">&times;</button>
   <button class="nav prev" aria-label="이전">&#8249;</button>
   <img loading="lazy" decoding="async" id="limg" src="" alt="">
@@ -929,6 +931,25 @@
   function applyViewMode(){ lb.classList.toggle('cover', viewMode === 'cover'); vmBtn.textContent = viewMode === 'cover' ? '보기: 꽉 차게' : '보기: 전체'; resetZoom(); }
   vmBtn.addEventListener('click', (e)=>{ e.stopPropagation(); viewMode = viewMode === 'cover' ? 'fit' : 'cover'; try { localStorage.setItem('album-view', viewMode); } catch(err) {} applyViewMode(); });
   applyViewMode();
+  const dlBtn = document.getElementById('download');
+  dlBtn.addEventListener('click', async (e)=>{
+    e.stopPropagation();
+    const url = limg.src;
+    if(!url) return;
+    const name = (url.split('/').pop() || 'photo.webp').split('?')[0];
+    try {
+      const res = await fetch(url);
+      if(!res.ok) throw new Error('fetch failed');
+      const blob = await res.blob();
+      const objUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = objUrl; a.download = name;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(()=>URL.revokeObjectURL(objUrl), 4000);
+    } catch(err) {
+      window.open(url, '_blank');
+    }
+  });
   function show(i){
     const wasOpen = lb.classList.contains('open');
     if(!wasOpen) cards = allCards.filter(c => c.offsetParent !== null);
@@ -1017,27 +1038,27 @@
     btnYuna.classList.toggle('active', name === 'yuna');
     if (name === 'ciel'){
       albumTitle.textContent = "Ciel's Album";
-      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 286';
+      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 287';
       document.title = "Ciel's Album";
     } else if (name === 'sena'){
       albumTitle.textContent = "Sena's Album";
-      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 65컷) · 버전 286';
+      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 65컷) · 버전 287';
       document.title = "Sena's Album";
     } else if (name === 'sua'){
       albumTitle.textContent = "Sua's Album";
-      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 223컷) · 버전 286';
+      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 223컷) · 버전 287';
       document.title = "Sua's Album";
     } else if (name === 'lena'){
       albumTitle.textContent = "Lena's Album";
-      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 7컷) · 버전 286';
+      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 7컷) · 버전 287';
       document.title = "Lena's Album";
     } else if (name === 'yuna'){
       albumTitle.textContent = "Yuna's Album";
-      albumSub.textContent = '긴 웨이브 청순 성숙상 기준의 컷 모음 (총 87컷) · 버전 286';
+      albumSub.textContent = '긴 웨이브 청순 성숙상 기준의 컷 모음 (총 87컷) · 버전 287';
       document.title = "Yuna's Album";
     } else {
       albumTitle.textContent = "Mia's Album";
-      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 286';
+      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 287';
       document.title = "Mia's Album";
     }
     cards = allCards.filter(c => c.offsetParent !== null);
