@@ -37,6 +37,12 @@
   #lightbox .nav { position:absolute; top:50%; transform:translateY(-50%); color:#fff; font-size:34px; background:none; border:none; cursor:pointer; padding:10px; z-index:2; text-shadow:0 1px 4px rgba(0,0,0,.8); }
   #lightbox .prev { left:6px; } #lightbox .next { right:6px; }
   [hidden] { display:none !important; }
+  html { scroll-behavior:smooth; }
+  section { scroll-margin-top:64px; }
+  .card { position:relative; }
+  .card.is-new::after { content:'NEW'; position:absolute; top:8px; left:8px; background:#e5484d; color:#fff; font-size:11px; font-weight:700; letter-spacing:.05em; padding:3px 8px; border-radius:999px; z-index:2; box-shadow:0 1px 4px rgba(0,0,0,.3); }
+  .newpill { display:inline-block; vertical-align:2px; background:#e5484d; color:#fff; font-size:10.5px; font-weight:700; letter-spacing:.05em; padding:2px 7px; border-radius:999px; margin-left:6px; }
+  nav a .newpill { margin-left:5px; padding:1px 6px; font-size:10px; }
   .char-switch { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:14px; padding:0 10px; }
   .char-btn { font:inherit; font-size:15px; font-weight:600; padding:8px 20px; border-radius:999px; border:1px solid #d9c6ae; background:#fff; color:#5b4a3f; cursor:pointer; white-space:nowrap; }
   .char-btn.active { background:#2b2320; color:#fff; border-color:#2b2320; }
@@ -45,7 +51,7 @@
 <body>
 <header>
   <h1 id="album-title">Mia's Album</h1>
-  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 254</p>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 255</p>
   <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
     <button type="button" class="char-btn active" id="btn-mia">Mia</button>
     <button type="button" class="char-btn" id="btn-sua">Sua</button>
@@ -57,22 +63,12 @@
 </header>
 <nav id="nav-mia">
   <a href="#anchor">기준 얼굴</a>
-  <a href="#studio">스튜디오 전신</a>
-  <a href="#zoom">줌인</a>
-  <a href="#front">정면</a>
-  <a href="#life">일상</a>
-  <a href="#var">다양한 샷</a>
-  <a href="#self">셀카</a>
-  <a href="#out">야외</a>
-  <a href="#lie">누운 샷</a>
-  <a href="#bold">화보</a>
-  <a href="#mini">여름 미니</a>
-  <a href="#lck">아나운서 룩</a>
-  <a href="#yui">Yui 스타일</a>
-  <a href="#studio2">스튜디오 화보</a>
-  <a href="#pool">인피니티풀</a>
-  <a href="#swim">수영복 화보</a>
-  <a href="#hw">홈웨어 화보</a>
+  <a href="#mia-studio-all">스튜디오</a>
+  <a href="#mia-pictorial">화보</a>
+  <a href="#mia-daily">일상</a>
+  <a href="#mia-mini">여름 미니</a>
+  <a href="#mia-pool">수영장·수영복</a>
+  <a href="#mia-home">홈·누운 샷</a>
 </nav>
 <nav id="nav-ciel" hidden>
   <a href="#ciel-anchor">기준 얼굴</a>
@@ -80,31 +76,20 @@
 </nav>
 <nav id="nav-sena" hidden>
   <a href="#sena-anchor">기준 얼굴</a>
-  <a href="#sena-studio">스튜디오 전신</a>
-  <a href="#sena-zoom">줌인</a>
-  <a href="#sena-front">정면</a>
-  <a href="#sena-studio2">스튜디오 2차</a>
+  <a href="#sena-studio">스튜디오</a>
   <a href="#sena-life">일상</a>
+  <a href="#sena-pool">수영장·수영복</a>
 </nav>
 <nav id="nav-sua" hidden>
   <a href="#sua-anchor">기준 얼굴</a>
-  <a href="#sua-master">마스터</a>
-  <a href="#sua-studio">스튜디오 전신</a>
-  <a href="#sua-studio2">스튜디오 2차</a>
-  <a href="#sua-zoom">줌인</a>
-  <a href="#sua-front">정면</a>
-  <a href="#sua-life">일상</a>
-  <a href="#sua-life2">일상 2차</a>
-  <a href="#sua-life3">일상 3차</a>
-  <a href="#sua-life4">일상 4차</a>
-  <a href="#sua-life5">일상 5차</a>
-  <a href="#sua-pool">호텔 수영장</a>
-  <a href="#sua-studio3">스튜디오 3차</a>
-  <a href="#sua-pic">스튜디오 화보</a>
-  <a href="#sua-spic">수영복 화보</a>
-  <a href="#sua-studio4">스튜디오 4차</a>
-  <a href="#sua-studio5">스튜디오 5차</a>
-  <a href="#sua-studio6">스튜디오 6차</a>
+  <a href="#sua-studio-all">스튜디오</a>
+  <a href="#sua-daily">일상</a>
+  <a href="#sua-pool">수영장·수영복</a>
+  <a href="#sua-high">하이앵글</a>
+  <a href="#sua-denim-all">청바지</a>
+  <a href="#sua-sep-all">세퍼레이트</a>
+  <a href="#sua-lie-all">누운·엎드린 샷</a>
+  <a href="#sua-summer">여름 패션</a>
 </nav>
 <nav id="nav-lena" hidden>
   <a href="#lena-anchor">기준 얼굴</a>
@@ -112,18 +97,14 @@
 <nav id="nav-yuna" hidden>
   <a href="#yuna-anchor">기준 얼굴</a>
   <a href="#yuna-master">마스터</a>
-  <a href="#yuna-style">스타일</a>
-  <a href="#yuna-studio2">스튜디오 2차</a>
-  <a href="#yuna-studio3">스튜디오 3차</a>
-  <a href="#yuna-sit">앉은 컷</a>
+  <a href="#yuna-studio">스튜디오</a>
   <a href="#yuna-sep">세퍼레이트</a>
-  <a href="#yuna-pool">수영장</a>
-  <a href="#yuna-swim">수영복 화보</a>
+  <a href="#yuna-pool">수영장·수영복</a>
   <a href="#yuna-life">일상</a>
   <a href="#yuna-office">오피스</a>
-  <a href="#yuna-jeans">청바지</a>
-  <a href="#yuna-back">뒷모습</a>
-  <a href="#yuna-bold">파격</a>
+  <a href="#yuna-jeans">청바지 <span class="newpill">NEW</span></a>
+  <a href="#yuna-back">뒷모습 <span class="newpill">NEW</span></a>
+  <a href="#yuna-bold">파격 <span class="newpill">NEW</span></a>
 </nav>
 
 <div id="album-mia">
@@ -383,38 +364,20 @@
 </section>
 
 <section id="sena-studio">
-  <h2>스튜디오 전신</h2>
+  <h2>스튜디오 <span class="cnt">24</span></h2>
   <div class="grid">
     <div class="card" data-cap="Sena 스튜디오 1 — 검정 페플럼, 워킹 미소"><img src="img/sena-w1.webp" alt="Sena 스튜디오 1"><div class="cap">검정 페플럼 · 워킹</div></div>
     <div class="card" data-cap="Sena 스튜디오 2 — 레드 페플럼, 높은 의자 미소"><img src="img/sena-w2.webp" alt="Sena 스튜디오 2"><div class="cap">레드 페플럼 · 미소</div></div>
     <div class="card" data-cap="Sena 스튜디오 3 — 와인 바디콘, 한 손 허리 시크"><img src="img/sena-w3.webp" alt="Sena 스튜디오 3"><div class="cap">와인 바디콘 · 시크</div></div>
     <div class="card" data-cap="Sena 스튜디오 4 — 크림 니트, 고개 기울여 잔잔한 미소"><img src="img/sena-w4.webp" alt="Sena 스튜디오 4"><div class="cap">크림 니트 · 잔잔한 미소</div></div>
-  </div>
-</section>
-
-<section id="sena-zoom">
-  <h2>줌인 (무릎까지)</h2>
-  <div class="grid">
     <div class="card" data-cap="Sena 줌인 1 — 크림 니트, 고개 기울여 미소"><img src="img/sena-zoom-w1.webp" alt="Sena 줌인 1"><div class="cap">크림 니트 · 미소</div></div>
     <div class="card" data-cap="Sena 줌인 2 — 검정 페플럼, 턱에 손 시크"><img src="img/sena-zoom-w2.webp" alt="Sena 줌인 2"><div class="cap">검정 페플럼 · 시크</div></div>
     <div class="card" data-cap="Sena 줌인 3 — 레드 페플럼, 윙크 손인사"><img src="img/sena-zoom-w3.webp" alt="Sena 줌인 3"><div class="cap">레드 페플럼 · 윙크</div></div>
     <div class="card" data-cap="Sena 줌인 4 — 와인 바디콘, 팔짱 올려다봄"><img src="img/sena-zoom-w4.webp" alt="Sena 줌인 4"><div class="cap">와인 바디콘 · 몽환</div></div>
-  </div>
-</section>
-
-<section id="sena-front">
-  <h2>정면</h2>
-  <div class="grid">
     <div class="card" data-cap="Sena 정면 1 — 크림 니트, 정면 부드러운 미소"><img src="img/sena-front-w1.webp" alt="Sena 정면 1"><div class="cap">크림 니트 · 미소</div></div>
     <div class="card" data-cap="Sena 정면 2 — 검정 페플럼, 두 손 모으고 단정"><img src="img/sena-front-w2.webp" alt="Sena 정면 2"><div class="cap">검정 페플럼 · 단정</div></div>
     <div class="card" data-cap="Sena 정면 3 — 레드 페플럼, 손가락 하트"><img src="img/sena-front-w3.webp" alt="Sena 정면 3"><div class="cap">레드 페플럼 · 손하트</div></div>
     <div class="card" data-cap="Sena 정면 4 — 와인 바디콘, 한 손 허리 미소"><img src="img/sena-front-w4.webp" alt="Sena 정면 4"><div class="cap">와인 바디콘 · 미소</div></div>
-  </div>
-</section>
-
-<section id="sena-studio2">
-  <h2>스튜디오 2차</h2>
-  <div class="grid">
     <div class="card" data-cap="Sena 스튜디오2 1 — 실버 새틴 롱드레스, 앉아 턱 든 도도"><img src="img/sena-studio2-w1.webp" alt="Sena 스튜디오2 1"><div class="cap">실버 새틴 · 도도</div></div>
     <div class="card" data-cap="Sena 스튜디오2 2 — 네이비 페플럼, 워킹 잔잔한 미소"><img src="img/sena-studio2-w2.webp" alt="Sena 스튜디오2 2"><div class="cap">네이비 페플럼 · 워킹 미소</div></div>
     <div class="card" data-cap="Sena 스튜디오2 3 — 버건디 오프숄더 롱, 돌아봄 미소"><img src="img/sena-studio2-w3.webp" alt="Sena 스튜디오2 3"><div class="cap">버건디 오프숄더 · 돌아봄</div></div>
@@ -445,19 +408,13 @@
 </section>
 
 <section id="sena-pool">
-  <h2>호텔 수영장</h2>
+  <h2>수영장·수영복 <span class="cnt">18</span></h2>
   <div class="grid">
     <div class="card" data-cap="Sena 수영장 1 — 화이트 원피스 수영복, 인피니티풀 앞 머리 만지며"><img src="img/sena-pool-w1.webp" alt="Sena 수영장 1"><div class="cap">화이트 원피스 · 풀장 앞</div></div>
     <div class="card" data-cap="Sena 수영장 2 — 네이비 원피스 수영복, 풀 가장자리에 앉아 발 담그고 돌아봄"><img src="img/sena-pool-w2.webp" alt="Sena 수영장 2"><div class="cap">네이비 원피스 · 발 담그고</div></div>
     <div class="card" data-cap="Sena 수영장 3 — 블랙 원피스 수영복, 인피니티풀 물속에서 턱 들고"><img src="img/sena-pool-3.webp" alt="Sena 수영장 3"><div class="cap">블랙 원피스 · 물속</div></div>
     <div class="card" data-cap="Sena 수영장 4 — 버건디 원피스 수영복, 음료 들고 풀 데크 워킹"><img src="img/sena-pool-w4.webp" alt="Sena 수영장 4"><div class="cap">버건디 원피스 · 데크 워킹</div></div>
     <div class="card" data-cap="Sena 수영장 5 — 옐로 원피스 수영복, 선베드에 누워 책 읽다가 올려다봄"><img src="img/sena-pool-5.webp" alt="Sena 수영장 5"><div class="cap">옐로 원피스 · 선베드 독서</div></div>
-  </div>
-</section>
-
-<section id="sena-swim">
-  <h2>스튜디오 수영복</h2>
-  <div class="grid">
     <div class="card" data-cap="Sena 스튜디오 수영복 1 — 화이트 원피스 수영복, 한 손 허리 전신"><img src="img/sena-swim-w1.webp" alt="Sena 스튜디오 수영복 1"><div class="cap">화이트 원피스 · 전신</div></div>
     <div class="card" data-cap="Sena 스튜디오 수영복 2 — 블랙 원피스 수영복, 바닥에 앉아 턱 든 시크"><img src="img/sena-swim-w2.webp" alt="Sena 스튜디오 수영복 2"><div class="cap">블랙 원피스 · 바닥 앉아 시크</div></div>
     <div class="card" data-cap="Sena 스튜디오 수영복 3 — 네이비 원피스 수영복, 무릎 안고 앉아 올려다봄 하이앵글"><img src="img/sena-swim-w3.webp" alt="Sena 스튜디오 수영복 3"><div class="cap">네이비 원피스 · 올려다봄</div></div>
@@ -487,7 +444,7 @@
 </section>
 
 <section id="sua-studio-all">
-  <h2>스튜디오 <span class="cnt">36</span></h2>
+  <h2>스튜디오 <span class="cnt">69</span></h2>
   <div class="grid">
     <div class="card" data-cap="Sua 마스터 1 — 검정 바디콘, 정면 한 손 허리"><img src="img/sua-w1.webp" alt="Sua 마스터 1"><div class="cap">검정 바디콘 · 정면</div></div>
     <div class="card" data-cap="Sua 마스터 2 — 레드 바디콘, 옆시선"><img src="img/sua-w2.webp" alt="Sua 마스터 2"><div class="cap">레드 바디콘 · 옆시선</div></div>
@@ -525,6 +482,39 @@
     <div class="card" data-cap="Sua 스튜디오 일상복 — 버건디 니트 스쿱 탑과 차콜 플리츠 미니, 베이지 배경 큐브에 앉아 다리 꼰 전신"><img src="img/sua-casual-2.webp" alt="Sua 스튜디오 일상복"><div class="cap">일상복 · 버건디 니트</div></div>
     <div class="card" data-cap="Sua 스튜디오 일상복 — 머스타드 니트 스쿱 탑과 블랙 A라인 미니, 세이지 배경 워킹 캔디드 머리부터 무릎까지"><img src="img/sua-casual-3.webp" alt="Sua 스튜디오 일상복"><div class="cap">일상복 · 머스타드 니트</div></div>
     <div class="card" data-cap="Sua 스튜디오 일상복 — 핑크 니트 가디건과 화이트 새틴 미니, 라벤더 배경에 커피잔을 든 정면 전신"><img src="img/sua-casual-4.webp" alt="Sua"><div class="cap">일상복 · 핑크 가디건</div></div>
+    <div class="card" data-cap="Sua 화보 1 — 차콜 배경, 아이보리 테일러드 블레이저 드레스"><img src="img/sua-pic2-1.webp" alt="Sua 화보 1"><div class="cap">차콜 · 블레이저 드레스</div></div>
+    <div class="card" data-cap="Sua 화보 2 — 버건디 배경, 아이보리 새틴 카울 앉은"><img src="img/sua-pic-2.webp" alt="Sua 화보 2"><div class="cap">버건디 · 아이보리 카울</div></div>
+    <div class="card" data-cap="Sua 화보 3 — 세이지 배경, 에메랄드 오프숄더 돌아봄"><img src="img/sua-pic-3.webp" alt="Sua 화보 3"><div class="cap">세이지 · 에메랄드</div></div>
+    <div class="card" data-cap="Sua 화보 4 — 더스티 블루 배경, 딥 플럼 벨벳 원숄더 아래시선"><img src="img/sua-pic2-4.webp" alt="Sua 화보 4"><div class="cap">더스티 블루 · 벨벳 원숄더</div></div>
+    <div class="card" data-cap="Sua 스튜디오 미니 1 — 라벤더 시폰 오프숄더 미니 드레스, 민트 배경 정면 한 손 허리"><img src="img/sua-smini-1.webp" alt="Sua 스튜디오 미니 1"><div class="cap">라벤더 시폰 · 정면</div></div>
+    <div class="card" data-cap="Sua 스튜디오 미니 2 — 민트 시폰 홀터넥 미니 드레스, 크림 배경 큐브 앉은 3/4 눈웃음"><img src="img/sua-smini-2.webp" alt="Sua 스튜디오 미니 2"><div class="cap">민트 시폰 · 큐브</div></div>
+    <div class="card" data-cap="Sua 스튜디오 미니 3 — 피치 시폰 랩 미니 드레스, 스카이 배경 스툴 앉은 정면"><img src="img/sua-smini-3.webp" alt="Sua 스튜디오 미니 3"><div class="cap">피치 시폰 랩 · 스툴</div></div>
+    <div class="card" data-cap="Sua 스튜디오 미니 4 — 화이트 시폰 셔링 미니 드레스, 라벤더 배경 쿠션 앉아 올려다봄"><img src="img/sua-smini-4.webp" alt="Sua 스튜디오 미니 4"><div class="cap">화이트 시폰 · 쿠션</div></div>
+    <div class="card" data-cap="Sua 스튜디오 여름 1 — 화이트 새틴 오프숄더 드레스, 스카이 블루 배경에 서 있는 정면 눈웃음"><img src="img/sua-ss-1.webp" alt="Sua 스튜디오 여름 1"><div class="cap">화이트 오프숄더 · 스카이 배경</div></div>
+    <div class="card" data-cap="Sua 스튜디오 여름 2 — 코랄 새틴 카울 민소매 드레스, 민트 배경 큐브에 앉은 옆시선"><img src="img/sua-ss-2.webp" alt="Sua 스튜디오 여름 2"><div class="cap">코랄 카울 · 민트 배경</div></div>
+    <div class="card" data-cap="Sua 스튜디오 여름 3 — 레몬 니트 스쿱넥 드레스, 화이트 배경 스툴에 앉아 다리 꼬고 도도"><img src="img/sua-ss-3.webp" alt="Sua 스튜디오 여름 3"><div class="cap">레몬 니트 · 도도</div></div>
+    <div class="card" data-cap="Sua 스튜디오 여름 4 — 스카이 새틴 원숄더 드레스, 라벤더 배경 살짝 앞모습으로 허리 숙여 인사, 두 손 모음"><img src="img/sua-ss4-4.webp" alt="Sua 스튜디오 여름 4"><div class="cap">스카이 원숄더 · 인사 포즈</div></div>
+    <div class="card" data-cap="Sua 와인 벨벳 세트 1 — 와인 벨벳 스쿱 탑과 차콜 플리츠 미니, 민트 배경 정면 한 손 허리"><img src="img/sua-wset-1.webp" alt="Sua 와인 벨벳 세트 1"><div class="cap">와인 벨벳 · 정면</div></div>
+    <div class="card" data-cap="Sua 와인 벨벳 세트 2 — 와인 벨벳 스쿱 탑과 차콜 플리츠 미니, 크림 배경 스툴 앉은 정면 도도"><img src="img/sua-wset-2.webp" alt="Sua 와인 벨벳 세트 2"><div class="cap">와인 벨벳 · 스툴</div></div>
+    <div class="card" data-cap="Sua 와인 벨벳 세트 3 — 와인 벨벳 스쿱 탑과 차콜 플리츠 미니, 스카이 배경 긴 벤치에 다리 뻗고 앉아 올려다봄"><img src="img/sua-wset-3.webp" alt="Sua 와인 벨벳 세트 3"><div class="cap">와인 벨벳 · 벤치</div></div>
+    <div class="card" data-cap="Sua 와인 벨벳 세트 4 — 와인 벨벳 스쿱 탑과 차콜 플리츠 미니, 라벤더 배경 3/4 가까이 줌인 눈웃음"><img src="img/sua-wset-4.webp" alt="Sua 와인 벨벳 세트 4"><div class="cap">와인 벨벳 · 줌인</div></div>
+    <div class="card" data-cap="Sua 코디 추천 — 블랙 벨벳 퍼프 슬리브 스퀘어넥 미니드레스, 민트 배경 정면"><img src="img/sua-look-1.webp" alt="Sua 코디 추천 1"><div class="cap">블랙 벨벳 스퀘어넥</div></div>
+    <div class="card" data-cap="Sua 코디 추천 — 다크그린 벨벳 원숄더 미니드레스, 라벤더 배경 서서 3/4 도도한 표정"><img src="img/sua-look-2.webp" alt="Sua 코디 추천 2"><div class="cap">그린 벨벳 원숄더</div></div>
+    <div class="card" data-cap="Sua 디렉터 픽 — 버건디 새틴 스쿱 미니드레스, 크림 배경 긴 벤치 앉은 3/4 클로즈 졸린 듯 잔잔한 표정"><img src="img/sua-dir-4.webp" alt="Sua 디렉터 픽 4"><div class="cap">디렉터 픽 · 버건디 벤치</div></div>
+    <div class="card" data-cap="Sua 줌인 1 — 레드 새틴, 앉은 정면"><img src="img/sua-zoom2-1.webp" alt="Sua 줌인 1"><div class="cap">레드 새틴 · 앉은 정면</div></div>
+    <div class="card" data-cap="Sua 줌인 2 — 아이보리 오프숄더, 앉은 옆시선"><img src="img/sua-zoom2-2.webp" alt="Sua 줌인 2"><div class="cap">아이보리 오프숄더 · 앉은 옆시선</div></div>
+    <div class="card" data-cap="Sua 줌인 3 — 에메랄드 셔링, 앉은 3/4"><img src="img/sua-zoom2-3.webp" alt="Sua 줌인 3"><div class="cap">에메랄드 셔링 · 앉은 3/4</div></div>
+    <div class="card" data-cap="Sua 줌인 4 — 와인 새틴, 앉은 아래시선"><img src="img/sua-zoom2-4.webp" alt="Sua 줌인 4"><div class="cap">와인 새틴 · 앉은 아래시선</div></div>
+    <div class="card" data-cap="Sua 정면 1 — 화이트 오프숄더 숏, 한 손 허리"><img src="img/sua-front2-1.webp" alt="Sua 정면 1"><div class="cap">화이트 오프숄더 · 한 손 허리</div></div>
+    <div class="card" data-cap="Sua 정면 2 — 코랄 새틴 슬립 카울넥 숏, 양손 앞으로"><img src="img/sua-front5-2.webp" alt="Sua 정면 2"><div class="cap">코랄 새틴 슬립 · 카울넥</div></div>
+    <div class="card" data-cap="Sua 정면 3 — 라벤더 스퀘어넥 퍼프소매 셔링 숏, 도도"><img src="img/sua-front3-3.webp" alt="Sua 정면 3"><div class="cap">라벤더 퍼프 · 셔링</div></div>
+    <div class="card" data-cap="Sua 정면 4 — 로즈 새틴 스윗하트 리본 숏, 머리 살짝 기울임"><img src="img/sua-front3-4.webp" alt="Sua 정면 4"><div class="cap">로즈 새틴 · 리본</div></div>
+    <div class="card" data-cap="Sua 표정 — 와인 벨벳 스쿱 미니드레스, 민트 배경 줌인 윙크"><img src="img/sua-expr-1.webp" alt="Sua 표정 1"><div class="cap">표정 · 윙크</div></div>
+    <div class="card" data-cap="Sua 표정 — 와인 벨벳 스쿱 미니드레스, 스카이 배경 줌인 삐죽"><img src="img/sua-expr-3.webp" alt="Sua 표정 3"><div class="cap">표정 · 삐죽</div></div>
+    <div class="card" data-cap="Sua 표정 — 와인 벨벳 스쿱 미니드레스, 라벤더 배경 줌인 눈웃음"><img src="img/sua-expr-4.webp" alt="Sua 표정 4"><div class="cap">표정 · 눈웃음</div></div>
+    <div class="card" data-cap="Sua 표정 — 스카이 니트 스쿱 탑, 양손을 볼에 대고 눈을 동그랗게 뜬 귀여운 놀람, 머리부터 허리까지"><img src="img/sua-expr2-1.webp" alt="Sua 표정"><div class="cap">표정 · 놀람</div></div>
+    <div class="card" data-cap="Sua 표정 — 블랙 벨벳 미니 원피스, 팔짱을 끼고 고개를 돌린 삐죽 토라진 표정, 머리부터 무릎까지"><img src="img/sua-expr2-2.webp" alt="Sua 표정"><div class="cap">표정 · 삐죽</div></div>
+    <div class="card" data-cap="Sua 표정 — 에메랄드 새틴 미니 원피스, 고개를 갸웃하고 손가락으로 볼을 콕 찌르는 장난스러운 표정, 머리부터 무릎까지"><img src="img/sua-expr2-3.webp" alt="Sua"><div class="cap">표정 · 볼 콕</div></div>
   </div>
 </section>
 
@@ -673,31 +663,6 @@
   </div>
 </section>
 
-<section id="sua-pictorial">
-  <h2>스튜디오 화보 <span class="cnt">19</span></h2>
-  <div class="grid">
-    <div class="card" data-cap="Sua 화보 1 — 차콜 배경, 아이보리 테일러드 블레이저 드레스"><img src="img/sua-pic2-1.webp" alt="Sua 화보 1"><div class="cap">차콜 · 블레이저 드레스</div></div>
-    <div class="card" data-cap="Sua 화보 2 — 버건디 배경, 아이보리 새틴 카울 앉은"><img src="img/sua-pic-2.webp" alt="Sua 화보 2"><div class="cap">버건디 · 아이보리 카울</div></div>
-    <div class="card" data-cap="Sua 화보 3 — 세이지 배경, 에메랄드 오프숄더 돌아봄"><img src="img/sua-pic-3.webp" alt="Sua 화보 3"><div class="cap">세이지 · 에메랄드</div></div>
-    <div class="card" data-cap="Sua 화보 4 — 더스티 블루 배경, 딥 플럼 벨벳 원숄더 아래시선"><img src="img/sua-pic2-4.webp" alt="Sua 화보 4"><div class="cap">더스티 블루 · 벨벳 원숄더</div></div>
-    <div class="card" data-cap="Sua 스튜디오 미니 1 — 라벤더 시폰 오프숄더 미니 드레스, 민트 배경 정면 한 손 허리"><img src="img/sua-smini-1.webp" alt="Sua 스튜디오 미니 1"><div class="cap">라벤더 시폰 · 정면</div></div>
-    <div class="card" data-cap="Sua 스튜디오 미니 2 — 민트 시폰 홀터넥 미니 드레스, 크림 배경 큐브 앉은 3/4 눈웃음"><img src="img/sua-smini-2.webp" alt="Sua 스튜디오 미니 2"><div class="cap">민트 시폰 · 큐브</div></div>
-    <div class="card" data-cap="Sua 스튜디오 미니 3 — 피치 시폰 랩 미니 드레스, 스카이 배경 스툴 앉은 정면"><img src="img/sua-smini-3.webp" alt="Sua 스튜디오 미니 3"><div class="cap">피치 시폰 랩 · 스툴</div></div>
-    <div class="card" data-cap="Sua 스튜디오 미니 4 — 화이트 시폰 셔링 미니 드레스, 라벤더 배경 쿠션 앉아 올려다봄"><img src="img/sua-smini-4.webp" alt="Sua 스튜디오 미니 4"><div class="cap">화이트 시폰 · 쿠션</div></div>
-    <div class="card" data-cap="Sua 스튜디오 여름 1 — 화이트 새틴 오프숄더 드레스, 스카이 블루 배경에 서 있는 정면 눈웃음"><img src="img/sua-ss-1.webp" alt="Sua 스튜디오 여름 1"><div class="cap">화이트 오프숄더 · 스카이 배경</div></div>
-    <div class="card" data-cap="Sua 스튜디오 여름 2 — 코랄 새틴 카울 민소매 드레스, 민트 배경 큐브에 앉은 옆시선"><img src="img/sua-ss-2.webp" alt="Sua 스튜디오 여름 2"><div class="cap">코랄 카울 · 민트 배경</div></div>
-    <div class="card" data-cap="Sua 스튜디오 여름 3 — 레몬 니트 스쿱넥 드레스, 화이트 배경 스툴에 앉아 다리 꼬고 도도"><img src="img/sua-ss-3.webp" alt="Sua 스튜디오 여름 3"><div class="cap">레몬 니트 · 도도</div></div>
-    <div class="card" data-cap="Sua 스튜디오 여름 4 — 스카이 새틴 원숄더 드레스, 라벤더 배경 살짝 앞모습으로 허리 숙여 인사, 두 손 모음"><img src="img/sua-ss4-4.webp" alt="Sua 스튜디오 여름 4"><div class="cap">스카이 원숄더 · 인사 포즈</div></div>
-    <div class="card" data-cap="Sua 와인 벨벳 세트 1 — 와인 벨벳 스쿱 탑과 차콜 플리츠 미니, 민트 배경 정면 한 손 허리"><img src="img/sua-wset-1.webp" alt="Sua 와인 벨벳 세트 1"><div class="cap">와인 벨벳 · 정면</div></div>
-    <div class="card" data-cap="Sua 와인 벨벳 세트 2 — 와인 벨벳 스쿱 탑과 차콜 플리츠 미니, 크림 배경 스툴 앉은 정면 도도"><img src="img/sua-wset-2.webp" alt="Sua 와인 벨벳 세트 2"><div class="cap">와인 벨벳 · 스툴</div></div>
-    <div class="card" data-cap="Sua 와인 벨벳 세트 3 — 와인 벨벳 스쿱 탑과 차콜 플리츠 미니, 스카이 배경 긴 벤치에 다리 뻗고 앉아 올려다봄"><img src="img/sua-wset-3.webp" alt="Sua 와인 벨벳 세트 3"><div class="cap">와인 벨벳 · 벤치</div></div>
-    <div class="card" data-cap="Sua 와인 벨벳 세트 4 — 와인 벨벳 스쿱 탑과 차콜 플리츠 미니, 라벤더 배경 3/4 가까이 줌인 눈웃음"><img src="img/sua-wset-4.webp" alt="Sua 와인 벨벳 세트 4"><div class="cap">와인 벨벳 · 줌인</div></div>
-    <div class="card" data-cap="Sua 코디 추천 — 블랙 벨벳 퍼프 슬리브 스퀘어넥 미니드레스, 민트 배경 정면"><img src="img/sua-look-1.webp" alt="Sua 코디 추천 1"><div class="cap">블랙 벨벳 스퀘어넥</div></div>
-    <div class="card" data-cap="Sua 코디 추천 — 다크그린 벨벳 원숄더 미니드레스, 라벤더 배경 서서 3/4 도도한 표정"><img src="img/sua-look-2.webp" alt="Sua 코디 추천 2"><div class="cap">그린 벨벳 원숄더</div></div>
-    <div class="card" data-cap="Sua 디렉터 픽 — 버건디 새틴 스쿱 미니드레스, 크림 배경 긴 벤치 앉은 3/4 클로즈 졸린 듯 잔잔한 표정"><img src="img/sua-dir-4.webp" alt="Sua 디렉터 픽 4"><div class="cap">디렉터 픽 · 버건디 벤치</div></div>
-  </div>
-</section>
-
 <section id="sua-sep-all">
   <h2>세퍼레이트 <span class="cnt">17</span></h2>
   <div class="grid">
@@ -718,26 +683,6 @@
     <div class="card" data-cap="Sua 세퍼레이트 — 블랙 플레인 티와 차콜 플리츠 미니, 스카이 배경 스툴 앉은 정면"><img src="img/sua-sep5-3.webp" alt="Sua 세퍼레이트 추가 3"><div class="cap">블랙 티 · 차콜 플리츠</div></div>
     <div class="card" data-cap="Sua 세퍼레이트 — 스카이 새틴 오프숄더 탑과 화이트 플리츠 미니, 라벤더 배경 서서 3/4"><img src="img/sua-sep3-4.webp" alt="Sua 세퍼레이트 추가 4"><div class="cap">스카이 오프숄더 · 화이트 플리츠</div></div>
     <div class="card" data-cap="Sua 코디 추천 — 코랄 새틴 오프숄더 탑과 화이트 플리츠 미니, 크림 배경 큐브 앉은 3/4"><img src="img/sua-look-3.webp" alt="Sua 코디 추천 3"><div class="cap">코랄 오프숄더 · 화이트 플리츠</div></div>
-  </div>
-</section>
-
-<section id="sua-zoom">
-  <h2>줌인·정면 <span class="cnt">14</span></h2>
-  <div class="grid">
-    <div class="card" data-cap="Sua 줌인 1 — 레드 새틴, 앉은 정면"><img src="img/sua-zoom2-1.webp" alt="Sua 줌인 1"><div class="cap">레드 새틴 · 앉은 정면</div></div>
-    <div class="card" data-cap="Sua 줌인 2 — 아이보리 오프숄더, 앉은 옆시선"><img src="img/sua-zoom2-2.webp" alt="Sua 줌인 2"><div class="cap">아이보리 오프숄더 · 앉은 옆시선</div></div>
-    <div class="card" data-cap="Sua 줌인 3 — 에메랄드 셔링, 앉은 3/4"><img src="img/sua-zoom2-3.webp" alt="Sua 줌인 3"><div class="cap">에메랄드 셔링 · 앉은 3/4</div></div>
-    <div class="card" data-cap="Sua 줌인 4 — 와인 새틴, 앉은 아래시선"><img src="img/sua-zoom2-4.webp" alt="Sua 줌인 4"><div class="cap">와인 새틴 · 앉은 아래시선</div></div>
-    <div class="card" data-cap="Sua 정면 1 — 화이트 오프숄더 숏, 한 손 허리"><img src="img/sua-front2-1.webp" alt="Sua 정면 1"><div class="cap">화이트 오프숄더 · 한 손 허리</div></div>
-    <div class="card" data-cap="Sua 정면 2 — 코랄 새틴 슬립 카울넥 숏, 양손 앞으로"><img src="img/sua-front5-2.webp" alt="Sua 정면 2"><div class="cap">코랄 새틴 슬립 · 카울넥</div></div>
-    <div class="card" data-cap="Sua 정면 3 — 라벤더 스퀘어넥 퍼프소매 셔링 숏, 도도"><img src="img/sua-front3-3.webp" alt="Sua 정면 3"><div class="cap">라벤더 퍼프 · 셔링</div></div>
-    <div class="card" data-cap="Sua 정면 4 — 로즈 새틴 스윗하트 리본 숏, 머리 살짝 기울임"><img src="img/sua-front3-4.webp" alt="Sua 정면 4"><div class="cap">로즈 새틴 · 리본</div></div>
-    <div class="card" data-cap="Sua 표정 — 와인 벨벳 스쿱 미니드레스, 민트 배경 줌인 윙크"><img src="img/sua-expr-1.webp" alt="Sua 표정 1"><div class="cap">표정 · 윙크</div></div>
-    <div class="card" data-cap="Sua 표정 — 와인 벨벳 스쿱 미니드레스, 스카이 배경 줌인 삐죽"><img src="img/sua-expr-3.webp" alt="Sua 표정 3"><div class="cap">표정 · 삐죽</div></div>
-    <div class="card" data-cap="Sua 표정 — 와인 벨벳 스쿱 미니드레스, 라벤더 배경 줌인 눈웃음"><img src="img/sua-expr-4.webp" alt="Sua 표정 4"><div class="cap">표정 · 눈웃음</div></div>
-    <div class="card" data-cap="Sua 표정 — 스카이 니트 스쿱 탑, 양손을 볼에 대고 눈을 동그랗게 뜬 귀여운 놀람, 머리부터 허리까지"><img src="img/sua-expr2-1.webp" alt="Sua 표정"><div class="cap">표정 · 놀람</div></div>
-    <div class="card" data-cap="Sua 표정 — 블랙 벨벳 미니 원피스, 팔짱을 끼고 고개를 돌린 삐죽 토라진 표정, 머리부터 무릎까지"><img src="img/sua-expr2-2.webp" alt="Sua 표정"><div class="cap">표정 · 삐죽</div></div>
-    <div class="card" data-cap="Sua 표정 — 에메랄드 새틴 미니 원피스, 고개를 갸웃하고 손가락으로 볼을 콕 찌르는 장난스러운 표정, 머리부터 무릎까지"><img src="img/sua-expr2-3.webp" alt="Sua"><div class="cap">표정 · 볼 콕</div></div>
   </div>
 </section>
 
@@ -805,39 +750,21 @@
   </div>
 </section>
 
-<section id="yuna-style">
-  <h2>스타일</h2>
+<section id="yuna-studio">
+  <h2>스튜디오 <span class="cnt">16</span></h2>
   <div class="grid">
     <div class="card" data-cap="Yuna 스타일 1 — 샴페인 골드 새틴 드레이프, 허리에 손 얹은 3/4"><img src="img/yuna-style-w1.webp" alt="Yuna 스타일 1"><div class="cap">샴페인 골드 드레이프 · 3/4</div></div>
     <div class="card" data-cap="Yuna 스타일 2 — 화이트 새틴 오프숄더, 머리 만지며 눈웃음"><img src="img/yuna-style-w2.webp" alt="Yuna 스타일 2"><div class="cap">화이트 오프숄더 · 눈웃음</div></div>
     <div class="card" data-cap="Yuna 스타일 3 — 라벤더 셔링 시폰, 큐브에 앉아 옆시선"><img src="img/yuna-style-w3.webp" alt="Yuna 스타일 3"><div class="cap">라벤더 셔링 · 앉은 옆시선</div></div>
     <div class="card" data-cap="Yuna 스타일 4 — 딥틸 벨벳 스윗하트, 워킹 캔디드"><img src="img/yuna-style-w4.webp" alt="Yuna 스타일 4"><div class="cap">딥틸 벨벳 · 워킹</div></div>
-  </div>
-</section>
-
-<section id="yuna-studio2">
-  <h2>스튜디오 2차</h2>
-  <div class="grid">
     <div class="card" data-cap="Yuna 스튜디오 2차 1 — 더스티 로즈 새틴 카울, 정면 눈웃음"><img src="img/yuna-studio2-w1.webp" alt="Yuna 스튜디오 2차 1"><div class="cap">로즈 새틴 카울 · 정면 눈웃음</div></div>
     <div class="card" data-cap="Yuna 스튜디오 2차 2 — 로열 퍼플 벨벳 스쿱, 허리에 손 3/4"><img src="img/yuna-studio2-w2.webp" alt="Yuna 스튜디오 2차 2"><div class="cap">퍼플 벨벳 · 3/4</div></div>
     <div class="card" data-cap="Yuna 스튜디오 2차 3 — 미드나잇 블루 새틴 슬립, 큐브에 앉은 정면"><img src="img/yuna-studio2-w3.webp" alt="Yuna 스튜디오 2차 3"><div class="cap">미드나잇 슬립 · 앉은 정면</div></div>
     <div class="card" data-cap="Yuna 스튜디오 2차 4 — 민트 새틴 스퀘어넥, 워킹 정면"><img src="img/yuna-studio2-w4.webp" alt="Yuna 스튜디오 2차 4"><div class="cap">민트 새틴 · 워킹</div></div>
-  </div>
-</section>
-
-<section id="yuna-studio3">
-  <h2>Yuna · 스튜디오 3차</h2>
-  <div class="grid">
     <div class="card" data-cap="Yuna 스튜디오 3차 1 — 스카이블루 새틴 슬립 드레스, 가는 스트랩 딥 스쿱 정면 눈웃음"><img src="img/yuna-studio3-w1.webp" alt="Yuna 스튜디오 3차 1"><div class="cap">스카이 슬립 · 정면</div></div>
     <div class="card" data-cap="Yuna 스튜디오 3차 2 — 화이트 새틴 오프숄더 미니 드레스, 큐브에 앉은 3/4"><img src="img/yuna-studio3-w2.webp" alt="Yuna 스튜디오 3차 2"><div class="cap">화이트 오프숄더 · 앉은 컷</div></div>
     <div class="card" data-cap="Yuna 스튜디오 3차 3 — 코랄 새틴 카울 슬립 드레스, 걸어오며 윙크"><img src="img/yuna-studio3-w3.webp" alt="Yuna 스튜디오 3차 3"><div class="cap">코랄 카울 · 워킹 윙크</div></div>
     <div class="card" data-cap="Yuna 스튜디오 3차 4 — 민트 새틴 홀터 미니 드레스, 한 손 허리에 턱 든 도도한 컷"><img src="img/yuna-studio3-w4.webp" alt="Yuna 스튜디오 3차 4"><div class="cap">민트 홀터 · 도도</div></div>
-  </div>
-</section>
-
-<section id="yuna-sit">
-  <h2>앉은 컷</h2>
-  <div class="grid">
     <div class="card" data-cap="Yuna 앉은 1 — 스칼렛 레드 벨벳 스쿱, 큐브에 앉은 정면 눈웃음"><img src="img/yuna-sit-w1.webp" alt="Yuna 앉은 1"><div class="cap">스칼렛 벨벳 · 앉은 정면</div></div>
     <div class="card" data-cap="Yuna 앉은 2 — 아이보리 새틴 카울, 의자에 앉은 3/4"><img src="img/yuna-sit-w2.webp" alt="Yuna 앉은 2"><div class="cap">아이보리 카울 · 의자 3/4</div></div>
     <div class="card" data-cap="Yuna 앉은 3 — 샴페인 골드 벨벳, 벤치에 옆으로 앉아 돌아보기"><img src="img/yuna-sit-w3.webp" alt="Yuna 앉은 3"><div class="cap">샴페인 벨벳 · 옆앉아 돌아보기</div></div>
@@ -856,7 +783,7 @@
 </section>
 
 <section id="yuna-pool">
-  <h2>수영장</h2>
+  <h2>수영장·수영복 <span class="cnt">28</span></h2>
   <div class="grid">
     <div class="card" data-cap="Yuna 수영장 1 — 블랙 홀터 원피스, 풀 가장자리 정면 눈웃음"><img src="img/yuna-pool-w1.webp" alt="Yuna 수영장 1"><div class="cap">블랙 홀터 · 풀 가장자리</div></div>
     <div class="card" data-cap="Yuna 수영장 2 — 에메랄드 딥 스쿱 원피스, 가장자리에 앉아 다리 담그기"><img src="img/yuna-pool-w2.webp" alt="Yuna 수영장 2"><div class="cap">에메랄드 · 앉아 담그기</div></div>
@@ -878,12 +805,6 @@
     <div class="card" data-cap="Yuna 수영장 18 — 루비 레드 글로시 홀터 원피스, 선베드에 기대 누워 선글라스 든 컷"><img src="img/yuna-pool-w18.webp" alt="Yuna 수영장 18"><div class="cap">루비 홀터 · 선베드</div></div>
     <div class="card" data-cap="Yuna 수영장 19 — 화이트 글로시 스퀘어넥 원피스, 얕은 물에 서서 손으로 물결 만드는 컷"><img src="img/yuna-pool-w19.webp" alt="Yuna 수영장 19"><div class="cap">화이트 · 얕은 물속</div></div>
     <div class="card" data-cap="Yuna 수영장 20 — 틸 새틴 딥 스쿱 원피스, 가장자리에 앉아 발만 담그고 물장구치는 컷"><img src="img/yuna-pool-w20.webp" alt="Yuna 수영장 20"><div class="cap">틸 · 발 담그기</div></div>
-  </div>
-</section>
-
-<section id="yuna-swim">
-  <h2>Yuna · 스튜디오 수영복</h2>
-  <div class="grid">
     <div class="card" data-cap="Yuna 스튜디오 수영복 1 — 블랙 글로시 홀터 딥 스쿱 원피스, 정면 전신 눈웃음"><img src="img/yuna-swim-w1.webp" alt="Yuna 스튜디오 수영복 1"><div class="cap">블랙 홀터 · 정면</div></div>
     <div class="card" data-cap="Yuna 스튜디오 수영복 2 — 레드 새틴 스퀘어넥 원피스, 바닥에 앉아 뒤로 손 짚고 올려다보는 하이앵글"><img src="img/yuna-swim-w2.webp" alt="Yuna 스튜디오 수영복 2"><div class="cap">레드 새틴 · 하이앵글</div></div>
     <div class="card" data-cap="Yuna 스튜디오 수영복 3 — 에메랄드 새틴 딥 스쿱 원피스, 큐브에 앉은 정면"><img src="img/yuna-swim-w3.webp" alt="Yuna 스튜디오 수영복 3"><div class="cap">에메랄드 스쿱 · 앉은 컷</div></div>
@@ -896,7 +817,7 @@
 </section>
 
 <section id="yuna-life">
-  <h2>Yuna · 일상</h2>
+  <h2>일상</h2>
   <div class="grid">
     <div class="card" data-cap="Yuna 일상 1 — 카페 창가 테이블에 앉아 턱을 손에 괸 컷, 화이트 오프숄더 상의와 스카이 새틴 스커트"><img src="img/yuna-life-w1.webp" alt="Yuna 일상 1"><div class="cap">카페 · 턱 괸 창가</div></div>
     <div class="card" data-cap="Yuna 일상 2 — 공원 나무길을 걸으며 아이스커피를 든 산책 컷, 민트 새틴 캐미솔과 화이트 새틴 쇼츠"><img src="img/yuna-life-w2.webp" alt="Yuna 일상 2"><div class="cap">공원 · 아이스커피 산책</div></div>
@@ -906,7 +827,7 @@
 </section>
 
 <section id="yuna-office">
-  <h2>Yuna · 오피스</h2>
+  <h2>오피스</h2>
   <div class="grid">
     <div class="card" data-cap="Yuna 오피스 1 — 화이트 새틴 오프숄더 상의와 블랙 새틴 펜슬스커트, 창가에서 커피 든 컷"><img src="img/yuna-office-w1.webp" alt="Yuna 오피스 1"><div class="cap">화이트 오프숄더 · 창가 커피</div></div>
     <div class="card" data-cap="Yuna 오피스 2 — 블랙 새틴 상의와 버건디 새틴 펜슬스커트, 책상 의자에 다리 꼬고 앉은 컷"><img src="img/yuna-office-w2.webp" alt="Yuna 오피스 2"><div class="cap">블랙 · 책상 앉은 컷</div></div>
@@ -916,32 +837,32 @@
 </section>
 
 <section id="yuna-jeans">
-  <h2>Yuna · 청바지</h2>
+  <h2>청바지 <span class="newpill">NEW</span></h2>
   <div class="grid">
-    <div class="card" data-cap="Yuna 청바지 1 — 화이트 새틴 오프숄더 상의와 연청 스키니진, 한 손 주머니에 넣은 정면 눈웃음"><img src="img/yuna-jeans-w1.webp" alt="Yuna 청바지 1"><div class="cap">화이트 오프숄더 · 연청</div></div>
-    <div class="card" data-cap="Yuna 청바지 2 — 블랙 새틴 딥 스쿱 상의와 다크 인디고 스키니진, 큐브에 앉은 3/4"><img src="img/yuna-jeans-w2.webp" alt="Yuna 청바지 2"><div class="cap">블랙 스쿱 · 인디고</div></div>
-    <div class="card" data-cap="Yuna 청바지 3 — 로즈핑크 니트 스퀘어넥 상의와 화이트 스키니진, 걸어오는 워킹 컷"><img src="img/yuna-jeans-w3.webp" alt="Yuna 청바지 3"><div class="cap">로즈 니트 · 화이트진</div></div>
-    <div class="card" data-cap="Yuna 청바지 4 — 에메랄드 새틴 캐미솔과 블랙 스키니진, 벽에 기대 팔짱 끼고 옆을 보는 컷"><img src="img/yuna-jeans-w4.webp" alt="Yuna 청바지 4"><div class="cap">에메랄드 · 블랙진</div></div>
+    <div class="card is-new" data-cap="Yuna 청바지 1 — 화이트 새틴 오프숄더 상의와 연청 스키니진, 한 손 주머니에 넣은 정면 눈웃음"><img src="img/yuna-jeans-w1.webp" alt="Yuna 청바지 1"><div class="cap">화이트 오프숄더 · 연청</div></div>
+    <div class="card is-new" data-cap="Yuna 청바지 2 — 블랙 새틴 딥 스쿱 상의와 다크 인디고 스키니진, 큐브에 앉은 3/4"><img src="img/yuna-jeans-w2.webp" alt="Yuna 청바지 2"><div class="cap">블랙 스쿱 · 인디고</div></div>
+    <div class="card is-new" data-cap="Yuna 청바지 3 — 로즈핑크 니트 스퀘어넥 상의와 화이트 스키니진, 걸어오는 워킹 컷"><img src="img/yuna-jeans-w3.webp" alt="Yuna 청바지 3"><div class="cap">로즈 니트 · 화이트진</div></div>
+    <div class="card is-new" data-cap="Yuna 청바지 4 — 에메랄드 새틴 캐미솔과 블랙 스키니진, 벽에 기대 팔짱 끼고 옆을 보는 컷"><img src="img/yuna-jeans-w4.webp" alt="Yuna 청바지 4"><div class="cap">에메랄드 · 블랙진</div></div>
   </div>
 </section>
 
 <section id="yuna-back">
-  <h2>Yuna · 뒷모습</h2>
+  <h2>뒷모습 <span class="newpill">NEW</span></h2>
   <div class="grid">
-    <div class="card" data-cap="Yuna 뒷모습 1 — 블랙 새틴 백리스 미니 드레스, 등 뒤 3/4에서 어깨 너머로 돌아보는 컷"><img src="img/yuna-back-w1.webp" alt="Yuna 뒷모습 1"><div class="cap">블랙 백리스 · 돌아보기</div></div>
-    <div class="card" data-cap="Yuna 뒷모습 2 — 레드 새틴 로우백 미니 드레스, 머리를 한쪽으로 넘긴 정뒷모습에 옆얼굴 프로필"><img src="img/yuna-back-w2.webp" alt="Yuna 뒷모습 2"><div class="cap">레드 로우백 · 정뒷모습</div></div>
-    <div class="card" data-cap="Yuna 뒷모습 3 — 에메랄드 벨벳 크로스백 미니 드레스, 걸어가다 돌아보며 웃는 컷"><img src="img/yuna-back-w3.webp" alt="Yuna 뒷모습 3"><div class="cap">에메랄드 크로스백 · 워킹</div></div>
-    <div class="card" data-cap="Yuna 뒷모습 4 — 화이트 새틴 크로스 스트랩 백 미니 드레스, 큐브에 앉은 뒤쪽 3/4에서 얼굴 돌린 컷"><img src="img/yuna-back-w4.webp" alt="Yuna 뒷모습 4"><div class="cap">화이트 스트랩백 · 앉은 컷</div></div>
+    <div class="card is-new" data-cap="Yuna 뒷모습 1 — 블랙 새틴 백리스 미니 드레스, 등 뒤 3/4에서 어깨 너머로 돌아보는 컷"><img src="img/yuna-back-w1.webp" alt="Yuna 뒷모습 1"><div class="cap">블랙 백리스 · 돌아보기</div></div>
+    <div class="card is-new" data-cap="Yuna 뒷모습 2 — 레드 새틴 로우백 미니 드레스, 머리를 한쪽으로 넘긴 정뒷모습에 옆얼굴 프로필"><img src="img/yuna-back-w2.webp" alt="Yuna 뒷모습 2"><div class="cap">레드 로우백 · 정뒷모습</div></div>
+    <div class="card is-new" data-cap="Yuna 뒷모습 3 — 에메랄드 벨벳 크로스백 미니 드레스, 걸어가다 돌아보며 웃는 컷"><img src="img/yuna-back-w3.webp" alt="Yuna 뒷모습 3"><div class="cap">에메랄드 크로스백 · 워킹</div></div>
+    <div class="card is-new" data-cap="Yuna 뒷모습 4 — 화이트 새틴 크로스 스트랩 백 미니 드레스, 큐브에 앉은 뒤쪽 3/4에서 얼굴 돌린 컷"><img src="img/yuna-back-w4.webp" alt="Yuna 뒷모습 4"><div class="cap">화이트 스트랩백 · 앉은 컷</div></div>
   </div>
 </section>
 
 <section id="yuna-bold">
-  <h2>Yuna · 파격</h2>
+  <h2>파격 <span class="newpill">NEW</span></h2>
   <div class="grid">
-    <div class="card" data-cap="Yuna 파격 1 — 스칼렛 레드 벨벳 미니 드레스, 깊게 파인 스쿱과 하이 슬릿 사이로 다리 내민 워킹 컷"><img src="img/yuna-bold-w1.webp" alt="Yuna 파격 1"><div class="cap">스칼렛 벨벳 · 하이 슬릿</div></div>
-    <div class="card" data-cap="Yuna 파격 2 — 블랙 새틴 오프숄더 미니 드레스, 깊게 파인 스쿱 목선에 한 손 허리 정면"><img src="img/yuna-bold-w2.webp" alt="Yuna 파격 2"><div class="cap">블랙 오프숄더 · 스쿱</div></div>
-    <div class="card" data-cap="Yuna 파격 3 — 코발트 새틴 바디콘 미니 드레스, 깊게 파인 스쿱 목선 워킹 컷"><img src="img/yuna-bold-w3.webp" alt="Yuna 파격 3"><div class="cap">코발트 바디콘 · 스쿱</div></div>
-    <div class="card" data-cap="Yuna 파격 4 — 와인 메탈릭 마이크로 미니 드레스, 큐브 끝에 걸터앉아 다리 나란히 내린 하이앵글 옆각도"><img src="img/yuna-bold-w4.webp" alt="Yuna 파격 4"><div class="cap">와인 메탈릭 · 하이앵글</div></div>
+    <div class="card is-new" data-cap="Yuna 파격 1 — 스칼렛 레드 벨벳 미니 드레스, 깊게 파인 스쿱과 하이 슬릿 사이로 다리 내민 워킹 컷"><img src="img/yuna-bold-w1.webp" alt="Yuna 파격 1"><div class="cap">스칼렛 벨벳 · 하이 슬릿</div></div>
+    <div class="card is-new" data-cap="Yuna 파격 2 — 블랙 새틴 오프숄더 미니 드레스, 깊게 파인 스쿱 목선에 한 손 허리 정면"><img src="img/yuna-bold-w2.webp" alt="Yuna 파격 2"><div class="cap">블랙 오프숄더 · 스쿱</div></div>
+    <div class="card is-new" data-cap="Yuna 파격 3 — 코발트 새틴 바디콘 미니 드레스, 깊게 파인 스쿱 목선 워킹 컷"><img src="img/yuna-bold-w3.webp" alt="Yuna 파격 3"><div class="cap">코발트 바디콘 · 스쿱</div></div>
+    <div class="card is-new" data-cap="Yuna 파격 4 — 와인 메탈릭 마이크로 미니 드레스, 큐브 끝에 걸터앉아 다리 나란히 내린 하이앵글 옆각도"><img src="img/yuna-bold-w4.webp" alt="Yuna 파격 4"><div class="cap">와인 메탈릭 · 하이앵글</div></div>
   </div>
 </section>
 
@@ -1062,27 +983,27 @@
     btnYuna.classList.toggle('active', name === 'yuna');
     if (name === 'ciel'){
       albumTitle.textContent = "Ciel's Album";
-      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 254';
+      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 255';
       document.title = "Ciel's Album";
     } else if (name === 'sena'){
       albumTitle.textContent = "Sena's Album";
-      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 50컷) · 버전 254';
+      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 50컷) · 버전 255';
       document.title = "Sena's Album";
     } else if (name === 'sua'){
       albumTitle.textContent = "Sua's Album";
-      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 223컷) · 버전 254';
+      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 223컷) · 버전 255';
       document.title = "Sua's Album";
     } else if (name === 'lena'){
       albumTitle.textContent = "Lena's Album";
-      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 0컷) · 버전 254';
+      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 0컷) · 버전 255';
       document.title = "Lena's Album";
     } else if (name === 'yuna'){
       albumTitle.textContent = "Yuna's Album";
-      albumSub.textContent = '긴 웨이브 청순 성숙상 기준의 컷 모음 (총 75컷) · 버전 254';
+      albumSub.textContent = '긴 웨이브 청순 성숙상 기준의 컷 모음 (총 75컷) · 버전 255';
       document.title = "Yuna's Album";
     } else {
       albumTitle.textContent = "Mia's Album";
-      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 254';
+      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 177컷) · 버전 255';
       document.title = "Mia's Album";
     }
     cards = allCards.filter(c => c.offsetParent !== null);
