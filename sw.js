@@ -1,7 +1,7 @@
-const CACHE = 'influencer-album-v287';
+const CACHE = 'influencer-album-v288';
 const IMGCACHE = 'album-images-v10';
 const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png',
-  './img/face-anchor.webp', './img/sua-anchor-main2.webp', './img/ciel-anchor-main.webp', './img/sena-anchor-main.webp', './img/lena-anchor-main5.webp', './img/yuna-anchor-main2.webp'];
+  './img/face-anchor.webp', './img/sua-anchor-main2.webp', './img/ciel-anchor-main.webp', './img/sena-anchor-main.webp', './img/lena-anchor-main5f.webp', './img/yuna-anchor-main2.webp'];
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => Promise.allSettled(CORE.map((u) => c.add(u)))).then(() => self.skipWaiting()));
 });
