@@ -59,7 +59,7 @@
 
 | 섹션 | id | 접두사 | 컷 수 |
 |---|---|---|---|
-| Yuna 마스터 | yuna-master | yuna-w | 9 |
+| Yuna 마스터 | yuna-master | yuna-w | 11 |
 | Yuna 스튜디오 | yuna-studio | yuna-style-w·studio2-w·studio3-w·sit-w·bold-w | 20 |
 | Yuna 세퍼레이트 | yuna-sep | yuna-sep-w | 4 |
 | Yuna 수영장·수영복 | yuna-pool | yuna-pool-w·swim-w·swim2-w | 32 |
@@ -240,3 +240,6 @@ push 후 1~2분 기다리고 라이브에서 직접 확인한다. 확인 전에 
 
 ## 부록 (2026-11-16, 버전 293): Yuna 마스터 7·8·9 재생성 교체
 - 마스터 1~6만 기준으로 다시 뽑아 포즈를 서로 다르게 한 3장으로 교체 (사용자 승인): 7 에메랄드 벨벳 워킹 옆시선 = `yuna-w11f.webp` · 8 샴페인 카울 한 손 허리 정면 = `yuna-w12f.webp` · 9 아이보리 큐브 옆으로 앉아 돌아보기 = `yuna-w13f.webp`. 구 w8f~w10f 삭제. 원본은 imagine_media의 master7/8/9-fix 파일.
+
+## 부록 (2026-11-16, 버전 294): Yuna 마스터 10·11 추가
+- 카메라를 보지 않는 시선 컷 2장을 마스터로 추가 (사용자 승인): 10 스칼렛 새틴 슬립 머리 만지며 아래 시선 = `yuna-w14f.webp` · 11 네이비 새틴 벤치 앉은 옆시선 = `yuna-w15f.webp`. NEW 배지는 이 2장으로 이동. Yuna 총 91컷, 앨범 총 567컷.
