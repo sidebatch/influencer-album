@@ -52,13 +52,13 @@
 <body>
 <header>
   <h1 id="album-title">Mia's Album</h1>
-  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 169컷) · 버전 313</p>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 169컷) · 버전 314</p>
   <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
     <button type="button" class="char-btn active" id="btn-mia">Mia</button>
     <button type="button" class="char-btn" id="btn-sua">Sua</button>
-    <button type="button" class="char-btn" id="btn-ciel">Ciel</button>
-    <button type="button" class="char-btn" id="btn-sena">Sena</button>
-    <button type="button" class="char-btn" id="btn-lena">Lena</button>
+    <button type="button" class="char-btn" id="btn-ciel" style="display:none">Ciel</button>
+    <button type="button" class="char-btn" id="btn-sena" style="display:none">Sena</button>
+    <button type="button" class="char-btn" id="btn-lena" style="display:none">Lena</button>
     <button type="button" class="char-btn" id="btn-yuna">Yuna</button>
     <button type="button" class="char-btn" id="btn-ian">Ian</button>
     <button type="button" class="char-btn" id="btn-noah">Noah</button>
@@ -1272,43 +1272,43 @@
     btnKai.classList.toggle('active', name === 'kai');
     if (name === 'ciel'){
       albumTitle.textContent = "Ciel's Album";
-      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 313';
+      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 314';
       document.title = "Ciel's Album";
     } else if (name === 'sena'){
       albumTitle.textContent = "Sena's Album";
-      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 65컷) · 버전 313';
+      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 65컷) · 버전 314';
       document.title = "Sena's Album";
     } else if (name === 'sua'){
       albumTitle.textContent = "Sua's Album";
-      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 223컷) · 버전 313';
+      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 223컷) · 버전 314';
       document.title = "Sua's Album";
     } else if (name === 'lena'){
       albumTitle.textContent = "Lena's Album";
-      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 7컷) · 버전 313';
+      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 7컷) · 버전 314';
       document.title = "Lena's Album";
     } else if (name === 'yuna'){
       albumTitle.textContent = "Yuna's Album";
-      albumSub.textContent = '긴 웨이브 청순 성숙상 기준의 컷 모음 (총 101컷) · 버전 313';
+      albumSub.textContent = '긴 웨이브 청순 성숙상 기준의 컷 모음 (총 101컷) · 버전 314';
       document.title = "Yuna's Album";
     } else if (name === 'ian'){
       albumTitle.textContent = "Ian's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 25컷) · 버전 313';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 25컷) · 버전 314';
       document.title = "Ian's Album";
     } else if (name === 'noah'){
       albumTitle.textContent = "Noah's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 25컷) · 버전 313';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 25컷) · 버전 314';
       document.title = "Noah's Album";
     } else if (name === 'jay'){
       albumTitle.textContent = "Jay's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 25컷) · 버전 313';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 25컷) · 버전 314';
       document.title = "Jay's Album";
     } else if (name === 'kai'){
       albumTitle.textContent = "Kai's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 25컷) · 버전 313';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 25컷) · 버전 314';
       document.title = "Kai's Album";
     } else {
       albumTitle.textContent = "Mia's Album";
-      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 169컷) · 버전 313';
+      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 169컷) · 버전 314';
       document.title = "Mia's Album";
     }
     cards = allCards.filter(c => c.offsetParent !== null);
@@ -1325,12 +1325,9 @@
   btnNoah.addEventListener('click', ()=> selectChar('noah'));
   btnJay.addEventListener('click', ()=> selectChar('jay'));
   btnKai.addEventListener('click', ()=> selectChar('kai'));
-  if (location.hash === '#ciel' || location.hash.startsWith('#ciel-')) selectChar('ciel');
-  else if (location.hash === '#sena' || location.hash.startsWith('#sena-')) selectChar('sena');
-  else if (location.hash === '#sua' || location.hash.startsWith('#sua-')) selectChar('sua');
-  else if (location.hash === '#lena' || location.hash.startsWith('#lena-')) selectChar('lena');
+  if (location.hash === '#sua' || location.hash.startsWith('#sua-')) selectChar('sua');
   else if (location.hash === '#yuna' || location.hash.startsWith('#yuna-')) selectChar('yuna');
-  else { try { const saved = localStorage.getItem('album-char'); if (saved === 'ciel' || saved === 'sena' || saved === 'sua' || saved === 'lena' || saved === 'yuna' || saved === 'ian' || saved === 'noah' || saved === 'jay' || saved === 'kai') selectChar(saved); } catch(e) {} }
+  else { try { const saved = localStorage.getItem('album-char'); if (saved === 'sua' || saved === 'yuna' || saved === 'ian' || saved === 'noah' || saved === 'jay' || saved === 'kai') selectChar(saved); } catch(e) {} }
   document.querySelector('#lightbox .close').addEventListener('click', closeLb);
   document.querySelector('#lightbox .prev').addEventListener('click', (e)=>{ e.stopPropagation(); show(cur-1); });
   document.querySelector('#lightbox .next').addEventListener('click', (e)=>{ e.stopPropagation(); show(cur+1); });
