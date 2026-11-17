@@ -52,7 +52,7 @@
 <body>
 <header>
   <h1 id="album-title">Mia's Album</h1>
-  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 169컷) · 버전 307</p>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 169컷) · 버전 308</p>
   <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
     <button type="button" class="char-btn active" id="btn-mia">Mia</button>
     <button type="button" class="char-btn" id="btn-sua">Sua</button>
@@ -60,6 +60,7 @@
     <button type="button" class="char-btn" id="btn-sena">Sena</button>
     <button type="button" class="char-btn" id="btn-lena">Lena</button>
     <button type="button" class="char-btn" id="btn-yuna">Yuna</button>
+    <button type="button" class="char-btn" id="btn-ian">Ian</button>
   </div>
 </header>
 <nav id="nav-mia">
@@ -106,6 +107,10 @@
   <a href="#yuna-office">오피스</a>
   <a href="#yuna-jeans">청바지</a>
   <a href="#yuna-back">뒷모습</a>
+</nav>
+<nav id="nav-ian" hidden>
+  <a href="#ian-anchor">기준 얼굴</a>
+  <a href="#ian-studio">스튜디오</a>
 </nav>
 
 <div id="album-mia">
@@ -905,6 +910,28 @@
 
 </div>
 
+<div id="album-ian" hidden>
+
+<section id="ian-anchor">
+  <h2>기준 얼굴</h2>
+  <div class="card anchor-card" data-cap="Ian 기준 얼굴 — 블랙 수트, 주머니에 손 정면 메인샷">
+    <img loading="lazy" decoding="async" src="img/ian-anchor-main.webp" alt="Ian 기준 얼굴">
+    <div class="cap">기준 얼굴 — 블랙 수트 정면 메인샷</div>
+  </div>
+</section>
+
+<section id="ian-studio">
+  <h2>스튜디오 <span class="cnt">4</span></h2>
+  <div class="grid">
+    <div class="card is-new" data-cap="Ian 스튜디오 1 — 블랙 수트와 흰 셔츠, 주머니에 손 정면"><img loading="lazy" decoding="async" src="img/ian-w1.webp" alt="Ian 스튜디오 1"><div class="cap">블랙 수트 · 정면</div></div>
+    <div class="card is-new" data-cap="Ian 스튜디오 2 — 크림 니트와 베이지 슬랙스, 큐브에 앉은 옆모습"><img loading="lazy" decoding="async" src="img/ian-w2.webp" alt="Ian 스튜디오 2"><div class="cap">크림 니트 · 앉은 옆모습</div></div>
+    <div class="card is-new" data-cap="Ian 스튜디오 3 — 데님 재킷과 흰 티, 워킹 옆시선"><img loading="lazy" decoding="async" src="img/ian-w3.webp" alt="Ian 스튜디오 3"><div class="cap">데님 재킷 · 워킹</div></div>
+    <div class="card is-new" data-cap="Ian 스튜디오 4 — 와인 벨벳 블레이저와 블랙 터틀넥, 머리 만지며 선 3/4"><img loading="lazy" decoding="async" src="img/ian-w4.webp" alt="Ian 스튜디오 4"><div class="cap">와인 벨벳 · 3/4</div></div>
+  </div>
+</section>
+
+</div>
+
 <footer>사진을 누르면 크게 볼 수 있고, 저장도 할 수 있어요</footer>
 
 <div id="lightbox">
@@ -1019,6 +1046,7 @@
   const btnSua = document.getElementById('btn-sua');
   const btnLena = document.getElementById('btn-lena');
   const btnYuna = document.getElementById('btn-yuna');
+  const btnIan = document.getElementById('btn-ian');
   function selectChar(name){
     document.getElementById('album-mia').hidden = name !== 'mia';
     document.getElementById('nav-mia').hidden = name !== 'mia';
@@ -1032,35 +1060,42 @@
     document.getElementById('nav-lena').hidden = name !== 'lena';
     document.getElementById('album-yuna').hidden = name !== 'yuna';
     document.getElementById('nav-yuna').hidden = name !== 'yuna';
+    document.getElementById('album-ian').hidden = name !== 'ian';
+    document.getElementById('nav-ian').hidden = name !== 'ian';
     btnMia.classList.toggle('active', name === 'mia');
     btnCiel.classList.toggle('active', name === 'ciel');
     btnSena.classList.toggle('active', name === 'sena');
     btnSua.classList.toggle('active', name === 'sua');
     btnLena.classList.toggle('active', name === 'lena');
     btnYuna.classList.toggle('active', name === 'yuna');
+    btnIan.classList.toggle('active', name === 'ian');
     if (name === 'ciel'){
       albumTitle.textContent = "Ciel's Album";
-      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 307';
+      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 308';
       document.title = "Ciel's Album";
     } else if (name === 'sena'){
       albumTitle.textContent = "Sena's Album";
-      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 65컷) · 버전 307';
+      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 65컷) · 버전 308';
       document.title = "Sena's Album";
     } else if (name === 'sua'){
       albumTitle.textContent = "Sua's Album";
-      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 223컷) · 버전 307';
+      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 223컷) · 버전 308';
       document.title = "Sua's Album";
     } else if (name === 'lena'){
       albumTitle.textContent = "Lena's Album";
-      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 7컷) · 버전 307';
+      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 7컷) · 버전 308';
       document.title = "Lena's Album";
     } else if (name === 'yuna'){
       albumTitle.textContent = "Yuna's Album";
-      albumSub.textContent = '긴 웨이브 청순 성숙상 기준의 컷 모음 (총 101컷) · 버전 307';
+      albumSub.textContent = '긴 웨이브 청순 성숙상 기준의 컷 모음 (총 101컷) · 버전 308';
       document.title = "Yuna's Album";
+    } else if (name === 'ian'){
+      albumTitle.textContent = "Ian's Album";
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 5컷) · 버전 308';
+      document.title = "Ian's Album";
     } else {
       albumTitle.textContent = "Mia's Album";
-      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 169컷) · 버전 307';
+      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 169컷) · 버전 308';
       document.title = "Mia's Album";
     }
     cards = allCards.filter(c => c.offsetParent !== null);
@@ -1073,12 +1108,13 @@
   btnSua.addEventListener('click', ()=> selectChar('sua'));
   btnLena.addEventListener('click', ()=> selectChar('lena'));
   btnYuna.addEventListener('click', ()=> selectChar('yuna'));
+  btnIan.addEventListener('click', ()=> selectChar('ian'));
   if (location.hash === '#ciel' || location.hash.startsWith('#ciel-')) selectChar('ciel');
   else if (location.hash === '#sena' || location.hash.startsWith('#sena-')) selectChar('sena');
   else if (location.hash === '#sua' || location.hash.startsWith('#sua-')) selectChar('sua');
   else if (location.hash === '#lena' || location.hash.startsWith('#lena-')) selectChar('lena');
   else if (location.hash === '#yuna' || location.hash.startsWith('#yuna-')) selectChar('yuna');
-  else { try { const saved = localStorage.getItem('album-char'); if (saved === 'ciel' || saved === 'sena' || saved === 'sua' || saved === 'lena' || saved === 'yuna') selectChar(saved); } catch(e) {} }
+  else { try { const saved = localStorage.getItem('album-char'); if (saved === 'ciel' || saved === 'sena' || saved === 'sua' || saved === 'lena' || saved === 'yuna' || saved === 'ian') selectChar(saved); } catch(e) {} }
   document.querySelector('#lightbox .close').addEventListener('click', closeLb);
   document.querySelector('#lightbox .prev').addEventListener('click', (e)=>{ e.stopPropagation(); show(cur-1); });
   document.querySelector('#lightbox .next').addEventListener('click', (e)=>{ e.stopPropagation(); show(cur+1); });
