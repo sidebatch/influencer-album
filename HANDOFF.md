@@ -315,3 +315,8 @@ push 후 1~2분 기다리고 라이브에서 직접 확인한다. 확인 전에 
 
 ## v317 (2026-11-17) — 앱 이름 변경
 - 사용자 지시: 특정 캐릭터 이름이 아닌 앱으로. manifest name "Mia's Album"→"Influencer Album", short_name "Mia 앨범"→"인플루언서 앨범", 정적 <title>도 "Influencer Album"으로. 캐릭터별 화면 제목(Jia's Album 등)은 기존 동작 유지. 설치된 앱의 이름 표시는 재설치해야 바뀔 수 있음(아이콘 때와 동일).
+
+## v318 (2026-11-17) — Mia·Sua·Yuna 수영복 섹션 임시 숨김
+- 사용자 지시: 세 캐릭터의 아주 파격적인 의상 이미지를 임시로 숨기되 복원 가능하게. mia-pool(20장)·sua-pool(28장)·yuna-pool(32장) 섹션에 hidden 속성 + 해당 nav 링크 display:none. 사진·파일 전부 보존. 라이트박스는 offsetParent 필터라 숨긴 카드는 자동으로 빠짐.
+- 복원 방법: 세 섹션의 hidden 속성과 nav 링크의 display:none 제거.
+- 숨긴 뒤 보이는 장수: Mia 150, Sua 196, Yuna 66.

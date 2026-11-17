@@ -52,7 +52,7 @@
 <body>
 <header>
   <h1 id="album-title">Mia's Album</h1>
-  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 169컷) · 버전 317</p>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 169컷) · 버전 318</p>
   <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
     <button type="button" class="char-btn active" id="btn-mia">Mia</button>
     <button type="button" class="char-btn" id="btn-sua">Sua</button>
@@ -73,7 +73,7 @@
   <a href="#mia-pictorial">화보</a>
   <a href="#mia-daily">일상</a>
   <a href="#mia-mini">여름 미니</a>
-  <a href="#mia-pool">수영장·수영복</a>
+  <a href="#mia-pool" style="display:none">수영장·수영복</a>
   <a href="#mia-home">홈·누운 샷</a>
 </nav>
 <nav id="nav-ciel" hidden>
@@ -90,7 +90,7 @@
   <a href="#sua-anchor">기준 얼굴</a>
   <a href="#sua-studio-all">스튜디오</a>
   <a href="#sua-daily">일상</a>
-  <a href="#sua-pool">수영장·수영복</a>
+  <a href="#sua-pool" style="display:none">수영장·수영복</a>
   <a href="#sua-high">하이앵글</a>
   <a href="#sua-denim-all">청바지</a>
   <a href="#sua-sep-all">세퍼레이트</a>
@@ -106,7 +106,7 @@
   <a href="#yuna-master">마스터</a>
   <a href="#yuna-studio">스튜디오</a>
   <a href="#yuna-sep">세퍼레이트</a>
-  <a href="#yuna-pool">수영장·수영복</a>
+  <a href="#yuna-pool" style="display:none">수영장·수영복</a>
   <a href="#yuna-life">일상</a>
   <a href="#yuna-office">오피스</a>
   <a href="#yuna-jeans">청바지</a>
@@ -313,7 +313,7 @@
   </div>
 </section>
 
-<section id="mia-pool">
+<section id="mia-pool" hidden>
   <h2>수영장·수영복 <span class="cnt">29</span></h2>
   <div class="grid">
     <div class="card" data-cap="인피니티풀 1 — 검은 원피스 수영복, 바다 전망 풀 가장자리"><img loading="lazy" decoding="async" src="img/pool-1.webp" alt="인피니티풀 1"><div class="cap">검은 원피스 · 바다 전망</div></div>
@@ -623,7 +623,7 @@
   </div>
 </section>
 
-<section id="sua-pool">
+<section id="sua-pool" hidden>
   <h2>수영장·수영복 <span class="cnt">32</span></h2>
   <div class="grid">
     <div class="card" data-cap="Sua 호텔 수영장 1 — 블랙 원피스 딥 스쿱, 선베드 앉은 정면"><img loading="lazy" decoding="async" src="img/sua-pool-1.webp" alt="Sua 호텔 수영장 1"><div class="cap">선베드 · 블랙 원피스</div></div>
@@ -847,7 +847,7 @@
   </div>
 </section>
 
-<section id="yuna-pool">
+<section id="yuna-pool" hidden>
   <h2>수영장·수영복 <span class="cnt">32</span></h2>
   <div class="grid">
     <div class="card" data-cap="Yuna 수영장 1 — 블랙 홀터 원피스, 풀 가장자리 정면 눈웃음"><img loading="lazy" decoding="async" src="img/yuna-pool-w1n.webp" alt="Yuna 수영장 1"><div class="cap">블랙 홀터 · 풀 가장자리</div></div>
@@ -1330,47 +1330,47 @@
     btnJia.classList.toggle('active', name === 'jia');
     if (name === 'ciel'){
       albumTitle.textContent = "Ciel's Album";
-      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 317';
+      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 318';
       document.title = "Ciel's Album";
     } else if (name === 'sena'){
       albumTitle.textContent = "Sena's Album";
-      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 65컷) · 버전 317';
+      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 65컷) · 버전 318';
       document.title = "Sena's Album";
     } else if (name === 'sua'){
       albumTitle.textContent = "Sua's Album";
-      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 223컷) · 버전 317';
+      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 223컷) · 버전 318';
       document.title = "Sua's Album";
     } else if (name === 'lena'){
       albumTitle.textContent = "Lena's Album";
-      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 7컷) · 버전 317';
+      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 7컷) · 버전 318';
       document.title = "Lena's Album";
     } else if (name === 'yuna'){
       albumTitle.textContent = "Yuna's Album";
-      albumSub.textContent = '긴 웨이브 청순 성숙상 기준의 컷 모음 (총 101컷) · 버전 317';
+      albumSub.textContent = '긴 웨이브 청순 성숙상 기준의 컷 모음 (총 101컷) · 버전 318';
       document.title = "Yuna's Album";
     } else if (name === 'ian'){
       albumTitle.textContent = "Ian's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 25컷) · 버전 317';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 25컷) · 버전 318';
       document.title = "Ian's Album";
     } else if (name === 'noah'){
       albumTitle.textContent = "Noah's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 25컷) · 버전 317';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 25컷) · 버전 318';
       document.title = "Noah's Album";
     } else if (name === 'jay'){
       albumTitle.textContent = "Jay's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 25컷) · 버전 317';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 25컷) · 버전 318';
       document.title = "Jay's Album";
     } else if (name === 'kai'){
       albumTitle.textContent = "Kai's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 25컷) · 버전 317';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 25컷) · 버전 318';
       document.title = "Kai's Album";
     } else if (name === 'jia'){
       albumTitle.textContent = "Jia's Album";
-      albumSub.textContent = '숏컷 배우상 기준의 컷 모음 (총 25컷) · 버전 317';
+      albumSub.textContent = '숏컷 배우상 기준의 컷 모음 (총 25컷) · 버전 318';
       document.title = "Jia's Album";
     } else {
       albumTitle.textContent = "Mia's Album";
-      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 169컷) · 버전 317';
+      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 169컷) · 버전 318';
       document.title = "Mia's Album";
     }
     cards = allCards.filter(c => c.offsetParent !== null);
