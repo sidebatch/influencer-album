@@ -129,12 +129,25 @@
   .wc-table th { position:sticky; top:0; background:#fff; z-index:1; }
   .wc-rk { display:inline-block; min-width:21px; color:#c9962e; font-weight:800; }
   .wc-rrow { grid-template-columns:136px 1fr 52px; }
+  .wc-layout { display:flex; gap:6px; justify-content:flex-end; margin-bottom:10px; }
+  .wc-lbtn { font:inherit; font-size:12.5px; font-weight:700; padding:6px 13px; border-radius:999px; border:1px solid #d9c6ae; background:#fff; color:#5b4a3f; cursor:pointer; }
+  .wc-lbtn.sel { background:#2b2320; color:#fff; border-color:#2b2320; }
+  .wc-vs.stack { grid-template-columns:1fr; max-width:640px; margin:0 auto; }
+  .wc-vs.stack .wc-vs-badge { top:50%; }
+  .wc-pick { position:relative; }
+  .wc-zbtn { position:absolute; top:8px; right:8px; background:rgba(20,14,10,.55); color:#fff; font-size:12px; font-weight:700; padding:5px 11px; border-radius:999px; z-index:2; cursor:pointer; }
+  #wc-zoom { position:fixed; inset:0; background:rgba(15,10,8,.97); z-index:80; display:none; }
+  #wc-zoom.open { display:block; }
+  #wc-zoom img { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+  #wc-zoom .zcap { position:absolute; left:0; right:0; bottom:86px; text-align:center; color:#fff; font-size:16px; font-weight:700; text-shadow:0 1px 4px rgba(0,0,0,.8); pointer-events:none; }
+  #wc-zoom .zclose { position:absolute; top:14px; right:18px; color:#fff; font-size:30px; background:none; border:none; cursor:pointer; z-index:2; }
+  #wc-zoom .zpick { position:absolute; left:50%; transform:translateX(-50%); bottom:26px; font:inherit; font-size:16px; font-weight:800; padding:13px 30px; border-radius:999px; border:none; background:#e5484d; color:#fff; cursor:pointer; z-index:2; box-shadow:0 3px 12px rgba(0,0,0,.4); white-space:nowrap; }
 </style>
 </head>
 <body>
 <header>
   <h1 id="album-title">Mia's Album</h1>
-  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 333</p>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 334</p>
   <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
     <button type="button" class="char-btn active" id="btn-mia">Mia</button>
     <button type="button" class="char-btn" id="btn-sua">Sua</button>
@@ -2090,13 +2103,19 @@
         <div class="wc-prog" id="wc-prog">경기 1 / 100</div>
       </div>
       <div class="wc-bar"><i id="wc-barfill" style="width:0%"></i></div>
-      <div class="wc-vs">
+      <div class="wc-layout">
+        <button type="button" class="wc-lbtn sel" id="wc-layout-side">나란히</button>
+        <button type="button" class="wc-lbtn" id="wc-layout-stack">크게</button>
+      </div>
+      <div class="wc-vs" id="wc-vs">
         <button type="button" class="wc-pick" id="wc-pick-a">
           <img id="wc-img-a" src="" alt="">
+          <span class="wc-zbtn" id="wc-z-a">확대</span>
           <div class="nm" id="wc-name-a"></div>
         </button>
         <button type="button" class="wc-pick" id="wc-pick-b">
           <img id="wc-img-b" src="" alt="">
+          <span class="wc-zbtn" id="wc-z-b">확대</span>
           <div class="nm" id="wc-name-b"></div>
         </button>
         <div class="wc-vs-badge">VS</div>
@@ -2170,6 +2189,12 @@
       </div>
     </div>
 
+  </div>
+  <div id="wc-zoom">
+    <img id="wc-zoom-img" src="" alt="">
+    <div class="zcap" id="wc-zoom-cap"></div>
+    <button type="button" class="zclose" id="wc-zoom-close" aria-label="닫기">&times;</button>
+    <button type="button" class="zpick" id="wc-zoom-pick">이 사진 선택하기</button>
   </div>
 </div>
 
@@ -2334,55 +2359,55 @@
     btnTrainee.classList.toggle('active', name === 'trainee');
     if (name === 'ciel'){
       albumTitle.textContent = "Ciel's Album";
-      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 333';
+      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 334';
       document.title = "Ciel's Album";
     } else if (name === 'sena'){
       albumTitle.textContent = "Sena's Album";
-      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 65컷) · 버전 333';
+      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 65컷) · 버전 334';
       document.title = "Sena's Album";
     } else if (name === 'sua'){
       albumTitle.textContent = "Sua's Album";
-      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 250컷) · 버전 333';
+      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 250컷) · 버전 334';
       document.title = "Sua's Album";
     } else if (name === 'lena'){
       albumTitle.textContent = "Lena's Album";
-      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 7컷) · 버전 333';
+      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 7컷) · 버전 334';
       document.title = "Lena's Album";
     } else if (name === 'yuna'){
       albumTitle.textContent = "Yuna's Album";
-      albumSub.textContent = '긴 웨이브 청순 성숙상 기준의 컷 모음 (총 129컷) · 버전 333';
+      albumSub.textContent = '긴 웨이브 청순 성숙상 기준의 컷 모음 (총 129컷) · 버전 334';
       document.title = "Yuna's Album";
     } else if (name === 'ian'){
       albumTitle.textContent = "Ian's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 333';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 334';
       document.title = "Ian's Album";
     } else if (name === 'noah'){
       albumTitle.textContent = "Noah's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 333';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 334';
       document.title = "Noah's Album";
     } else if (name === 'jay'){
       albumTitle.textContent = "Jay's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 333';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 334';
       document.title = "Jay's Album";
     } else if (name === 'kai'){
       albumTitle.textContent = "Kai's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 333';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 334';
       document.title = "Kai's Album";
     } else if (name === 'jia'){
       albumTitle.textContent = "Jia's Album";
-      albumSub.textContent = '숏컷 배우상 기준의 컷 모음 (총 98컷) · 버전 333';
+      albumSub.textContent = '숏컷 배우상 기준의 컷 모음 (총 98컷) · 버전 334';
       document.title = "Jia's Album";
     } else if (name === 'trainee'){
       albumTitle.textContent = '연습생';
-      albumSub.textContent = '새 캐릭터 후보 모음 (총 101컷) · 버전 333';
+      albumSub.textContent = '새 캐릭터 후보 모음 (총 101컷) · 버전 334';
       document.title = '연습생 후보';
     } else if (name === 'group'){
       albumTitle.textContent = '단체샷';
-      albumSub.textContent = '공개 8명 단체 컷 모음 (총 4컷) · 버전 333';
+      albumSub.textContent = '공개 8명 단체 컷 모음 (총 4컷) · 버전 334';
       document.title = '단체샷';
     } else {
       albumTitle.textContent = "Mia's Album";
-      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 333';
+      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 334';
       document.title = "Mia's Album";
     }
     cards = allCards.filter(c => c.offsetParent !== null);
@@ -2462,6 +2487,7 @@
       tally, path: {}, history: [], lock: false, done: false
     };
     wcShow('wc-match');
+    wcApplyLayout();
     wcRenderMatch();
   }
 
@@ -2707,6 +2733,32 @@
       document.querySelectorAll('#wc-sizes .wc-size').forEach(x => x.classList.toggle('sel', x === btn));
     });
   });
+
+  let wcLayout = 'side';
+  try { if (localStorage.getItem('wc-layout') === 'stack') wcLayout = 'stack'; } catch(e) {}
+  function wcApplyLayout(){
+    const vs = document.getElementById('wc-vs');
+    if (vs) vs.classList.toggle('stack', wcLayout === 'stack');
+    document.getElementById('wc-layout-side').classList.toggle('sel', wcLayout === 'side');
+    document.getElementById('wc-layout-stack').classList.toggle('sel', wcLayout === 'stack');
+  }
+  let wcZoomSide = 0;
+  function wcOpenZoom(side){
+    if (!T) return;
+    wcZoomSide = side;
+    const p = wcPair()[side];
+    document.getElementById('wc-zoom-img').src = p.img;
+    document.getElementById('wc-zoom-cap').textContent = p.num + '번 ' + p.name;
+    document.getElementById('wc-zoom').classList.add('open');
+  }
+  function wcCloseZoom(){ document.getElementById('wc-zoom').classList.remove('open'); }
+  document.getElementById('wc-layout-side').addEventListener('click', () => { wcLayout = 'side'; try { localStorage.setItem('wc-layout', 'side'); } catch(e) {} wcApplyLayout(); });
+  document.getElementById('wc-layout-stack').addEventListener('click', () => { wcLayout = 'stack'; try { localStorage.setItem('wc-layout', 'stack'); } catch(e) {} wcApplyLayout(); });
+  document.getElementById('wc-z-a').addEventListener('click', (e) => { e.stopPropagation(); wcOpenZoom(0); });
+  document.getElementById('wc-z-b').addEventListener('click', (e) => { e.stopPropagation(); wcOpenZoom(1); });
+  document.getElementById('wc-zoom-close').addEventListener('click', wcCloseZoom);
+  document.getElementById('wc-zoom').addEventListener('click', (e) => { if (e.target === document.getElementById('wc-zoom-img') || e.target === document.getElementById('wc-zoom')) wcCloseZoom(); });
+  document.getElementById('wc-zoom-pick').addEventListener('click', () => { const s = wcZoomSide; wcCloseZoom(); wcPick(s); });
   document.getElementById('wc-start').addEventListener('click', wcStartTournament);
   document.getElementById('wc-pick-a').addEventListener('click', () => wcPick(0));
   document.getElementById('wc-pick-b').addEventListener('click', () => wcPick(1));
@@ -2743,6 +2795,7 @@
   document.getElementById('wc-open-btn').addEventListener('click', wcOpen);
   document.getElementById('wc-open-stats').addEventListener('click', () => { wcOpen(); wcRenderStats(); wcShow('wc-stats'); });
   document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.getElementById('wc-zoom').classList.contains('open')){ wcCloseZoom(); return; }
     if (e.key === 'Escape' && wcEl.classList.contains('open')) wcClose();
     if (!wcEl.classList.contains('open') || !T || document.getElementById('wc-match').hidden) return;
     if (e.key === 'ArrowLeft') wcPick(0);
