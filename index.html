@@ -164,7 +164,7 @@
 <body>
 <header>
   <h1 id="album-title">Mia's Album</h1>
-  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 335</p>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 336</p>
   <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
     <button type="button" class="char-btn active" id="btn-mia">Mia</button>
     <button type="button" class="char-btn" id="btn-sua">Sua</button>
@@ -2200,6 +2200,14 @@
     </div>
 
   </div>
+  <div id="wc-zoom">
+    <img id="wc-zoom-img" src="" alt="">
+    <div class="zcap" id="wc-zoom-cap"></div>
+    <button type="button" class="zclose" id="wc-zoom-close" aria-label="닫기">&times;</button>
+    <button type="button" class="wc-nav prev" id="wc-zoom-prev" aria-label="이전 사진">&#8249;</button>
+    <button type="button" class="wc-nav next" id="wc-zoom-next" aria-label="다음 사진">&#8250;</button>
+    <button type="button" class="zpick" id="wc-zoom-pick">이 사진 선택하기</button>
+  </div>
 </div>
 
 <div id="lightbox">
@@ -2363,55 +2371,55 @@
     btnTrainee.classList.toggle('active', name === 'trainee');
     if (name === 'ciel'){
       albumTitle.textContent = "Ciel's Album";
-      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 335';
+      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 336';
       document.title = "Ciel's Album";
     } else if (name === 'sena'){
       albumTitle.textContent = "Sena's Album";
-      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 65컷) · 버전 335';
+      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 65컷) · 버전 336';
       document.title = "Sena's Album";
     } else if (name === 'sua'){
       albumTitle.textContent = "Sua's Album";
-      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 250컷) · 버전 335';
+      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 250컷) · 버전 336';
       document.title = "Sua's Album";
     } else if (name === 'lena'){
       albumTitle.textContent = "Lena's Album";
-      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 7컷) · 버전 335';
+      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 7컷) · 버전 336';
       document.title = "Lena's Album";
     } else if (name === 'yuna'){
       albumTitle.textContent = "Yuna's Album";
-      albumSub.textContent = '긴 웨이브 청순 성숙상 기준의 컷 모음 (총 129컷) · 버전 335';
+      albumSub.textContent = '긴 웨이브 청순 성숙상 기준의 컷 모음 (총 129컷) · 버전 336';
       document.title = "Yuna's Album";
     } else if (name === 'ian'){
       albumTitle.textContent = "Ian's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 335';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 336';
       document.title = "Ian's Album";
     } else if (name === 'noah'){
       albumTitle.textContent = "Noah's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 335';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 336';
       document.title = "Noah's Album";
     } else if (name === 'jay'){
       albumTitle.textContent = "Jay's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 335';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 336';
       document.title = "Jay's Album";
     } else if (name === 'kai'){
       albumTitle.textContent = "Kai's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 335';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 336';
       document.title = "Kai's Album";
     } else if (name === 'jia'){
       albumTitle.textContent = "Jia's Album";
-      albumSub.textContent = '숏컷 배우상 기준의 컷 모음 (총 98컷) · 버전 335';
+      albumSub.textContent = '숏컷 배우상 기준의 컷 모음 (총 98컷) · 버전 336';
       document.title = "Jia's Album";
     } else if (name === 'trainee'){
       albumTitle.textContent = '연습생';
-      albumSub.textContent = '새 캐릭터 후보 모음 (총 101컷) · 버전 335';
+      albumSub.textContent = '새 캐릭터 후보 모음 (총 101컷) · 버전 336';
       document.title = '연습생 후보';
     } else if (name === 'group'){
       albumTitle.textContent = '단체샷';
-      albumSub.textContent = '공개 8명 단체 컷 모음 (총 4컷) · 버전 335';
+      albumSub.textContent = '공개 8명 단체 컷 모음 (총 4컷) · 버전 336';
       document.title = '단체샷';
     } else {
       albumTitle.textContent = "Mia's Album";
-      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 335';
+      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 336';
       document.title = "Mia's Album";
     }
     cards = allCards.filter(c => c.offsetParent !== null);
@@ -2546,8 +2554,10 @@
     const other = wcPair()[1 - wcViewIdx];
     const pre = new Image(); pre.src = other.img;
   }
+  let wcLastFlipAt = 0;
   function wcFlip(dir){
     if (!T || T.lock) return;
+    wcLastFlipAt = Date.now();
     wcViewIdx = wcViewIdx === 0 ? 1 : 0;
     wcRenderFlip(dir);
   }
@@ -2749,6 +2759,44 @@
     });
   });
 
+
+  let wcZoomIdx = 0;
+  function wcRenderZoom(){
+    const p = wcPair()[wcZoomIdx];
+    const zi = document.getElementById('wc-zoom-img');
+    zi.src = p.img; zi.alt = p.num + '번 ' + p.name;
+    document.getElementById('wc-zoom-cap').textContent = p.num + '번 ' + p.name;
+  }
+  function wcOpenZoom(){
+    if (!T) return;
+    if (Date.now() - wcLastFlipAt < 350) return;
+    wcZoomIdx = wcViewIdx;
+    wcRenderZoom();
+    document.getElementById('wc-zoom').classList.add('open');
+  }
+  function wcCloseZoom(sync){
+    document.getElementById('wc-zoom').classList.remove('open');
+    if (sync && T && wcZoomIdx !== wcViewIdx){ wcViewIdx = wcZoomIdx; wcRenderFlip(0); }
+  }
+  function wcZoomFlip(){
+    if (!T) return;
+    wcZoomIdx = wcZoomIdx === 0 ? 1 : 0;
+    wcRenderZoom();
+  }
+  document.getElementById('wc-img').addEventListener('click', wcOpenZoom);
+  document.getElementById('wc-zoom-close').addEventListener('click', () => wcCloseZoom(true));
+  document.getElementById('wc-zoom-prev').addEventListener('click', wcZoomFlip);
+  document.getElementById('wc-zoom-next').addEventListener('click', wcZoomFlip);
+  document.getElementById('wc-zoom-pick').addEventListener('click', () => { const s = wcZoomIdx; wcCloseZoom(false); wcPick(s); });
+  document.getElementById('wc-zoom').addEventListener('click', (e) => { if (e.target === document.getElementById('wc-zoom')) wcCloseZoom(true); });
+  let wcZoomTouchX = null;
+  document.getElementById('wc-zoom-img').addEventListener('touchstart', (e) => { wcZoomTouchX = e.changedTouches[0].clientX; }, { passive: true });
+  document.getElementById('wc-zoom-img').addEventListener('touchend', (e) => {
+    if (wcZoomTouchX === null) return;
+    const dx = e.changedTouches[0].clientX - wcZoomTouchX;
+    wcZoomTouchX = null;
+    if (Math.abs(dx) >= 40) wcZoomFlip();
+  }, { passive: true });
   document.getElementById('wc-select').addEventListener('click', () => wcPick(wcViewIdx));
   document.getElementById('wc-flip-prev').addEventListener('click', () => wcFlip(-1));
   document.getElementById('wc-flip-next').addEventListener('click', () => wcFlip(1));
@@ -2796,6 +2844,7 @@
   document.getElementById('wc-open-btn').addEventListener('click', wcOpen);
   document.getElementById('wc-open-stats').addEventListener('click', () => { wcOpen(); wcRenderStats(); wcShow('wc-stats'); });
   document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.getElementById('wc-zoom').classList.contains('open')){ wcCloseZoom(true); return; }
     if (e.key === 'Escape' && wcEl.classList.contains('open')) wcClose();
     if (!wcEl.classList.contains('open') || !T || document.getElementById('wc-match').hidden) return;
     if (e.key === 'ArrowLeft') wcFlip(-1);
