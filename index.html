@@ -47,12 +47,61 @@
   .char-switch { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:14px; padding:0 10px; }
   .char-btn { font:inherit; font-size:15px; font-weight:600; padding:8px 20px; border-radius:999px; border:1px solid #d9c6ae; background:#fff; color:#5b4a3f; cursor:pointer; white-space:nowrap; }
   .char-btn.active { background:#2b2320; color:#fff; border-color:#2b2320; }
+  /* ===== 이상형 월드컵 ===== */
+  #wc { position:fixed; inset:0; background:#f7f1e6; z-index:60; display:none; overflow-y:auto; }
+  #wc.open { display:block; }
+  .wc-wrap { max-width:860px; margin:0 auto; padding:18px 14px 40px; }
+  .wc-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
+  .wc-head h2 { font-size:21px; color:#2b2320; }
+  .wc-close { font-size:26px; background:none; border:none; cursor:pointer; color:#5b4a3f; padding:4px 8px; }
+  .wc-sub { font-size:13px; color:#8a7a6d; margin-bottom:16px; }
+  .wc-sizes { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px; }
+  .wc-size { font:inherit; font-size:14px; font-weight:600; padding:9px 18px; border-radius:999px; border:1px solid #d9c6ae; background:#fff; color:#5b4a3f; cursor:pointer; }
+  .wc-size.sel { background:#2b2320; color:#fff; border-color:#2b2320; }
+  .wc-start { font:inherit; display:block; width:100%; font-size:17px; font-weight:700; padding:15px; border-radius:14px; border:none; background:#e5484d; color:#fff; cursor:pointer; box-shadow:0 2px 8px rgba(229,72,77,.35); }
+  .wc-ghost { font:inherit; font-size:14px; font-weight:600; padding:10px 18px; border-radius:999px; border:1px solid #d9c6ae; background:#fff; color:#5b4a3f; cursor:pointer; }
+  .wc-meta { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:8px; }
+  .wc-round { font-size:18px; font-weight:700; color:#2b2320; }
+  .wc-prog { font-size:13px; color:#8a7a6d; }
+  .wc-bar { height:8px; background:#eadfcd; border-radius:99px; overflow:hidden; margin-bottom:16px; }
+  .wc-bar i { display:block; height:100%; background:#e5484d; border-radius:99px; transition:width .25s; }
+  .wc-vs { display:grid; grid-template-columns:1fr 1fr; gap:12px; position:relative; }
+  .wc-pick { background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 2px 8px rgba(80,60,40,.13); cursor:pointer; border:3px solid transparent; padding:0; font:inherit; text-align:left; }
+  .wc-pick img { width:100%; aspect-ratio:3/2; object-fit:cover; display:block; }
+  .wc-pick .nm { padding:10px 12px; font-size:15px; font-weight:700; color:#2b2320; }
+  .wc-pick .nm span { color:#a08d7c; font-weight:600; margin-right:6px; }
+  .wc-pick.picked { border-color:#e5484d; }
+  .wc-vs-badge { position:absolute; left:50%; top:38%; transform:translate(-50%,-50%); background:#2b2320; color:#fff; font-weight:800; font-size:15px; padding:8px 13px; border-radius:999px; z-index:2; box-shadow:0 2px 8px rgba(0,0,0,.3); pointer-events:none; }
+  .wc-actions { display:flex; gap:8px; justify-content:center; margin-top:18px; flex-wrap:wrap; }
+  .wc-actions button:disabled { opacity:.4; cursor:default; }
+  .wc-result { text-align:center; }
+  .wc-trophy { display:inline-block; background:#c9962e; color:#fff; font-size:13px; font-weight:800; letter-spacing:.08em; padding:5px 14px; border-radius:999px; margin-bottom:12px; }
+  .wc-result img { width:100%; max-width:560px; aspect-ratio:3/2; object-fit:cover; border-radius:14px; box-shadow:0 4px 18px rgba(80,60,40,.25); }
+  .wc-result .wname { font-size:24px; font-weight:800; margin:14px 0 4px; }
+  .wc-result .wname span { color:#a08d7c; }
+  .wc-sec { font-size:16px; font-weight:700; color:#4a3a30; margin:22px 0 10px; }
+  .wc-rank { display:flex; flex-direction:column; gap:7px; }
+  .wc-rrow { display:grid; grid-template-columns:118px 1fr 52px; align-items:center; gap:10px; font-size:13.5px; }
+  .wc-rrow .rn { color:#2b2320; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .wc-rrow .rn span { color:#a08d7c; margin-right:5px; }
+  .wc-rrow .track { height:14px; background:#eadfcd; border-radius:99px; overflow:hidden; }
+  .wc-rrow .fill { height:100%; background:#e5484d; border-radius:99px; }
+  .wc-rrow .fill.gold { background:#c9962e; }
+  .wc-rrow .rv { text-align:right; font-weight:700; color:#2b2320; }
+  .wc-tablewrap { overflow-x:auto; background:#fff; border-radius:12px; box-shadow:0 1px 5px rgba(80,60,40,.10); }
+  table.wc-table { width:100%; border-collapse:collapse; font-size:13px; min-width:520px; }
+  .wc-table th, .wc-table td { padding:8px 10px; text-align:right; border-bottom:1px solid #f0e7d8; white-space:nowrap; }
+  .wc-table th { color:#8a7a6d; font-weight:700; cursor:pointer; user-select:none; }
+  .wc-table th:first-child, .wc-table td:first-child { text-align:left; }
+  .wc-table td.nm { font-weight:600; color:#2b2320; }
+  .wc-table td.nm span { color:#a08d7c; margin-right:5px; }
+  .wc-empty { font-size:13.5px; color:#8a7a6d; padding:14px 4px; }
 </style>
 </head>
 <body>
 <header>
   <h1 id="album-title">Mia's Album</h1>
-  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 330</p>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 331</p>
   <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
     <button type="button" class="char-btn active" id="btn-mia">Mia</button>
     <button type="button" class="char-btn" id="btn-sua">Sua</button>
@@ -1871,6 +1920,7 @@
 
 <section id="trainee-candidates">
   <h2>연습생 후보 <span class="cnt">101</span><span class="newpill">NEW</span></h2>
+  <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap"><button type="button" class="char-btn" id="wc-open-btn" style="background:#e5484d;color:#fff;border-color:#e5484d">이상형 월드컵</button><button type="button" class="char-btn" id="wc-open-stats">월드컵 통계</button></div>
   <div class="grid">
     <div class="card" data-cap="연습생 1번 서연 — 검정 페플럼, 정면, 잔잔한 미소"><img loading="lazy" decoding="async" src="img/trainee-1b.webp" alt="연습생 1번 서연"><div class="cap">1 · 서연</div></div>
     <div class="card" data-cap="연습생 2번 지우 — 레드 새틴, 3/4 앉은, 밝은 눈웃음"><img loading="lazy" decoding="async" src="img/trainee-2b.webp" alt="연습생 2번 지우"><div class="cap">2 · 지우</div></div>
@@ -1976,6 +2026,90 @@
   </div>
 </section>
 
+</div>
+
+<div id="wc" role="dialog" aria-label="이상형 월드컵">
+  <div class="wc-wrap">
+    <div class="wc-head">
+      <h2>이상형 월드컵</h2>
+      <button type="button" class="wc-close" id="wc-close" aria-label="닫기">&times;</button>
+    </div>
+
+    <div id="wc-setup">
+      <p class="wc-sub">연습생 101명 중 두 명씩 붙여, 마지막 한 명이 남을 때까지 골라보세요. 몇 명으로 시작할까요?</p>
+      <div class="wc-sizes" id="wc-sizes">
+        <button type="button" class="wc-size sel" data-size="101">101명 전체</button>
+        <button type="button" class="wc-size" data-size="64">64강</button>
+        <button type="button" class="wc-size" data-size="32">32강</button>
+        <button type="button" class="wc-size" data-size="16">16강</button>
+      </div>
+      <button type="button" class="wc-start" id="wc-start">월드컵 시작</button>
+      <div class="wc-actions">
+        <button type="button" class="wc-ghost" id="wc-tostats">통계 보기</button>
+      </div>
+      <p class="wc-sub" style="margin-top:16px">우승·승률 기록은 이 기기에 저장돼요. 중간에 그만둔 판은 기록되지 않아요.</p>
+    </div>
+
+    <div id="wc-match" hidden>
+      <div class="wc-meta">
+        <div class="wc-round" id="wc-round">128강</div>
+        <div class="wc-prog" id="wc-prog">경기 1 / 100</div>
+      </div>
+      <div class="wc-bar"><i id="wc-barfill" style="width:0%"></i></div>
+      <div class="wc-vs">
+        <button type="button" class="wc-pick" id="wc-pick-a">
+          <img id="wc-img-a" src="" alt="">
+          <div class="nm" id="wc-name-a"></div>
+        </button>
+        <button type="button" class="wc-pick" id="wc-pick-b">
+          <img id="wc-img-b" src="" alt="">
+          <div class="nm" id="wc-name-b"></div>
+        </button>
+        <div class="wc-vs-badge">VS</div>
+      </div>
+      <div class="wc-actions">
+        <button type="button" class="wc-ghost" id="wc-undo">되돌리기</button>
+        <button type="button" class="wc-ghost" id="wc-quit">그만두기</button>
+      </div>
+    </div>
+
+    <div id="wc-result" hidden>
+      <div class="wc-result">
+        <div class="wc-trophy">우승</div>
+        <div><img id="wc-win-img" src="" alt=""></div>
+        <div class="wname" id="wc-win-name"></div>
+        <p class="wc-sub" id="wc-win-note"></p>
+        <div class="wc-actions">
+          <button type="button" class="wc-ghost" id="wc-again">한 번 더 하기</button>
+          <button type="button" class="wc-ghost" id="wc-result-stats">통계 보기</button>
+          <button type="button" class="wc-ghost" id="wc-result-close">닫기</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="wc-stats" hidden>
+      <p class="wc-sub" id="wc-stats-summary"></p>
+      <div class="wc-sec">우승 횟수 랭킹</div>
+      <div class="wc-rank" id="wc-rank-champ"></div>
+      <div class="wc-sec">통산 승률 랭킹 (10경기 이상)</div>
+      <div class="wc-rank" id="wc-rank-rate"></div>
+      <div class="wc-sec">전체 기록</div>
+      <div class="wc-tablewrap">
+        <table class="wc-table">
+          <thead><tr>
+            <th data-k="num">선수</th><th data-k="champ">우승</th><th data-k="final">준우승</th>
+            <th data-k="wins">승</th><th data-k="losses">패</th><th data-k="rate">승률</th><th data-k="avg">평균 도달</th>
+          </tr></thead>
+          <tbody id="wc-tbody"></tbody>
+        </table>
+      </div>
+      <div class="wc-actions">
+        <button type="button" class="wc-ghost" id="wc-back">월드컵으로</button>
+        <button type="button" class="wc-ghost" id="wc-reset">기록 초기화</button>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <div id="lightbox">
@@ -2139,55 +2273,55 @@
     btnTrainee.classList.toggle('active', name === 'trainee');
     if (name === 'ciel'){
       albumTitle.textContent = "Ciel's Album";
-      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 330';
+      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 331';
       document.title = "Ciel's Album";
     } else if (name === 'sena'){
       albumTitle.textContent = "Sena's Album";
-      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 65컷) · 버전 330';
+      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 65컷) · 버전 331';
       document.title = "Sena's Album";
     } else if (name === 'sua'){
       albumTitle.textContent = "Sua's Album";
-      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 250컷) · 버전 330';
+      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 250컷) · 버전 331';
       document.title = "Sua's Album";
     } else if (name === 'lena'){
       albumTitle.textContent = "Lena's Album";
-      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 7컷) · 버전 330';
+      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 7컷) · 버전 331';
       document.title = "Lena's Album";
     } else if (name === 'yuna'){
       albumTitle.textContent = "Yuna's Album";
-      albumSub.textContent = '긴 웨이브 청순 성숙상 기준의 컷 모음 (총 129컷) · 버전 330';
+      albumSub.textContent = '긴 웨이브 청순 성숙상 기준의 컷 모음 (총 129컷) · 버전 331';
       document.title = "Yuna's Album";
     } else if (name === 'ian'){
       albumTitle.textContent = "Ian's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 330';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 331';
       document.title = "Ian's Album";
     } else if (name === 'noah'){
       albumTitle.textContent = "Noah's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 330';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 331';
       document.title = "Noah's Album";
     } else if (name === 'jay'){
       albumTitle.textContent = "Jay's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 330';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 331';
       document.title = "Jay's Album";
     } else if (name === 'kai'){
       albumTitle.textContent = "Kai's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 330';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 331';
       document.title = "Kai's Album";
     } else if (name === 'jia'){
       albumTitle.textContent = "Jia's Album";
-      albumSub.textContent = '숏컷 배우상 기준의 컷 모음 (총 98컷) · 버전 330';
+      albumSub.textContent = '숏컷 배우상 기준의 컷 모음 (총 98컷) · 버전 331';
       document.title = "Jia's Album";
     } else if (name === 'trainee'){
       albumTitle.textContent = '연습생';
-      albumSub.textContent = '새 캐릭터 후보 모음 (총 101컷) · 버전 330';
+      albumSub.textContent = '새 캐릭터 후보 모음 (총 101컷) · 버전 331';
       document.title = '연습생 후보';
     } else if (name === 'group'){
       albumTitle.textContent = '단체샷';
-      albumSub.textContent = '공개 8명 단체 컷 모음 (총 4컷) · 버전 330';
+      albumSub.textContent = '공개 8명 단체 컷 모음 (총 4컷) · 버전 331';
       document.title = '단체샷';
     } else {
       albumTitle.textContent = "Mia's Album";
-      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 330';
+      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 331';
       document.title = "Mia's Album";
     }
     cards = allCards.filter(c => c.offsetParent !== null);
@@ -2223,6 +2357,218 @@
     if(e.key==='ArrowLeft') show(cur-1);
     if(e.key==='ArrowRight') show(cur+1);
   });
+
+  // ===== 이상형 월드컵 =====
+  const wcEl = document.getElementById('wc');
+  const wcPool = Array.from(document.querySelectorAll('#trainee-candidates .card')).map(c => {
+    const cap = c.getAttribute('data-cap') || '';
+    const m = cap.match(/연습생 (\d+)번 (\S+)/);
+    return { num: +m[1], name: m[2], img: c.querySelector('img').getAttribute('src') };
+  });
+  const WC_KEY = 'wc-stats-v1';
+  function wcLoadStats(){
+    try { const s = JSON.parse(localStorage.getItem(WC_KEY)); if (s && s.players) return s; } catch(e) {}
+    return { plays: 0, players: {} };
+  }
+  let wcStats = wcLoadStats();
+  let wcSizeSel = 101;
+  let T = null; // tournament state
+
+  function wcShow(id){
+    ['wc-setup','wc-match','wc-result','wc-stats'].forEach(x => { document.getElementById(x).hidden = x !== id; });
+    wcEl.scrollTop = 0;
+  }
+  function wcOpen(){ wcEl.classList.add('open'); document.body.style.overflow = 'hidden'; if (!T) wcShow('wc-setup'); else wcShow('wc-match'); }
+  function wcClose(){ wcEl.classList.remove('open'); document.body.style.overflow = ''; }
+
+  function wcShuffle(a){ for (let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+
+  function wcStartTournament(){
+    const entrants = wcShuffle(wcPool.slice());
+    const picked = wcSizeSel >= wcPool.length ? entrants : entrants.slice(0, wcSizeSel);
+    let size = 1; while (size < picked.length) size *= 2;
+    const byes = size - picked.length;
+    const tally = {};
+    picked.forEach(p => { tally[p.num] = { wins: 0, reached: 0, final: false, champ: false }; });
+    T = {
+      size, totalRounds: Math.round(Math.log2(size)),
+      round: 1, aliveStart: size,
+      bench: picked.slice(0, byes),
+      players: picked.slice(byes),
+      winners: [], matchIdx: 0,
+      totalMatches: picked.length - 1, played: 0,
+      tally, history: [], lock: false, done: false
+    };
+    wcShow('wc-match');
+    wcRenderMatch();
+  }
+
+  function wcRoundName(){
+    if (T.aliveStart === 4) return '준결승';
+    if (T.aliveStart === 2) return '결승';
+    return T.aliveStart + '강';
+  }
+  function wcPair(){ return [T.players[T.matchIdx * 2], T.players[T.matchIdx * 2 + 1]]; }
+
+  function wcRenderMatch(){
+    const [a, b] = wcPair();
+    document.getElementById('wc-round').textContent = wcRoundName();
+    document.getElementById('wc-prog').textContent = '경기 ' + Math.min(T.played + 1, T.totalMatches) + ' / ' + T.totalMatches;
+    document.getElementById('wc-barfill').style.width = (T.totalMatches ? (T.played / T.totalMatches * 100) : 0) + '%';
+    const ia = document.getElementById('wc-img-a'), ib = document.getElementById('wc-img-b');
+    ia.src = a.img; ia.alt = a.num + '번 ' + a.name;
+    ib.src = b.img; ib.alt = b.num + '번 ' + b.name;
+    document.getElementById('wc-name-a').innerHTML = '<span>' + a.num + '번</span>' + a.name;
+    document.getElementById('wc-name-b').innerHTML = '<span>' + b.num + '번</span>' + b.name;
+    document.getElementById('wc-pick-a').classList.remove('picked');
+    document.getElementById('wc-pick-b').classList.remove('picked');
+    document.getElementById('wc-undo').disabled = T.history.length === 0;
+  }
+
+  function wcSnapshot(){
+    return JSON.stringify({ round: T.round, aliveStart: T.aliveStart, bench: T.bench, players: T.players,
+      winners: T.winners, matchIdx: T.matchIdx, played: T.played, tally: T.tally });
+  }
+  function wcRestore(s){
+    const o = JSON.parse(s);
+    T.round = o.round; T.aliveStart = o.aliveStart; T.bench = o.bench; T.players = o.players;
+    T.winners = o.winners; T.matchIdx = o.matchIdx; T.played = o.played; T.tally = o.tally;
+  }
+
+  function wcPick(side){
+    if (!T || T.lock || T.done) return;
+    T.lock = true;
+    const [a, b] = wcPair();
+    const winner = side === 0 ? a : b, loser = side === 0 ? b : a;
+    document.getElementById(side === 0 ? 'wc-pick-a' : 'wc-pick-b').classList.add('picked');
+    T.history.push(wcSnapshot());
+    T.tally[winner.num].wins++;
+    T.tally[loser.num].reached = T.round;
+    if (T.aliveStart === 2) T.tally[loser.num].final = true;
+    T.winners.push(winner);
+    T.played++; T.matchIdx++;
+    setTimeout(() => {
+      T.lock = false;
+      if (T.matchIdx * 2 >= T.players.length){
+        const advancing = T.bench.concat(T.winners);
+        if (advancing.length === 1){
+          const champ = advancing[0];
+          T.tally[champ.num].champ = true;
+          T.tally[champ.num].reached = T.totalRounds;
+          T.done = true;
+          wcFinish(champ);
+          return;
+        }
+        T.players = advancing; T.bench = []; T.winners = []; T.matchIdx = 0;
+        T.round++; T.aliveStart = advancing.length;
+      }
+      wcRenderMatch();
+    }, 170);
+  }
+
+  function wcFinish(champ){
+    wcStats.plays++;
+    Object.keys(T.tally).forEach(num => {
+      const t = T.tally[num];
+      const key = String(num);
+      if (!wcStats.players[key]) wcStats.players[key] = { entered: 0, champ: 0, final: 0, wins: 0, losses: 0, roundsSum: 0 };
+      const s = wcStats.players[key];
+      s.entered++; s.champ += t.champ ? 1 : 0; s.final += t.final ? 1 : 0;
+      s.wins += t.wins; s.losses += t.champ ? 0 : 1; s.roundsSum += t.reached;
+    });
+    try { localStorage.setItem(WC_KEY, JSON.stringify(wcStats)); } catch(e) {}
+    document.getElementById('wc-win-img').src = champ.img;
+    document.getElementById('wc-win-name').innerHTML = '<span>' + champ.num + '번</span> ' + champ.name;
+    document.getElementById('wc-win-note').textContent = '통산 ' + (wcStats.players[String(champ.num)].champ) + '번째 우승이에요';
+    T = null;
+    wcShow('wc-result');
+  }
+
+  function wcRenderStats(){
+    const P = wcStats.players;
+    const rows = wcPool.map(p => {
+      const s = P[String(p.num)] || { entered: 0, champ: 0, final: 0, wins: 0, losses: 0, roundsSum: 0 };
+      const matches = s.wins + s.losses;
+      return { num: p.num, name: p.name, entered: s.entered, champ: s.champ, final: s.final,
+        wins: s.wins, losses: s.losses, matches,
+        rate: matches ? s.wins / matches : -1,
+        avg: s.entered ? s.roundsSum / s.entered : -1 };
+    });
+    const played = rows.filter(r => r.entered > 0);
+    const totalMatches = played.reduce((a, r) => a + r.matches, 0);
+    document.getElementById('wc-stats-summary').textContent =
+      '지금까지 ' + wcStats.plays + '판 플레이 · 기록된 경기 ' + totalMatches + '경기 · 출전 선수 ' + played.length + '명';
+
+    function bars(elId, list, valFn, fmt, gold){
+      const el = document.getElementById(elId);
+      if (!list.length){ el.innerHTML = '<div class="wc-empty">아직 기록이 없어요</div>'; return; }
+      const max = Math.max.apply(null, list.map(valFn));
+      el.innerHTML = list.map(r =>
+        '<div class="wc-rrow"><div class="rn"><span>' + r.num + '번</span>' + r.name + '</div>' +
+        '<div class="track"><div class="fill' + (gold ? ' gold' : '') + '" style="width:' + Math.max(4, valFn(r) / max * 100) + '%"></div></div>' +
+        '<div class="rv">' + fmt(r) + '</div></div>').join('');
+    }
+    const byChamp = played.filter(r => r.champ > 0).sort((a, b) => b.champ - a.champ || b.rate - a.rate).slice(0, 10);
+    bars('wc-rank-champ', byChamp, r => r.champ, r => r.champ + '회', true);
+    const byRate = played.filter(r => r.matches >= 10).sort((a, b) => b.rate - a.rate || b.wins - a.wins).slice(0, 10);
+    bars('wc-rank-rate', byRate, r => r.rate, r => (r.rate * 100).toFixed(1) + '%', false);
+
+    const key = wcRenderStats.sortKey || 'champ';
+    const sorted = played.slice().sort((a, b) => {
+      if (key === 'num') return a.num - b.num;
+      return (b[key] - a[key]) || (b.champ - a.champ) || (b.wins - a.wins);
+    });
+    document.getElementById('wc-tbody').innerHTML = sorted.length ? sorted.map(r =>
+      '<tr><td class="nm"><span>' + r.num + '번</span>' + r.name + '</td><td>' + r.champ + '</td><td>' + r.final + '</td>' +
+      '<td>' + r.wins + '</td><td>' + r.losses + '</td><td>' + (r.rate < 0 ? '-' : (r.rate * 100).toFixed(1) + '%') + '</td>' +
+      '<td>' + (r.avg < 0 ? '-' : r.avg.toFixed(1) + 'R') + '</td></tr>').join('')
+      : '<tr><td colspan="7" class="wc-empty">아직 기록이 없어요. 월드컵을 한 판 끝내면 여기에 쌓여요.</td></tr>';
+  }
+  wcRenderStats.sortKey = 'champ';
+
+  document.querySelectorAll('#wc-sizes .wc-size').forEach(btn => {
+    btn.addEventListener('click', () => {
+      wcSizeSel = +btn.getAttribute('data-size');
+      document.querySelectorAll('#wc-sizes .wc-size').forEach(x => x.classList.toggle('sel', x === btn));
+    });
+  });
+  document.getElementById('wc-start').addEventListener('click', wcStartTournament);
+  document.getElementById('wc-pick-a').addEventListener('click', () => wcPick(0));
+  document.getElementById('wc-pick-b').addEventListener('click', () => wcPick(1));
+  document.getElementById('wc-undo').addEventListener('click', () => {
+    if (!T || T.lock || !T.history.length) return;
+    wcRestore(T.history.pop());
+    wcRenderMatch();
+  });
+  document.getElementById('wc-quit').addEventListener('click', () => {
+    if (T && T.played > 0 && !confirm('진행 중인 월드컵을 그만둘까요? 이 판 기록은 저장되지 않아요.')) return;
+    T = null; wcShow('wc-setup');
+  });
+  document.getElementById('wc-close').addEventListener('click', () => {
+    if (T && !T.done && T.played > 0 && !confirm('진행 중인 월드컵을 닫을까요? 이 판 기록은 저장되지 않아요.')) return;
+    if (T && !T.done) T = null;
+    wcClose();
+  });
+  document.getElementById('wc-tostats').addEventListener('click', () => { wcRenderStats(); wcShow('wc-stats'); });
+  document.getElementById('wc-result-stats').addEventListener('click', () => { wcRenderStats(); wcShow('wc-stats'); });
+  document.getElementById('wc-result-close').addEventListener('click', wcClose);
+  document.getElementById('wc-again').addEventListener('click', () => wcShow('wc-setup'));
+  document.getElementById('wc-back').addEventListener('click', () => wcShow(T ? 'wc-match' : 'wc-setup'));
+  document.getElementById('wc-reset').addEventListener('click', () => {
+    if (!confirm('월드컵 기록을 전부 지울까요?')) return;
+    wcStats = { plays: 0, players: {} };
+    try { localStorage.removeItem(WC_KEY); } catch(e) {}
+    wcRenderStats();
+  });
+  document.querySelectorAll('.wc-table th').forEach(th => {
+    th.addEventListener('click', () => { wcRenderStats.sortKey = th.getAttribute('data-k'); wcRenderStats(); });
+  });
+  document.getElementById('wc-open-btn').addEventListener('click', wcOpen);
+  document.getElementById('wc-open-stats').addEventListener('click', () => { wcOpen(); wcRenderStats(); wcShow('wc-stats'); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && wcEl.classList.contains('open')) wcClose();
+  });
+
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
 </script>
 </body>
