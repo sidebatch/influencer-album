@@ -139,6 +139,8 @@
   #wc-zoom { position:fixed; inset:0; background:rgba(15,10,8,.97); z-index:80; display:none; }
   #wc-zoom.open { display:block; }
   #wc-zoom img { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+  #wc-zoom.cover img { object-fit:cover; }
+  #wc-zoom .zfit { position:absolute; top:14px; left:16px; font:inherit; font-size:13px; font-weight:700; padding:7px 13px; border-radius:999px; border:1px solid rgba(255,255,255,.35); background:rgba(20,14,10,.55); color:#fff; cursor:pointer; z-index:2; }
   #wc-zoom .zcap { position:absolute; left:0; right:0; bottom:86px; text-align:center; color:#fff; font-size:16px; font-weight:700; text-shadow:0 1px 4px rgba(0,0,0,.8); pointer-events:none; }
   #wc-zoom .zclose { position:absolute; top:14px; right:18px; color:#fff; font-size:30px; background:none; border:none; cursor:pointer; z-index:2; }
   #wc-zoom .zpick { position:absolute; left:50%; transform:translateX(-50%); bottom:26px; font:inherit; font-size:16px; font-weight:800; padding:13px 30px; border-radius:999px; border:none; background:#e5484d; color:#fff; cursor:pointer; z-index:2; box-shadow:0 3px 12px rgba(0,0,0,.4); white-space:nowrap; }
@@ -164,7 +166,7 @@
 <body>
 <header>
   <h1 id="album-title">Mia's Album</h1>
-  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 336</p>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 337</p>
   <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
     <button type="button" class="char-btn active" id="btn-mia">Mia</button>
     <button type="button" class="char-btn" id="btn-sua">Sua</button>
@@ -2203,6 +2205,7 @@
   <div id="wc-zoom">
     <img id="wc-zoom-img" src="" alt="">
     <div class="zcap" id="wc-zoom-cap"></div>
+    <button type="button" class="zfit" id="wc-zoom-fit">보기: 전체</button>
     <button type="button" class="zclose" id="wc-zoom-close" aria-label="닫기">&times;</button>
     <button type="button" class="wc-nav prev" id="wc-zoom-prev" aria-label="이전 사진">&#8249;</button>
     <button type="button" class="wc-nav next" id="wc-zoom-next" aria-label="다음 사진">&#8250;</button>
@@ -2371,55 +2374,55 @@
     btnTrainee.classList.toggle('active', name === 'trainee');
     if (name === 'ciel'){
       albumTitle.textContent = "Ciel's Album";
-      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 336';
+      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 337';
       document.title = "Ciel's Album";
     } else if (name === 'sena'){
       albumTitle.textContent = "Sena's Album";
-      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 65컷) · 버전 336';
+      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 65컷) · 버전 337';
       document.title = "Sena's Album";
     } else if (name === 'sua'){
       albumTitle.textContent = "Sua's Album";
-      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 250컷) · 버전 336';
+      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 250컷) · 버전 337';
       document.title = "Sua's Album";
     } else if (name === 'lena'){
       albumTitle.textContent = "Lena's Album";
-      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 7컷) · 버전 336';
+      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 7컷) · 버전 337';
       document.title = "Lena's Album";
     } else if (name === 'yuna'){
       albumTitle.textContent = "Yuna's Album";
-      albumSub.textContent = '긴 웨이브 청순 성숙상 기준의 컷 모음 (총 129컷) · 버전 336';
+      albumSub.textContent = '긴 웨이브 청순 성숙상 기준의 컷 모음 (총 129컷) · 버전 337';
       document.title = "Yuna's Album";
     } else if (name === 'ian'){
       albumTitle.textContent = "Ian's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 336';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 337';
       document.title = "Ian's Album";
     } else if (name === 'noah'){
       albumTitle.textContent = "Noah's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 336';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 337';
       document.title = "Noah's Album";
     } else if (name === 'jay'){
       albumTitle.textContent = "Jay's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 336';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 337';
       document.title = "Jay's Album";
     } else if (name === 'kai'){
       albumTitle.textContent = "Kai's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 336';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 337';
       document.title = "Kai's Album";
     } else if (name === 'jia'){
       albumTitle.textContent = "Jia's Album";
-      albumSub.textContent = '숏컷 배우상 기준의 컷 모음 (총 98컷) · 버전 336';
+      albumSub.textContent = '숏컷 배우상 기준의 컷 모음 (총 98컷) · 버전 337';
       document.title = "Jia's Album";
     } else if (name === 'trainee'){
       albumTitle.textContent = '연습생';
-      albumSub.textContent = '새 캐릭터 후보 모음 (총 101컷) · 버전 336';
+      albumSub.textContent = '새 캐릭터 후보 모음 (총 101컷) · 버전 337';
       document.title = '연습생 후보';
     } else if (name === 'group'){
       albumTitle.textContent = '단체샷';
-      albumSub.textContent = '공개 8명 단체 컷 모음 (총 4컷) · 버전 336';
+      albumSub.textContent = '공개 8명 단체 컷 모음 (총 4컷) · 버전 337';
       document.title = '단체샷';
     } else {
       albumTitle.textContent = "Mia's Album";
-      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 336';
+      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 337';
       document.title = "Mia's Album";
     }
     cards = allCards.filter(c => c.offsetParent !== null);
@@ -2797,6 +2800,20 @@
     wcZoomTouchX = null;
     if (Math.abs(dx) >= 40) wcZoomFlip();
   }, { passive: true });
+
+  let wcFitMode = 'fit';
+  try { wcFitMode = localStorage.getItem('album-view') || 'fit'; } catch(e) {}
+  function wcApplyFit(){
+    document.getElementById('wc-zoom').classList.toggle('cover', wcFitMode === 'cover');
+    document.getElementById('wc-zoom-fit').textContent = wcFitMode === 'cover' ? '보기: 꽉 차게' : '보기: 전체';
+  }
+  document.getElementById('wc-zoom-fit').addEventListener('click', (e) => {
+    e.stopPropagation();
+    wcFitMode = wcFitMode === 'cover' ? 'fit' : 'cover';
+    try { localStorage.setItem('album-view', wcFitMode); } catch(err) {}
+    wcApplyFit();
+  });
+  wcApplyFit();
   document.getElementById('wc-select').addEventListener('click', () => wcPick(wcViewIdx));
   document.getElementById('wc-flip-prev').addEventListener('click', () => wcFlip(-1));
   document.getElementById('wc-flip-next').addEventListener('click', () => wcFlip(1));
