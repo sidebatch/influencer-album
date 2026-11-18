@@ -113,12 +113,28 @@
   .wc-vsrow .vr2 { font-size:13.5px; font-weight:700; color:#2b2320; text-align:right; }
   .wc-vsrow .vr2 small { display:block; font-weight:600; color:#a08d7c; font-size:11.5px; }
   .wc-vslist { display:flex; flex-direction:column; gap:7px; }
+  #wc button { touch-action:manipulation; }
+  .wc-pick { transition:transform .12s ease, border-color .12s ease; }
+  .wc-pick:active { transform:scale(.985); }
+  .wc-pick.picked { transform:scale(1.015); }
+  @keyframes wcIn { from { opacity:.3; transform:translateY(7px); } to { opacity:1; transform:none; } }
+  .wc-anim { animation:wcIn .18s ease; }
+  .wc-pick .nm small { display:block; font-size:11.5px; color:#a08d7c; font-weight:600; margin-top:2px; }
+  .wc-path { display:flex; gap:7px; flex-wrap:wrap; justify-content:center; }
+  .wc-path figure { width:76px; margin:0; }
+  .wc-path img { width:100%; aspect-ratio:3/2; object-fit:cover; border-radius:8px; display:block; box-shadow:0 1px 4px rgba(80,60,40,.15); }
+  .wc-path figcaption { font-size:11px; color:#8a7a6d; text-align:center; margin-top:3px; }
+  .wc-search { width:100%; font:inherit; font-size:14px; padding:10px 14px; border:1px solid #e3d5c3; border-radius:999px; margin-bottom:10px; background:#fff; color:#2b2320; }
+  .wc-tablewrap { max-height:62vh; overflow:auto; }
+  .wc-table th { position:sticky; top:0; background:#fff; z-index:1; }
+  .wc-rk { display:inline-block; min-width:21px; color:#c9962e; font-weight:800; }
+  .wc-rrow { grid-template-columns:136px 1fr 52px; }
 </style>
 </head>
 <body>
 <header>
   <h1 id="album-title">Mia's Album</h1>
-  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 332</p>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 333</p>
   <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
     <button type="button" class="char-btn active" id="btn-mia">Mia</button>
     <button type="button" class="char-btn" id="btn-sua">Sua</button>
@@ -2054,11 +2070,12 @@
 
     <div id="wc-setup">
       <p class="wc-sub">연습생 101명 중 두 명씩 붙여, 마지막 한 명이 남을 때까지 골라보세요. 몇 명으로 시작할까요?</p>
+      <p class="wc-sub" id="wc-setup-summary" style="font-weight:700;color:#5b4a3f;margin-bottom:10px"></p>
       <div class="wc-sizes" id="wc-sizes">
-        <button type="button" class="wc-size sel" data-size="101">101명 전체</button>
-        <button type="button" class="wc-size" data-size="64">64강</button>
-        <button type="button" class="wc-size" data-size="32">32강</button>
-        <button type="button" class="wc-size" data-size="16">16강</button>
+        <button type="button" class="wc-size sel" data-size="101">101명 전체 · 100경기</button>
+        <button type="button" class="wc-size" data-size="64">64강 · 63경기</button>
+        <button type="button" class="wc-size" data-size="32">32강 · 31경기</button>
+        <button type="button" class="wc-size" data-size="16">16강 · 15경기</button>
       </div>
       <button type="button" class="wc-start" id="wc-start">월드컵 시작</button>
       <div class="wc-actions">
@@ -2096,6 +2113,9 @@
         <div><img id="wc-win-img" src="" alt=""></div>
         <div class="wname" id="wc-win-name"></div>
         <p class="wc-sub" id="wc-win-note"></p>
+        <p class="wc-sub" id="wc-runnerup" style="margin-top:2px"></p>
+        <div class="wc-sec" style="text-align:center">우승까지 이긴 상대</div>
+        <div class="wc-path" id="wc-win-path"></div>
         <div class="wc-actions">
           <button type="button" class="wc-ghost" id="wc-again">한 번 더 하기</button>
           <button type="button" class="wc-ghost" id="wc-result-stats">통계 보기</button>
@@ -2134,6 +2154,7 @@
       <div class="wc-rank" id="wc-rank-rate"></div>
       <div class="wc-sec">전체 기록</div>
       <p class="wc-sub" style="margin:-4px 0 10px">선수를 누르면 상세 기록(어디서 떨어졌는지, 누구에게 졌는지)이 열려요</p>
+      <input id="wc-search" class="wc-search" type="search" placeholder="이름 또는 번호로 찾기" autocomplete="off">
       <div class="wc-tablewrap">
         <table class="wc-table">
           <thead><tr>
@@ -2313,55 +2334,55 @@
     btnTrainee.classList.toggle('active', name === 'trainee');
     if (name === 'ciel'){
       albumTitle.textContent = "Ciel's Album";
-      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 332';
+      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 333';
       document.title = "Ciel's Album";
     } else if (name === 'sena'){
       albumTitle.textContent = "Sena's Album";
-      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 65컷) · 버전 332';
+      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 65컷) · 버전 333';
       document.title = "Sena's Album";
     } else if (name === 'sua'){
       albumTitle.textContent = "Sua's Album";
-      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 250컷) · 버전 332';
+      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 250컷) · 버전 333';
       document.title = "Sua's Album";
     } else if (name === 'lena'){
       albumTitle.textContent = "Lena's Album";
-      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 7컷) · 버전 332';
+      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 7컷) · 버전 333';
       document.title = "Lena's Album";
     } else if (name === 'yuna'){
       albumTitle.textContent = "Yuna's Album";
-      albumSub.textContent = '긴 웨이브 청순 성숙상 기준의 컷 모음 (총 129컷) · 버전 332';
+      albumSub.textContent = '긴 웨이브 청순 성숙상 기준의 컷 모음 (총 129컷) · 버전 333';
       document.title = "Yuna's Album";
     } else if (name === 'ian'){
       albumTitle.textContent = "Ian's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 332';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 333';
       document.title = "Ian's Album";
     } else if (name === 'noah'){
       albumTitle.textContent = "Noah's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 332';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 333';
       document.title = "Noah's Album";
     } else if (name === 'jay'){
       albumTitle.textContent = "Jay's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 332';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 333';
       document.title = "Jay's Album";
     } else if (name === 'kai'){
       albumTitle.textContent = "Kai's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 332';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 333';
       document.title = "Kai's Album";
     } else if (name === 'jia'){
       albumTitle.textContent = "Jia's Album";
-      albumSub.textContent = '숏컷 배우상 기준의 컷 모음 (총 98컷) · 버전 332';
+      albumSub.textContent = '숏컷 배우상 기준의 컷 모음 (총 98컷) · 버전 333';
       document.title = "Jia's Album";
     } else if (name === 'trainee'){
       albumTitle.textContent = '연습생';
-      albumSub.textContent = '새 캐릭터 후보 모음 (총 101컷) · 버전 332';
+      albumSub.textContent = '새 캐릭터 후보 모음 (총 101컷) · 버전 333';
       document.title = '연습생 후보';
     } else if (name === 'group'){
       albumTitle.textContent = '단체샷';
-      albumSub.textContent = '공개 8명 단체 컷 모음 (총 4컷) · 버전 332';
+      albumSub.textContent = '공개 8명 단체 컷 모음 (총 4컷) · 버전 333';
       document.title = '단체샷';
     } else {
       albumTitle.textContent = "Mia's Album";
-      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 332';
+      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 333';
       document.title = "Mia's Album";
     }
     cards = allCards.filter(c => c.offsetParent !== null);
@@ -2417,6 +2438,7 @@
   function wcShow(id){
     ['wc-setup','wc-match','wc-result','wc-stats','wc-detail'].forEach(x => { document.getElementById(x).hidden = x !== id; });
     wcEl.scrollTop = 0;
+    if (id === 'wc-setup') wcRenderSetup();
   }
   function wcOpen(){ wcEl.classList.add('open'); document.body.style.overflow = 'hidden'; if (!T) wcShow('wc-setup'); else wcShow('wc-match'); }
   function wcClose(){ wcEl.classList.remove('open'); document.body.style.overflow = ''; }
@@ -2437,12 +2459,42 @@
       players: picked.slice(byes),
       winners: [], matchIdx: 0,
       totalMatches: picked.length - 1, played: 0,
-      tally, history: [], lock: false, done: false
+      tally, path: {}, history: [], lock: false, done: false
     };
     wcShow('wc-match');
     wcRenderMatch();
   }
 
+
+  function wcRenderSetup(){
+    const el = document.getElementById('wc-setup-summary');
+    if (!el) return;
+    if (!wcStats.plays){ el.textContent = ''; return; }
+    let txt = '지금까지 ' + wcStats.plays + '판 플레이';
+    if (wcStats.lastChamp){
+      const c = wcPool.find(x => x.num === wcStats.lastChamp);
+      if (c) txt += ' · 최근 우승 ' + c.num + '번 ' + c.name;
+    }
+    el.textContent = txt;
+  }
+  function wcSubLine(p){
+    const parts = [];
+    const tw = T && T.tally[p.num] ? T.tally[p.num].wins : 0;
+    if (tw > 0) parts.push('이번 대회 ' + tw + '승');
+    const s = wcStats.players[String(p.num)];
+    if (s && s.entered > 0){
+      const m = s.wins + s.losses;
+      if (s.champ > 0) parts.push('통산 우승 ' + s.champ);
+      if (m > 0) parts.push('승률 ' + (s.wins / m * 100).toFixed(0) + '%');
+    }
+    return parts.length ? '<small>' + parts.join(' · ') + '</small>' : '';
+  }
+  function wcPreloadNext(){
+    let nxt = null;
+    if ((T.matchIdx + 1) * 2 < T.players.length) nxt = [T.players[(T.matchIdx + 1) * 2], T.players[(T.matchIdx + 1) * 2 + 1]];
+    else { const adv = T.bench.concat(T.winners); if (adv.length >= 2) nxt = [adv[0], adv[1]]; }
+    if (nxt) nxt.forEach(p => { const im = new Image(); im.src = p.img; });
+  }
   function wcRoundName(){
     if (T.aliveStart === 4) return '준결승';
     if (T.aliveStart === 2) return '결승';
@@ -2453,26 +2505,30 @@
   function wcRenderMatch(){
     const [a, b] = wcPair();
     document.getElementById('wc-round').textContent = wcRoundName();
-    document.getElementById('wc-prog').textContent = '경기 ' + Math.min(T.played + 1, T.totalMatches) + ' / ' + T.totalMatches;
+    const aliveNow = T.bench.length + T.winners.length + (T.players.length - T.matchIdx * 2);
+    document.getElementById('wc-prog').textContent = '경기 ' + Math.min(T.played + 1, T.totalMatches) + ' / ' + T.totalMatches + ' · 남은 ' + aliveNow + '명';
     document.getElementById('wc-barfill').style.width = (T.totalMatches ? (T.played / T.totalMatches * 100) : 0) + '%';
     const ia = document.getElementById('wc-img-a'), ib = document.getElementById('wc-img-b');
     ia.src = a.img; ia.alt = a.num + '번 ' + a.name;
     ib.src = b.img; ib.alt = b.num + '번 ' + b.name;
-    document.getElementById('wc-name-a').innerHTML = '<span>' + a.num + '번</span>' + a.name;
-    document.getElementById('wc-name-b').innerHTML = '<span>' + b.num + '번</span>' + b.name;
+    document.getElementById('wc-name-a').innerHTML = '<span>' + a.num + '번</span>' + a.name + wcSubLine(a);
+    document.getElementById('wc-name-b').innerHTML = '<span>' + b.num + '번</span>' + b.name + wcSubLine(b);
     document.getElementById('wc-pick-a').classList.remove('picked');
     document.getElementById('wc-pick-b').classList.remove('picked');
     document.getElementById('wc-undo').disabled = T.history.length === 0;
+    const vsEl = document.querySelector('.wc-vs');
+    if (vsEl){ vsEl.classList.remove('wc-anim'); void vsEl.offsetWidth; vsEl.classList.add('wc-anim'); }
+    wcPreloadNext();
   }
 
   function wcSnapshot(){
     return JSON.stringify({ round: T.round, aliveStart: T.aliveStart, bench: T.bench, players: T.players,
-      winners: T.winners, matchIdx: T.matchIdx, played: T.played, tally: T.tally });
+      winners: T.winners, matchIdx: T.matchIdx, played: T.played, tally: T.tally, path: T.path });
   }
   function wcRestore(s){
     const o = JSON.parse(s);
     T.round = o.round; T.aliveStart = o.aliveStart; T.bench = o.bench; T.players = o.players;
-    T.winners = o.winners; T.matchIdx = o.matchIdx; T.played = o.played; T.tally = o.tally;
+    T.winners = o.winners; T.matchIdx = o.matchIdx; T.played = o.played; T.tally = o.tally; T.path = o.path || {};
   }
 
   function wcPick(side){
@@ -2482,11 +2538,13 @@
     const winner = side === 0 ? a : b, loser = side === 0 ? b : a;
     document.getElementById(side === 0 ? 'wc-pick-a' : 'wc-pick-b').classList.add('picked');
     T.history.push(wcSnapshot());
+    try { if (navigator.vibrate) navigator.vibrate(8); } catch(e) {}
     T.tally[winner.num].wins++;
     T.tally[loser.num].reached = T.round;
     const twv = T.tally[winner.num].vs[loser.num] || (T.tally[winner.num].vs[loser.num] = { w: 0, l: 0 }); twv.w++;
     const tlv = T.tally[loser.num].vs[winner.num] || (T.tally[loser.num].vs[winner.num] = { w: 0, l: 0 }); tlv.l++;
     T.tally[loser.num].exitStage = T.aliveStart;
+    (T.path[winner.num] = T.path[winner.num] || []).push(loser.num);
     if (T.aliveStart === 2) T.tally[loser.num].final = true;
     T.winners.push(winner);
     T.played++; T.matchIdx++;
@@ -2511,6 +2569,7 @@
 
   function wcFinish(champ){
     wcStats.plays++;
+    wcStats.lastChamp = champ.num;
     Object.keys(T.tally).forEach(num => {
       const t = T.tally[num];
       const key = String(num);
@@ -2528,6 +2587,14 @@
     document.getElementById('wc-win-img').src = champ.img;
     document.getElementById('wc-win-name').innerHTML = '<span>' + champ.num + '번</span> ' + champ.name;
     document.getElementById('wc-win-note').textContent = '통산 ' + (wcStats.players[String(champ.num)].champ) + '번째 우승이에요';
+    const ruNum = Object.keys(T.tally).find(k => T.tally[k].final);
+    const ru = ruNum ? wcPool.find(x => x.num === +ruNum) : null;
+    document.getElementById('wc-runnerup').textContent = ru ? '준우승 · ' + ru.num + '번 ' + ru.name : '';
+    const cpath = (T.path && T.path[champ.num]) || [];
+    document.getElementById('wc-win-path').innerHTML = cpath.map(n => {
+      const o = wcPool.find(x => x.num === n);
+      return o ? '<figure><img src="' + o.img + '" alt=""><figcaption>' + o.num + '번 ' + o.name + '</figcaption></figure>' : '';
+    }).join('');
     T = null;
     wcShow('wc-result');
   }
@@ -2551,8 +2618,8 @@
       const el = document.getElementById(elId);
       if (!list.length){ el.innerHTML = '<div class="wc-empty">아직 기록이 없어요</div>'; return; }
       const max = Math.max.apply(null, list.map(valFn));
-      el.innerHTML = list.map(r =>
-        '<div class="wc-rrow" data-num="' + r.num + '"><div class="rn"><span>' + r.num + '번</span>' + r.name + '</div>' +
+      el.innerHTML = list.map((r, i) =>
+        '<div class="wc-rrow" data-num="' + r.num + '"><div class="rn"><b class="wc-rk">' + (i + 1) + '</b><span>' + r.num + '번</span>' + r.name + '</div>' +
         '<div class="track"><div class="fill' + (gold ? ' gold' : '') + '" style="width:' + Math.max(4, valFn(r) / max * 100) + '%"></div></div>' +
         '<div class="rv">' + fmt(r) + '</div></div>').join('');
       el.querySelectorAll('.wc-rrow').forEach(row => row.addEventListener('click', () => wcShowDetail(+row.getAttribute('data-num'))));
@@ -2563,18 +2630,21 @@
     bars('wc-rank-rate', byRate, r => r.rate, r => (r.rate * 100).toFixed(1) + '%', false);
 
     const key = wcRenderStats.sortKey || 'champ';
+    const q = (wcRenderStats.filter || '').trim();
     const sorted = played.slice().sort((a, b) => {
       if (key === 'num') return a.num - b.num;
       return (b[key] - a[key]) || (b.champ - a.champ) || (b.wins - a.wins);
     });
-    document.getElementById('wc-tbody').innerHTML = sorted.length ? sorted.map(r =>
+    const filtered = q ? sorted.filter(r => r.name.includes(q) || String(r.num).includes(q)) : sorted;
+    document.getElementById('wc-tbody').innerHTML = filtered.length ? filtered.map(r =>
       '<tr data-num="' + r.num + '"><td class="nm"><span>' + r.num + '번</span>' + r.name + '</td><td>' + r.champ + '</td><td>' + r.final + '</td>' +
       '<td>' + r.wins + '</td><td>' + r.losses + '</td><td>' + (r.rate < 0 ? '-' : (r.rate * 100).toFixed(1) + '%') + '</td>' +
       '<td>' + (r.avg < 0 ? '-' : r.avg.toFixed(1) + 'R') + '</td></tr>').join('')
-      : '<tr><td colspan="7" class="wc-empty">아직 기록이 없어요. 월드컵을 한 판 끝내면 여기에 쌓여요.</td></tr>';
+      : '<tr><td colspan="7" class="wc-empty">' + (q ? '검색 결과가 없어요' : '아직 기록이 없어요. 월드컵을 한 판 끝내면 여기에 쌓여요.') + '</td></tr>';
     document.querySelectorAll('#wc-tbody tr[data-num]').forEach(row => row.addEventListener('click', () => wcShowDetail(+row.getAttribute('data-num'))));
   }
   wcRenderStats.sortKey = 'champ';
+  wcRenderStats.filter = '';
 
 
   function wcStageName(k){
@@ -2668,10 +2738,15 @@
   document.querySelectorAll('.wc-table th').forEach(th => {
     th.addEventListener('click', () => { wcRenderStats.sortKey = th.getAttribute('data-k'); wcRenderStats(); });
   });
+  const wcSearchEl = document.getElementById('wc-search');
+  if (wcSearchEl) wcSearchEl.addEventListener('input', () => { wcRenderStats.filter = wcSearchEl.value; wcRenderStats(); });
   document.getElementById('wc-open-btn').addEventListener('click', wcOpen);
   document.getElementById('wc-open-stats').addEventListener('click', () => { wcOpen(); wcRenderStats(); wcShow('wc-stats'); });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && wcEl.classList.contains('open')) wcClose();
+    if (!wcEl.classList.contains('open') || !T || document.getElementById('wc-match').hidden) return;
+    if (e.key === 'ArrowLeft') wcPick(0);
+    if (e.key === 'ArrowRight') wcPick(1);
   });
 
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
