@@ -27,6 +27,10 @@
   .card .cap { padding:8px 10px; font-size:12.5px; color:#6b584c; }
   .anchor-card { max-width:520px; margin:0 auto; }
   footer { text-align:center; padding:26px 10px 34px; font-size:12px; color:#a08d7c; }
+  html.egg-locked #btn-trainee { display:none; }
+  html.egg-locked #album-trainee, html.egg-locked #nav-trainee { display:none !important; }
+  #egg-toast { position:fixed; left:50%; bottom:30px; transform:translateX(-50%) translateY(16px); background:rgba(20,14,10,.93); color:#fff; padding:10px 18px; border-radius:999px; font-size:14px; opacity:0; pointer-events:none; transition:opacity .25s, transform .25s; z-index:90; white-space:nowrap; }
+  #egg-toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
   #lightbox { position:fixed; inset:0; background:rgba(15,10,8,.96); display:none; z-index:50; }
   #lightbox.open { display:block; }
   #lightbox img { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; touch-action:none; }
@@ -171,11 +175,12 @@
   .wc-resume-txt { font-weight:700; font-size:14.5px; color:#5b4a3f; margin-bottom:10px; }
   .wc-resume-btns { display:flex; gap:8px; align-items:center; }
 </style>
+<script>try{ if(localStorage.getItem('album-egg-v1')!=='1') document.documentElement.classList.add('egg-locked'); }catch(e){ document.documentElement.classList.add('egg-locked'); }</script>
 </head>
 <body>
 <header>
   <h1 id="album-title">Mia's Album</h1>
-  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 343</p>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 344</p>
   <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
     <button type="button" class="char-btn active" id="btn-mia">Mia</button>
     <button type="button" class="char-btn" id="btn-sua">Sua</button>
@@ -2571,7 +2576,40 @@
   const btnJia = document.getElementById('btn-jia');
   const btnGroup = document.getElementById('btn-group');
   const btnTrainee = document.getElementById('btn-trainee');
+  const EGG_KEY = 'album-egg-v1';
+  let eggOn = false;
+  try { eggOn = localStorage.getItem(EGG_KEY) === '1'; } catch(e) {}
+  function eggUnlocked(){ return eggOn; }
+  let eggToastTimer = null;
+  function eggToast(msg){
+    const t = document.getElementById('egg-toast');
+    t.textContent = msg; t.classList.add('show');
+    clearTimeout(eggToastTimer);
+    eggToastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+  }
+  function eggApply(){ document.documentElement.classList.toggle('egg-locked', !eggOn); }
+  function eggToggle(){
+    eggOn = !eggOn;
+    try { localStorage.setItem(EGG_KEY, eggOn ? '1' : '0'); } catch(e) {}
+    eggApply();
+    if (navigator.vibrate) navigator.vibrate(40);
+    eggToast(eggOn ? '숨은 섹션이 열렸어요' : '숨은 섹션을 숨겼어요');
+    if (!eggOn && !document.getElementById('album-trainee').hidden) selectChar('mia');
+  }
+  eggApply();
+  const anchorCard = document.querySelector('.anchor-card');
+  let eggCount = 0, eggSeqTimer = null, eggOpenTimer = null, eggBypass = false;
+  document.getElementById('anchor').addEventListener('click', (e) => {
+    if (eggBypass || !anchorCard.contains(e.target)) return;
+    e.stopPropagation(); e.preventDefault();
+    eggCount++;
+    clearTimeout(eggSeqTimer); clearTimeout(eggOpenTimer);
+    if (eggCount >= 5){ eggCount = 0; eggToggle(); return; }
+    eggSeqTimer = setTimeout(() => { eggCount = 0; }, 1600);
+    eggOpenTimer = setTimeout(() => { eggBypass = true; anchorCard.click(); eggBypass = false; }, 300);
+  }, true);
   function selectChar(name){
+    if (name === 'trainee' && !eggUnlocked()) name = 'mia';
     document.getElementById('album-mia').hidden = name !== 'mia';
     document.getElementById('nav-mia').hidden = name !== 'mia';
     document.getElementById('album-ciel').hidden = name !== 'ciel';
@@ -2613,55 +2651,55 @@
     btnTrainee.classList.toggle('active', name === 'trainee');
     if (name === 'ciel'){
       albumTitle.textContent = "Ciel's Album";
-      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 343';
+      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 344';
       document.title = "Ciel's Album";
     } else if (name === 'sena'){
       albumTitle.textContent = "Sena's Album";
-      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 65컷) · 버전 343';
+      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 65컷) · 버전 344';
       document.title = "Sena's Album";
     } else if (name === 'sua'){
       albumTitle.textContent = "Sua's Album";
-      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 250컷) · 버전 343';
+      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 250컷) · 버전 344';
       document.title = "Sua's Album";
     } else if (name === 'lena'){
       albumTitle.textContent = "Lena's Album";
-      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 7컷) · 버전 343';
+      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 7컷) · 버전 344';
       document.title = "Lena's Album";
     } else if (name === 'yuna'){
       albumTitle.textContent = "Yuna's Album";
-      albumSub.textContent = '긴 웨이브 청순 성숙상 기준의 컷 모음 (총 129컷) · 버전 343';
+      albumSub.textContent = '긴 웨이브 청순 성숙상 기준의 컷 모음 (총 129컷) · 버전 344';
       document.title = "Yuna's Album";
     } else if (name === 'ian'){
       albumTitle.textContent = "Ian's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 343';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 344';
       document.title = "Ian's Album";
     } else if (name === 'noah'){
       albumTitle.textContent = "Noah's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 343';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 344';
       document.title = "Noah's Album";
     } else if (name === 'jay'){
       albumTitle.textContent = "Jay's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 343';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 344';
       document.title = "Jay's Album";
     } else if (name === 'kai'){
       albumTitle.textContent = "Kai's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 343';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 344';
       document.title = "Kai's Album";
     } else if (name === 'jia'){
       albumTitle.textContent = "Jia's Album";
-      albumSub.textContent = '숏컷 배우상 기준의 컷 모음 (총 98컷) · 버전 343';
+      albumSub.textContent = '숏컷 배우상 기준의 컷 모음 (총 98컷) · 버전 344';
       document.title = "Jia's Album";
     } else if (name === 'trainee'){
       albumTitle.textContent = '연습생';
-      albumSub.textContent = '새 캐릭터 후보 모음 (총 303컷) · 버전 343';
+      albumSub.textContent = '새 캐릭터 후보 모음 (총 303컷) · 버전 344';
       document.title = '연습생 후보';
     } else if (name === 'group'){
       albumTitle.textContent = '단체샷';
-      albumSub.textContent = '공개 8명 단체 컷 모음 (총 4컷) · 버전 343';
+      albumSub.textContent = '공개 8명 단체 컷 모음 (총 4컷) · 버전 344';
       document.title = '단체샷';
     } else {
       albumTitle.textContent = "Mia's Album";
-      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 343';
+      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 344';
       document.title = "Mia's Album";
     }
     cards = allCards.filter(c => c.offsetParent !== null);
@@ -3292,5 +3330,6 @@
 
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
 </script>
+<div id="egg-toast"></div>
 </body>
 </html>
