@@ -180,7 +180,7 @@
 <body>
 <header>
   <h1 id="album-title">Mia's Album</h1>
-  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 348</p>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 349</p>
   <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
     <button type="button" class="char-btn active" id="btn-mia">Mia</button>
     <button type="button" class="char-btn" id="btn-sua">Sua</button>
@@ -2799,55 +2799,55 @@
     btnTrainee.classList.toggle('active', name === 'trainee');
     if (name === 'ciel'){
       albumTitle.textContent = "Ciel's Album";
-      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 348';
+      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 349';
       document.title = "Ciel's Album";
     } else if (name === 'sena'){
       albumTitle.textContent = "Sena's Album";
-      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 65컷) · 버전 348';
+      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 65컷) · 버전 349';
       document.title = "Sena's Album";
     } else if (name === 'sua'){
       albumTitle.textContent = "Sua's Album";
-      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 250컷) · 버전 348';
+      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 250컷) · 버전 349';
       document.title = "Sua's Album";
     } else if (name === 'lena'){
       albumTitle.textContent = "Lena's Album";
-      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 7컷) · 버전 348';
+      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 7컷) · 버전 349';
       document.title = "Lena's Album";
     } else if (name === 'yuna'){
       albumTitle.textContent = "Yuna's Album";
-      albumSub.textContent = '긴 웨이브 청순 성숙상 기준의 컷 모음 (총 129컷) · 버전 348';
+      albumSub.textContent = '긴 웨이브 청순 성숙상 기준의 컷 모음 (총 129컷) · 버전 349';
       document.title = "Yuna's Album";
     } else if (name === 'ian'){
       albumTitle.textContent = "Ian's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 348';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 349';
       document.title = "Ian's Album";
     } else if (name === 'noah'){
       albumTitle.textContent = "Noah's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 348';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 349';
       document.title = "Noah's Album";
     } else if (name === 'jay'){
       albumTitle.textContent = "Jay's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 348';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 349';
       document.title = "Jay's Album";
     } else if (name === 'kai'){
       albumTitle.textContent = "Kai's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 348';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 349';
       document.title = "Kai's Album";
     } else if (name === 'jia'){
       albumTitle.textContent = "Jia's Album";
-      albumSub.textContent = '숏컷 배우상 기준의 컷 모음 (총 98컷) · 버전 348';
+      albumSub.textContent = '숏컷 배우상 기준의 컷 모음 (총 98컷) · 버전 349';
       document.title = "Jia's Album";
     } else if (name === 'trainee'){
       albumTitle.textContent = '연습생';
-      albumSub.textContent = '새 캐릭터 후보 모음 (총 404컷) · 버전 348';
+      albumSub.textContent = '새 캐릭터 후보 모음 (총 404컷) · 버전 349';
       document.title = '연습생 후보';
     } else if (name === 'group'){
       albumTitle.textContent = '단체샷';
-      albumSub.textContent = '공개 8명 단체 컷 모음 (총 4컷) · 버전 348';
+      albumSub.textContent = '공개 8명 단체 컷 모음 (총 4컷) · 버전 349';
       document.title = '단체샷';
     } else {
       albumTitle.textContent = "Mia's Album";
-      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 348';
+      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 349';
       document.title = "Mia's Album";
     }
     cards = allCards.filter(c => c.offsetParent !== null);
@@ -3125,7 +3125,6 @@
     document.getElementById('wc-barfill').style.width = (T.totalMatches ? (T.played / T.totalMatches * 100) : 0) + '%';
     document.getElementById('wc-undo').disabled = T.history.length === 0;
     wcViewIdx = 0;
-    wcStage = 0;
     wcRenderFlip(0);
     wcPreloadNext();
     wcSaveResume();
