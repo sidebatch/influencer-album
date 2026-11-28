@@ -174,13 +174,24 @@
   .wc-resume { background:#fdf3e0; border:1px solid #ecd9ae; border-radius:14px; padding:13px 14px; margin-bottom:14px; }
   .wc-resume-txt { font-weight:700; font-size:14.5px; color:#5b4a3f; margin-bottom:10px; }
   .wc-resume-btns { display:flex; gap:8px; align-items:center; }
+  html.dl-yui #yui-daily, html.dl-yui #yui-winter, html.dl-yui #yui-sets { display:none !important; }
+  html.dl-yui nav a[href="#yui-daily"], html.dl-yui nav a[href="#yui-winter"], html.dl-yui nav a[href="#yui-sets"] { display:none; }
+  html.dl-sora #sora-daily, html.dl-sora #sora-winter, html.dl-sora #sora-sets { display:none !important; }
+  html.dl-sora nav a[href="#sora-daily"], html.dl-sora nav a[href="#sora-winter"], html.dl-sora nav a[href="#sora-sets"] { display:none; }
+  html.dl-minchae #minchae-daily, html.dl-minchae #minchae-winter, html.dl-minchae #minchae-sets { display:none !important; }
+  html.dl-minchae nav a[href="#minchae-daily"], html.dl-minchae nav a[href="#minchae-winter"], html.dl-minchae nav a[href="#minchae-sets"] { display:none; }
+  html.dl-chaewon #chaewon-daily, html.dl-chaewon #chaewon-winter, html.dl-chaewon #chaewon-sets { display:none !important; }
+  html.dl-chaewon nav a[href="#chaewon-daily"], html.dl-chaewon nav a[href="#chaewon-winter"], html.dl-chaewon nav a[href="#chaewon-sets"] { display:none; }
+  html.dl-hayul #hayul-daily, html.dl-hayul #hayul-winter, html.dl-hayul #hayul-sets { display:none !important; }
+  html.dl-hayul nav a[href="#hayul-daily"], html.dl-hayul nav a[href="#hayul-winter"], html.dl-hayul nav a[href="#hayul-sets"] { display:none; }
 </style>
 <script>try{ if(localStorage.getItem('album-egg-v1')!=='1') document.documentElement.classList.add('egg-locked'); }catch(e){ document.documentElement.classList.add('egg-locked'); }</script>
+<script>try{ ['yui','sora','minchae','chaewon','hayul'].forEach(function(s){ if(localStorage.getItem('debut-egg-'+s)!=='1') document.documentElement.classList.add('dl-'+s); }); }catch(e){ ['yui','sora','minchae','chaewon','hayul'].forEach(function(s){ document.documentElement.classList.add('dl-'+s); }); }</script>
 </head>
 <body>
 <header>
   <h1 id="album-title">Mia's Album</h1>
-  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 358</p>
+  <p id="album-sub">확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 359</p>
   <div class="char-switch" role="tablist" aria-label="캐릭터 선택">
     <button type="button" class="char-btn active" id="btn-mia">Mia</button>
     <button type="button" class="char-btn" id="btn-sua">Sua</button>
@@ -2768,6 +2779,35 @@
     eggOn = !eggOn;
     try { localStorage.setItem(EGG_KEY, eggOn ? '1' : '0'); } catch(e) {}
     eggApply();
+  // 데뷔 후보 숨은 섹션 (일상·겨울 일상·세트): 각자 메인 사진 5번 터치로 토글
+  [['yui','유이'],['sora','소라'],['minchae','민채'],['chaewon','채원'],['hayul','하율']].forEach(([slug, kr]) => {
+    const DKEY = 'debut-egg-' + slug;
+    let dOn = false;
+    try { dOn = localStorage.getItem(DKEY) === '1'; } catch(e) {}
+    const dSec = document.getElementById(slug + '-main');
+    if (!dSec) return;
+    const dCard = dSec.querySelector('.card');
+    if (!dCard) return;
+    let dCount = 0, dSeqTimer = null, dOpenTimer = null, dBypass = false;
+    dSec.addEventListener('click', (e) => {
+      if (dBypass || !dCard.contains(e.target)) return;
+      e.stopPropagation(); e.preventDefault();
+      dCount++;
+      clearTimeout(dSeqTimer); clearTimeout(dOpenTimer);
+      if (dCount >= 5){
+        dCount = 0;
+        dOn = !dOn;
+        try { localStorage.setItem(DKEY, dOn ? '1' : '0'); } catch(err) {}
+        document.documentElement.classList.toggle('dl-' + slug, !dOn);
+        if (navigator.vibrate) navigator.vibrate(40);
+        eggToast(dOn ? kr + ' 숨은 섹션이 열렸어요' : kr + ' 숨은 섹션을 숨겼어요');
+        cards = allCards.filter(c => c.offsetParent !== null);
+        return;
+      }
+      dSeqTimer = setTimeout(() => { dCount = 0; }, 1600);
+      dOpenTimer = setTimeout(() => { dBypass = true; dCard.click(); dBypass = false; }, 300);
+    }, true);
+  });
     if (navigator.vibrate) navigator.vibrate(40);
     eggToast(eggOn ? '숨은 섹션이 열렸어요' : '숨은 섹션을 숨겼어요');
   }
@@ -2839,75 +2879,75 @@
     btnTrainee.classList.toggle('active', name === 'trainee');
     if (name === 'ciel'){
       albumTitle.textContent = "Ciel's Album";
-      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 358';
+      albumSub.textContent = '단발 귀여운상 기준의 컷 모음 (총 4컷) · 버전 359';
       document.title = "Ciel's Album";
     } else if (name === 'sena'){
       albumTitle.textContent = "Sena's Album";
-      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 65컷) · 버전 358';
+      albumSub.textContent = '시크한 단발 귀염상 기준의 컷 모음 (총 65컷) · 버전 359';
       document.title = "Sena's Album";
     } else if (name === 'sua'){
       albumTitle.textContent = "Sua's Album";
-      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 250컷) · 버전 358';
+      albumSub.textContent = '차분한 귀염상 기준의 컷 모음 (총 250컷) · 버전 359';
       document.title = "Sua's Album";
     } else if (name === 'lena'){
       albumTitle.textContent = "Lena's Album";
-      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 7컷) · 버전 358';
+      albumSub.textContent = '긴 웨이브 청순상 기준의 컷 모음 (총 7컷) · 버전 359';
       document.title = "Lena's Album";
     } else if (name === 'yuna'){
       albumTitle.textContent = "Yuna's Album";
-      albumSub.textContent = '긴 웨이브 청순 성숙상 기준의 컷 모음 (총 129컷) · 버전 358';
+      albumSub.textContent = '긴 웨이브 청순 성숙상 기준의 컷 모음 (총 129컷) · 버전 359';
       document.title = "Yuna's Album";
     } else if (name === 'ian'){
       albumTitle.textContent = "Ian's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 358';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 359';
       document.title = "Ian's Album";
     } else if (name === 'noah'){
       albumTitle.textContent = "Noah's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 358';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 359';
       document.title = "Noah's Album";
     } else if (name === 'jay'){
       albumTitle.textContent = "Jay's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 358';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 359';
       document.title = "Jay's Album";
     } else if (name === 'kai'){
       albumTitle.textContent = "Kai's Album";
-      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 358';
+      albumSub.textContent = '아이돌상 기준의 컷 모음 (총 118컷) · 버전 359';
       document.title = "Kai's Album";
     } else if (name === 'jia'){
       albumTitle.textContent = "Jia's Album";
-      albumSub.textContent = '숏컷 배우상 기준의 컷 모음 (총 98컷) · 버전 358';
+      albumSub.textContent = '숏컷 배우상 기준의 컷 모음 (총 98컷) · 버전 359';
       document.title = "Jia's Album";
     } else if (name === 'trainee'){
       albumTitle.textContent = '연습생';
-      albumSub.textContent = '새 캐릭터 후보 모음 (총 726컷) · 버전 358';
+      albumSub.textContent = '새 캐릭터 후보 모음 (총 726컷) · 버전 359';
       document.title = '연습생 후보';
     } else if (name === 'yui'){
       albumTitle.textContent = '유이';
-      albumSub.textContent = '이상형 월드컵 우승 · 데뷔 후보 (총 70컷) · 버전 358';
+      albumSub.textContent = '이상형 월드컵 우승 · 데뷔 후보 (총 70컷) · 버전 359';
       document.title = '유이';
     } else if (name === 'sora'){
       albumTitle.textContent = '소라';
-      albumSub.textContent = '이상형 월드컵 우승 · 데뷔 후보 (총 70컷) · 버전 358';
+      albumSub.textContent = '이상형 월드컵 우승 · 데뷔 후보 (총 70컷) · 버전 359';
       document.title = '소라';
     } else if (name === 'minchae'){
       albumTitle.textContent = '민채';
-      albumSub.textContent = '이상형 월드컵 우승 · 데뷔 후보 (총 70컷) · 버전 358';
+      albumSub.textContent = '이상형 월드컵 우승 · 데뷔 후보 (총 70컷) · 버전 359';
       document.title = '민채';
     } else if (name === 'chaewon'){
       albumTitle.textContent = '채원';
-      albumSub.textContent = '이상형 월드컵 준우승 · 데뷔 후보 (총 70컷) · 버전 358';
+      albumSub.textContent = '이상형 월드컵 준우승 · 데뷔 후보 (총 70컷) · 버전 359';
       document.title = '채원';
     } else if (name === 'hayul'){
       albumTitle.textContent = '하율';
-      albumSub.textContent = '이상형 월드컵 준우승 · 데뷔 후보 (총 70컷) · 버전 358';
+      albumSub.textContent = '이상형 월드컵 준우승 · 데뷔 후보 (총 70컷) · 버전 359';
       document.title = '하율';
     } else if (name === 'group'){
       albumTitle.textContent = '단체샷';
-      albumSub.textContent = '공개 8명 단체 컷 모음 (총 4컷) · 버전 358';
+      albumSub.textContent = '공개 8명 단체 컷 모음 (총 4컷) · 버전 359';
       document.title = '단체샷';
     } else {
       albumTitle.textContent = "Mia's Album";
-      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 358';
+      albumSub.textContent = '확정 얼굴 기준의 컷 모음 (총 197컷) · 버전 359';
       document.title = "Mia's Album";
     }
     cards = allCards.filter(c => c.offsetParent !== null);
