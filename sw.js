@@ -1,4 +1,4 @@
-const CACHE = 'influencer-album-v359';
+const CACHE = 'influencer-album-v360';
 const IMGCACHE = 'album-images-v10';
 const CORE = ['./', './index.html', './trainee.html', './manifest.webmanifest', './icon3-192.png', './icon3-512.png',
   './img/face-anchor.webp', './img/sua-anchor-main2.webp', './img/ciel-anchor-main.webp', './img/sena-anchor-main.webp', './img/lena-anchor-main5f.webp', './img/yuna-anchor-main2g.webp'];
